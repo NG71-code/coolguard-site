@@ -1,3 +1,4 @@
+import { lazy } from 'react';
 // src/App.jsx
 import Header from "@/components/Header"; // or "../components/Header" based on your setup
 
