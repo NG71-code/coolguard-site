@@ -1,42 +1,63 @@
-name: Deploy to Hostinger via FTP
+name: Build & Deploy (Hostinger FTP)
 
 on:
   push:
-    branches:
-      - main    # runs every time you push to main
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      # 1️⃣ Checkout your repository
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node.js
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: 'npm'
 
-      # 3️⃣ Install dependencies
-      - name: Install dependencies
+      - name: Install deps
         run: npm ci
 
-      # 4️⃣ Build your Vite project
-      - name: Build project (Vite -> dist)
+      # If you’re using Vite with base './', this is fine for Hostinger.
+      - name: Build
         run: npm run build
 
-      # 5️⃣ Upload the dist folder to Hostinger via FTP
-      - name: Upload to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      # Optional: keep build as artifact for debugging
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      # Deploy via FTP to Hostinger
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.3
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
-          server-dir: ./          # ✅ deploys to FTP root (not nested public_html)
-          local-dir: dist/        # ✅ Vite output folder
-          dangerous-clean-slate: false
-          log-level: verbose
+          port: ${{ secrets.FTP_PORT || 21 }}
+          local-dir: dist/
+          # This must be EXACTLY your web root on Hostinger (no double public_html)
+          server-dir: /public_html/
+          # Clean removed files on remote to avoid stale assets
+          dangerous-clean-slate: true
+          # Ignore files that should never be uploaded
+          exclude: |
+            **/.git*
+            **/.DS_Store
+            **/node_modules/**
+            **/.github/**
