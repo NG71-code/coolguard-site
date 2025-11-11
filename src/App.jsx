@@ -1,8 +1,6 @@
-import { lazy } from 'react';
-// src/App.jsx
-import Header from "@/components/Header"; // or "../components/Header" based on your setup
+import { lazy, Suspense } from 'react';
+import Header from "@/components/Header";
 
-// IMPORTANT: include the .jsx extension so the dynamic import resolves
 const Home = lazy(() => import("./pages/Home.jsx"));
 
 export default function App() {
@@ -13,10 +11,12 @@ export default function App() {
         LOGO_DARK_SRC="/coolguard-logo-dark.svg"
         version="v1.3.2"
         versionHref="/changelog"
-        disableLinks={false}   // enable real navigation outside preview
-        forceDesktop={false}   // keep responsive behavior in production
+        disableLinks={false}
+        forceDesktop={false}
       />
-      {/* rest of the app (Hero, sections, routes, etc.) */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Home />
+      </Suspense>
     </>
   );
 }
