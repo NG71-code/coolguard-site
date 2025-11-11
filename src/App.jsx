@@ -1,6 +1,11 @@
-import { lazy, Suspense } from 'react';
+// src/App.jsx
+import React, { lazy, Suspense } from "react";
+
+// If you don't have the '@' alias configured in vite.config.js,
+// change this to:  import Header from "./components/Header.jsx";
 import Header from "@/components/Header";
 
+// IMPORTANT: keep the .jsx extension so Vite resolves correctly
 const Home = lazy(() => import("./pages/Home.jsx"));
 
 export default function App() {
@@ -14,7 +19,8 @@ export default function App() {
         disableLinks={false}
         forceDesktop={false}
       />
-      <Suspense fallback={<div>Loading...</div>}>
+      {/* Any lazy component MUST be wrapped in Suspense */}
+      <Suspense fallback={<div style={{ padding: 24 }}>Loading…</div>}>
         <Home />
       </Suspense>
     </>
