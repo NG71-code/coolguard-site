@@ -52,7 +52,7 @@ jobs:
           port: ${{ secrets.FTP_PORT || 21 }}
           local-dir: dist/
           # This must be EXACTLY your web root on Hostinger (no double public_html)
-          server-dir: /public_html/
+          server-dir: /
           # Clean removed files on remote to avoid stale assets
           dangerous-clean-slate: true
           # Ignore files that should never be uploaded
