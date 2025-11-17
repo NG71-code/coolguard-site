@@ -1,9 +1,9 @@
 import { useState } from "react";
-import coolguardLogo from "/coolguard-logo.png"; // ensure it's in /public
+import coolguardLogo from "/coolguard-logo.png"; // ensure this file exists in /public
 
 export default function Header({ onNavigate }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState(null); // desktop dropdown
+  const [openMenu, setOpenMenu] = useState(null); // desktop dropdown key
 
   const TOP_LINKS = [
     { label: "About Us", href: "#about" },
@@ -18,13 +18,33 @@ export default function Header({ onNavigate }) {
       href: "/cloud-loggers",
       children: [
         { key: "kryo-100", label: "Kryo-100 Series", isGroup: true },
-        { key: "kryo-101-aa", label: "Kryo-101-AA", href: "/cloud-loggers#kryo-101-aa" },
-        { key: "kryo-101-bb", label: "Kryo-101-BB", href: "/cloud-loggers#kryo-101-bb" },
-        { key: "kryo-101-cc", label: "Kryo-101-CC", href: "/cloud-loggers#kryo-101-cc" },
+        {
+          key: "kryo-101-aa",
+          label: "Kryo-101-AA",
+          href: "/cloud-loggers#kryo-101-aa",
+        },
+        {
+          key: "kryo-101-bb",
+          label: "Kryo-101-BB",
+          href: "/cloud-loggers#kryo-101-bb",
+        },
+        {
+          key: "kryo-101-cc",
+          label: "Kryo-101-CC",
+          href: "/cloud-loggers#kryo-101-cc",
+        },
 
         { key: "frigo-100", label: "Frigo-100 Series", isGroup: true },
-        { key: "frigo-101-aa", label: "Frigo-101-AA", href: "/cloud-loggers#frigo-101-aa" },
-        { key: "frigo-101-bb", label: "Frigo-101-BB", href: "/cloud-loggers#frigo-101-bb" },
+        {
+          key: "frigo-101-aa",
+          label: "Frigo-101-AA",
+          href: "/products/frigo-101-aa", // product page
+        },
+        {
+          key: "frigo-101-bb",
+          label: "Frigo-101-BB",
+          href: "/cloud-loggers#frigo-101-bb",
+        },
       ],
     },
     {
@@ -56,8 +76,16 @@ export default function Header({ onNavigate }) {
       icon: NodeGatewayIcon,
       href: "/nodes-gateways",
       children: [
-        { key: "kryo-101-dd", label: "Kryo-101-DD", href: "/nodes-gateways#kryo-101-dd" },
-        { key: "kryo-101-nd", label: "Kryo-101-ND", href: "/nodes-gateways#kryo-101-nd" },
+        {
+          key: "kryo-101-dd",
+          label: "Kryo-101-DD",
+          href: "/nodes-gateways#kryo-101-dd",
+        },
+        {
+          key: "kryo-101-nd",
+          label: "Kryo-101-ND",
+          href: "/nodes-gateways#kryo-101-nd",
+        },
       ],
     },
     {
@@ -87,8 +115,16 @@ export default function Header({ onNavigate }) {
           label: "CG-100 – Dual − Controller",
           href: "/controllers#cg-100-dual-minus",
         },
-        { key: "saffron", label: "Saffron Controller", href: "/controllers#saffron" },
-        { key: "custom", label: "Custom Controllers", href: "/controllers#custom" },
+        {
+          key: "saffron",
+          label: "Saffron Controller",
+          href: "/controllers#saffron",
+        },
+        {
+          key: "custom",
+          label: "Custom Controllers",
+          href: "/controllers#custom",
+        },
       ],
     },
     {
@@ -97,8 +133,16 @@ export default function Header({ onNavigate }) {
       icon: SensorIcon,
       href: "/sensors",
       children: [
-        { key: "temp-sensor", label: "Temperature Sensors", href: "/sensors#temperature" },
-        { key: "rh-sensor", label: "Humidity Sensors", href: "/sensors#humidity" },
+        {
+          key: "temp-sensor",
+          label: "Temperature Sensors",
+          href: "/sensors#temperature",
+        },
+        {
+          key: "rh-sensor",
+          label: "Humidity Sensors",
+          href: "/sensors#humidity",
+        },
         {
           key: "temp-rh",
           label: "Integrated Temperature & Humidity",
@@ -119,7 +163,11 @@ export default function Header({ onNavigate }) {
       href: "#services",
       children: [
         { key: "mapping", label: "Mapping Services", href: "#mapping-services" },
-        { key: "calibration", label: "Calibration Services", href: "#calibration-services" },
+        {
+          key: "calibration",
+          label: "Calibration Services",
+          href: "#calibration-services",
+        },
       ],
     },
     {
@@ -138,16 +186,16 @@ export default function Header({ onNavigate }) {
       const el = document.querySelector(item.href);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     } else if (item.href.startsWith("/")) {
-      window.location.href = item.href; // can swap to React Router later
+      window.location.href = item.href;
     }
   };
 
   return (
     <header className="w-full sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* ===== Desktop layout ===== */}
+        {/* DESKTOP */}
         <div className="hidden md:flex items-stretch h-24">
-          {/* Left: Logo column */}
+          {/* Logo */}
           <div className="flex items-center pr-8">
             <img
               src={coolguardLogo}
@@ -157,7 +205,7 @@ export default function Header({ onNavigate }) {
             />
           </div>
 
-          {/* Right: two-row nav column */}
+          {/* Right side */}
           <div className="flex-1 flex flex-col">
             {/* Top row: About / Contact */}
             <div className="flex items-center justify-end h-10 border-b border-gray-100">
@@ -174,7 +222,7 @@ export default function Header({ onNavigate }) {
               </nav>
             </div>
 
-            {/* Bottom row: main menu with dropdowns */}
+            {/* Bottom row: main menu */}
             <div className="flex items-center justify-end h-14">
               <nav className="flex items-center gap-4">
                 {SECONDARY_MENUS.map((m) => (
@@ -208,7 +256,7 @@ export default function Header({ onNavigate }) {
                       )}
                     </button>
 
-                    {/* Dropdown */}
+                    {/* Dropdown (single level) */}
                     {m.children && openMenu === m.key && (
                       <div className="absolute right-0 mt-2 w-64 rounded-xl border bg-white shadow-lg py-2 z-50">
                         {m.children.map((child) =>
@@ -238,7 +286,7 @@ export default function Header({ onNavigate }) {
           </div>
         </div>
 
-        {/* ===== Mobile top bar ===== */}
+        {/* MOBILE BAR */}
         <div className="flex md:hidden h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <img
@@ -253,14 +301,19 @@ export default function Header({ onNavigate }) {
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor">
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+            >
               <path strokeWidth="2" strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16" />
             </svg>
           </button>
         </div>
       </div>
 
-      {/* ===== Mobile drawer ===== */}
+      {/* MOBILE DRAWER */}
       {mobileOpen && (
         <div className="md:hidden border-t border-gray-100 bg-white">
           <div className="px-4 py-3">
