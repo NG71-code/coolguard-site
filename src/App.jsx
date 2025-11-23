@@ -1,26 +1,64 @@
 // src/App.jsx
 import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Header from "@/components/Header";
+
 import Home from "./pages/Home.jsx";
 import CloudLoggersPage from "./pages/CloudLoggersPage.jsx";
 import Frigo101AA from "./pages/Frigo101AA.jsx";
+import Frigo101BB from "./pages/Frigo101BB.jsx";
+import Kryo101AA from "./pages/Kryo101AA.jsx";
+import Kryo101BB from "./pages/Kryo101BB.jsx";
+import BridgePointCloudConnect from "./pages/BridgePointCloudConnect.jsx";
+import SensorsPage from "./pages/Sensors.jsx";
+import ServicesPage from "./pages/Services.jsx";
+import ControllersCG100 from "./pages/ControllersCG100.jsx";
+function AppInner() {
+  const location = useLocation();
 
-export default function App() {
-  const path = window.location.pathname || "/";
-
-  let PageComponent = Home;
-
-  if (path === "/cloud-loggers") {
-    PageComponent = CloudLoggersPage;
-  } else if (path === "/products/frigo-101-aa") {
-    PageComponent = Frigo101AA;
-  }
+  // Optional: keep this for a while while testing
+  console.log("PATH:", location.pathname);
 
   return (
     <>
       <Header />
-      <PageComponent />
+
+      {/* Optional debug bar - remove later if you want */}
+      {/* <div className="bg-black text-green-400 text-xs px-3 py-1">
+        PATH DEBUG: {location.pathname}
+      </div> */}
+
+      <Routes>
+        {/* Home */}
+        <Route path="/" element={<Home />} />
+
+        {/* Group pages */}
+        <Route path="/cloud-loggers" element={<CloudLoggersPage />} />
+        <Route path="/sensors" element={<SensorsPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+
+        {/* Frigo product pages */}
+        <Route path="/products/frigo-101-aa" element={<Frigo101AA />} />
+        <Route path="/products/frigo-101-bb" element={<Frigo101BB />} />
+
+        {/* Kryo product pages */}
+        <Route path="/products/kryo-101-aa" element={<Kryo101AA />} />
+        <Route path="/products/kryo-101-bb" element={<Kryo101BB />} />
+
+        {/* BridgePoint */}
+        <Route
+          path="/products/bridgepoint-cloudconnect"
+          element={<BridgePointCloudConnect />}
+        />
+<Route path="/controllers/cg-100-series" element={<ControllersCG100 />} />
+        {/* Fallback → Home */}
+        <Route path="*" element={<Home />} />
+      </Routes>
     </>
   );
+}
+
+export default function App() {
+  return <AppInner />;
 }

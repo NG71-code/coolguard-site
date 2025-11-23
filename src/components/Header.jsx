@@ -1,9 +1,12 @@
+// src/components/Header.jsx
 import { useState } from "react";
-import coolguardLogo from "/coolguard-logo.png"; // ensure this file exists in /public
+import { useNavigate } from "react-router-dom";
+import coolguardLogo from "/coolguard-logo.png";
 
-export default function Header({ onNavigate }) {
+export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState(null); // desktop dropdown key
+  const [openMenu, setOpenMenu] = useState(null);
+  const navigate = useNavigate();
 
   const TOP_LINKS = [
     { label: "About Us", href: "#about" },
@@ -18,114 +21,32 @@ export default function Header({ onNavigate }) {
       href: "/cloud-loggers",
       children: [
         { key: "kryo-100", label: "Kryo-100 Series", isGroup: true },
-        {
-          key: "kryo-101-aa",
-          label: "Kryo-101-AA",
-          href: "/cloud-loggers#kryo-101-aa",
-        },
-        {
-          key: "kryo-101-bb",
-          label: "Kryo-101-BB",
-          href: "/cloud-loggers#kryo-101-bb",
-        },
-        {
-          key: "kryo-101-cc",
-          label: "Kryo-101-CC",
-          href: "/cloud-loggers#kryo-101-cc",
-        },
+        { key: "kryo-101-aa", label: "Kryo-101-AA", href: "/cloud-loggers#kryo-101-aa" },
+        { key: "kryo-101-bb", label: "Kryo-101-BB", href: "/cloud-loggers#kryo-101-bb" },
+        { key: "kryo-101-cc", label: "Kryo-101-CC", href: "/cloud-loggers#kryo-101-cc" },
 
         { key: "frigo-100", label: "Frigo-100 Series", isGroup: true },
-        {
-          key: "frigo-101-aa",
-          label: "Frigo-101-AA",
-          href: "/products/frigo-101-aa", // product page
-        },
-        {
-          key: "frigo-101-bb",
-          label: "Frigo-101-BB",
-          href: "/cloud-loggers#frigo-101-bb",
-        },
+        { key: "frigo-101-aa", label: "Frigo-101-AA", href: "/products/frigo-101-aa" },
+        { key: "frigo-101-bb", label: "Frigo-101-BB", href: "/products/frigo-101-bb" },
       ],
     },
     {
       key: "connectors",
       label: "Cloud Connectors",
       icon: ConnectorIcon,
-      href: "/cloud-connectors",
-      children: [
-        {
-          key: "bp-zone",
-          label: "Bridge Point Cloud Connect – Zone Edition",
-          href: "/cloud-connectors#zone",
-        },
-        {
-          key: "bp-facility",
-          label: "Bridge Point Cloud Connect – Facility Edition",
-          href: "/cloud-connectors#facility",
-        },
-        {
-          key: "bp-enterprise",
-          label: "Bridge Point Cloud Connect – Enterprise Edition",
-          href: "/cloud-connectors#enterprise",
-        },
-      ],
+      href: "/products/bridgepoint-cloudconnect",
     },
     {
       key: "nodes",
       label: "Nodes & Gateways",
       icon: NodeGatewayIcon,
       href: "/nodes-gateways",
-      children: [
-        {
-          key: "kryo-101-dd",
-          label: "Kryo-101-DD",
-          href: "/nodes-gateways#kryo-101-dd",
-        },
-        {
-          key: "kryo-101-nd",
-          label: "Kryo-101-ND",
-          href: "/nodes-gateways#kryo-101-nd",
-        },
-      ],
     },
     {
       key: "controllers",
       label: "Controllers",
       icon: ControllerIcon,
       href: "/controllers",
-      children: [
-        { key: "cg-100-series", label: "CG-100 Series", isGroup: true },
-        {
-          key: "cg-100-s-plus",
-          label: "CG-100 – Single + Controller",
-          href: "/controllers#cg-100-single-plus",
-        },
-        {
-          key: "cg-100-s-minus",
-          label: "CG-100 – Single − Controller",
-          href: "/controllers#cg-100-single-minus",
-        },
-        {
-          key: "cg-100-d-plus",
-          label: "CG-100 – Dual + Controller",
-          href: "/controllers#cg-100-dual-plus",
-        },
-        {
-          key: "cg-100-d-minus",
-          label: "CG-100 – Dual − Controller",
-          href: "/controllers#cg-100-dual-minus",
-        },
-        {
-          key: "saffron",
-          label: "Saffron Controller",
-          href: "/controllers#saffron",
-        },
-        {
-          key: "custom",
-          label: "Custom Controllers",
-          href: "/controllers#custom",
-        },
-      ],
     },
     {
       key: "sensors",
@@ -133,43 +54,31 @@ export default function Header({ onNavigate }) {
       icon: SensorIcon,
       href: "/sensors",
       children: [
-        {
-          key: "temp-sensor",
-          label: "Temperature Sensors",
-          href: "/sensors#temperature",
-        },
-        {
-          key: "rh-sensor",
-          label: "Humidity Sensors",
-          href: "/sensors#humidity",
-        },
-        {
-          key: "temp-rh",
-          label: "Integrated Temperature & Humidity",
-          href: "/sensors#temp-rh",
-        },
+        { key: "temperature", label: "Temperature Sensors", href: "/sensors#temperature" },
+        { key: "humidity", label: "Humidity Sensors", href: "/sensors#humidity" },
+        { key: "temp-rh", label: "Integrated Temp & RH", href: "/sensors#temp-rh" },
         { key: "display", label: "Displays", href: "/sensors#display" },
         { key: "hooters", label: "Hooters", href: "/sensors#hooters" },
         { key: "door", label: "Door Sensors", href: "/sensors#door" },
-        { key: "nh3", label: "Ammonia (NH₃) Sensors", href: "/sensors#nh3" },
+        { key: "nh3", label: "NH₃ Sensors", href: "/sensors#nh3" },
         { key: "co2", label: "CO₂ Sensors", href: "/sensors#co2" },
         { key: "lux", label: "Lux Sensors", href: "/sensors#lux" },
       ],
     },
     {
-      key: "services",
-      label: "Services",
-      icon: ServiceIcon,
-      href: "#services",
-      children: [
-        { key: "mapping", label: "Mapping Services", href: "#mapping-services" },
-        {
-          key: "calibration",
-          label: "Calibration Services",
-          href: "#calibration-services",
-        },
-      ],
+  key: "services",
+  label: "Services",
+  icon: ServiceIcon,
+  href: "/services",
+  children: [
+    { key: "mapping", label: "Mapping Services", href: "/services#mapping-services" },
+    {
+      key: "calibration",
+      label: "Calibration Services",
+      href: "/services#calibration-services",
     },
+  ],
+},
     {
       key: "platform",
       label: "Cloud Platform",
@@ -179,14 +88,20 @@ export default function Header({ onNavigate }) {
   ];
 
   const handleNav = (item) => {
-    if (onNavigate) onNavigate(item);
     if (!item?.href) return;
 
+    // In-page scroll links
     if (item.href.startsWith("#")) {
       const el = document.querySelector(item.href);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else if (item.href.startsWith("/")) {
-      window.location.href = item.href;
+      return;
+    }
+
+    // App routes
+    if (item.href.startsWith("/")) {
+      navigate(item.href);
+      setMobileOpen(false);
+      setOpenMenu(null);
     }
   };
 
@@ -196,7 +111,10 @@ export default function Header({ onNavigate }) {
         {/* DESKTOP */}
         <div className="hidden md:flex items-stretch h-24">
           {/* Logo */}
-          <div className="flex items-center pr-8">
+          <div
+            className="flex items-center pr-8 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <img
               src={coolguardLogo}
               alt="CoolGuard"
@@ -256,9 +174,9 @@ export default function Header({ onNavigate }) {
                       )}
                     </button>
 
-                    {/* Dropdown (single level) */}
+                    {/* Dropdown */}
                     {m.children && openMenu === m.key && (
-                      <div className="absolute right-0 mt-2 w-64 rounded-xl border bg-white shadow-lg py-2 z-50">
+                      <div className="absolute right-0 top-full mt-1 w-64 rounded-xl border bg-white shadow-lg py-2 z-50">
                         {m.children.map((child) =>
                           child.isGroup ? (
                             <div
@@ -288,7 +206,10 @@ export default function Header({ onNavigate }) {
 
         {/* MOBILE BAR */}
         <div className="flex md:hidden h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
+          <div
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <img
               src={coolguardLogo}
               alt="CoolGuard"
@@ -338,13 +259,21 @@ export default function Header({ onNavigate }) {
               {SECONDARY_MENUS.map((m) => (
                 <div key={m.key} className="border rounded-md px-3 py-2">
                   <button
-                    className="w-full text-left flex items-center justify-between text-gray-900 font-medium"
-                    onClick={() => handleNav(m)}
+                    className="w-full flex items-center justify-between text-gray-900 font-medium"
+                    onClick={() => {
+                      if (!m.children) {
+                        handleNav(m);
+                        setMobileOpen(false);
+                      }
+                    }}
                   >
                     <span className="flex items-center gap-2">
                       <m.icon className="h-5 w-5 text-gray-600" />
                       {m.label}
                     </span>
+                    {m.children && (
+                      <span className="text-xs text-gray-500">Menu</span>
+                    )}
                   </button>
 
                   {m.children && (

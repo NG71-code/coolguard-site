@@ -1,30 +1,18 @@
 // src/main.jsx
-/* eslint-disable no-console */
-console.log("[BOOT] main.jsx loaded"); // should appear on live site
-
-import React, { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
+import "./index.css";
 
-// Global error hooks (help surface silent crashes in production)
-if (typeof window !== "undefined") {
-  window.addEventListener("error", (e) => {
-    console.error("[GLOBAL ERROR]", e.error || e.message || e);
-  });
-  window.addEventListener("unhandledrejection", (e) => {
-    console.error("[UNHANDLED REJECTION]", e.reason || e);
-  });
-}
-
-// Mount
-const rootEl = document.getElementById("root");
-if (!rootEl) {
-  console.error("❌ #root not found in index.html");
-} else {
-  createRoot(rootEl).render(
-    <StrictMode>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    {/* 
+      basename tells React Router to strip the Vite base URL (e.g. "/coolguard-site/")
+      so routes like "/services" match correctly even when the app is served from a subfolder.
+    */}
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <App />
-    </StrictMode>
-  );
-}
+    </BrowserRouter>
+  </React.StrictMode>
+);
