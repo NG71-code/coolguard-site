@@ -14,6 +14,12 @@ import BridgePointCloudConnect from "./pages/BridgePointCloudConnect.jsx";
 import SensorsPage from "./pages/Sensors.jsx";
 import ServicesPage from "./pages/Services.jsx";
 import ControllersCG100 from "./pages/ControllersCG100.jsx";
+import NodesGateways from "./pages/NodesGateways.jsx";
+import CloudPlatform from "./pages/CloudPlatform";
+import AboutUs from "./pages/AboutUs.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
+
+
 function AppInner() {
   const location = useLocation();
 
@@ -52,6 +58,12 @@ function AppInner() {
           element={<BridgePointCloudConnect />}
         />
 <Route path="/controllers/cg-100-series" element={<ControllersCG100 />} />
+<Route path="/nodes-gateways" element={<NodesGateways />} />
+<Route path="/cloud-platform" element={<CloudPlatform />} />
+<Route path="/about-us" element={<AboutUs />} />
+<Route path="/contact" element={<ContactUs />} />
+
+
         {/* Fallback → Home */}
         <Route path="*" element={<Home />} />
       </Routes>

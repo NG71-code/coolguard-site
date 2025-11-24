@@ -1,16 +1,25 @@
 // src/components/Header.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import coolguardLogo from "/coolguard-logo.png";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState(null);
+  const [openMenu, setOpenMenu] = useState(null); // for desktop dropdowns
   const navigate = useNavigate();
+  useEffect(() => {
+    const handleScroll = () => {
+      setOpenMenu(null);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const TOP_LINKS = [
-    { label: "About Us", href: "#about" },
-    { label: "Contact Us", href: "#contact" },
+    { label: "Customer Login", href: "https://app.coolguard.cloud", external: true, button: true  },
+    { label: "About Us", href: "/about-us" },
+    { label: "Contact Us", href: "/contact" },
   ];
 
   const SECONDARY_MENUS = [
@@ -21,13 +30,13 @@ export default function Header() {
       href: "/cloud-loggers",
       children: [
         { key: "kryo-100", label: "Kryo-100 Series", isGroup: true },
-        { key: "kryo-101-aa", label: "Kryo-101-AA", href: "/cloud-loggers#kryo-101-aa" },
-        { key: "kryo-101-bb", label: "Kryo-101-BB", href: "/cloud-loggers#kryo-101-bb" },
+        { key: "kryo-101-aa", label: "2 Channel Cloud Logger", href: "/cloud-loggers#kryo-101-aa" },
+        { key: "kryo-101-bb", label: "8 Channel Cloud Logger", href: "/cloud-loggers#kryo-101-bb" },
         { key: "kryo-101-cc", label: "Kryo-101-CC", href: "/cloud-loggers#kryo-101-cc" },
 
         { key: "frigo-100", label: "Frigo-100 Series", isGroup: true },
-        { key: "frigo-101-aa", label: "Frigo-101-AA", href: "/products/frigo-101-aa" },
-        { key: "frigo-101-bb", label: "Frigo-101-BB", href: "/products/frigo-101-bb" },
+        { key: "frigo-101-aa", label: "Smart Freezer & Cooler Cloud Logger", href: "/products/frigo-101-aa" },
+        { key: "frigo-101-bb", label: "Cloud-Connected Cooler Locator", href: "/products/frigo-101-bb" },
       ],
     },
     {
@@ -46,7 +55,19 @@ export default function Header() {
       key: "controllers",
       label: "Controllers",
       icon: ControllerIcon,
-      href: "/controllers",
+      href: "/controllers/cg-100-series",
+      children: [
+        {
+          key: "cg-100-series",
+          label: "CG-100 Series Controllers",
+          href: "/controllers/cg-100-series",
+        },
+        {
+          key: "saffron-controller",
+          label: "Saffron Environment Controller",
+          href: "/controllers/cg-100-series#saffron-controller",
+        },
+      ],
     },
     {
       key: "sensors",
@@ -66,31 +87,31 @@ export default function Header() {
       ],
     },
     {
-  key: "services",
-  label: "Services",
-  icon: ServiceIcon,
-  href: "/services",
-  children: [
-    { key: "mapping", label: "Mapping Services", href: "/services#mapping-services" },
-    {
-      key: "calibration",
-      label: "Calibration Services",
-      href: "/services#calibration-services",
+      key: "services",
+      label: "Services",
+      icon: ServiceIcon,
+      href: "/services",
+      children: [
+        { key: "mapping", label: "Mapping Services", href: "/services#mapping-services" },
+        {
+          key: "calibration",
+          label: "Calibration Services",
+          href: "/services#calibration-services",
+        },
+      ],
     },
-  ],
-},
     {
       key: "platform",
       label: "Cloud Platform",
       icon: PlatformIcon,
-      href: "#cloud-platform",
+      href: "/cloud-platform",
     },
   ];
 
   const handleNav = (item) => {
     if (!item?.href) return;
 
-    // In-page scroll links
+    // In-page scroll
     if (item.href.startsWith("#")) {
       const el = document.querySelector(item.href);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -105,8 +126,16 @@ export default function Header() {
     }
   };
 
+  const toggleMenu = (key, hasChildren, item) => {
+    if (!hasChildren) {
+      handleNav(item);
+      return;
+    }
+    setOpenMenu((prev) => (prev === key ? null : key));
+  };
+
   return (
-    <header className="w-full sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100">
+    <header className="w-full sticky top-0 z-[9999] bg-white/95 backdrop-blur border-b border-gray-100 relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* DESKTOP */}
         <div className="hidden md:flex items-stretch h-24">
@@ -143,62 +172,73 @@ export default function Header() {
             {/* Bottom row: main menu */}
             <div className="flex items-center justify-end h-14">
               <nav className="flex items-center gap-4">
-                {SECONDARY_MENUS.map((m) => (
-                  <div
-                    key={m.key}
-                    className="relative"
-                    onMouseEnter={() => setOpenMenu(m.key)}
-                    onMouseLeave={() => setOpenMenu(null)}
-                  >
-                    <button
-                      className="group inline-flex items-center gap-2 px-2 py-1 rounded-md transition-colors duration-200 hover:bg-blue-50/40"
-                      onClick={() => handleNav(m)}
+                {SECONDARY_MENUS.map((m) => {
+                  const isOpen = openMenu === m.key && !!m.children;
+                  return (
+                    <div
+                      key={m.key}
+                      className="relative"
                     >
-                      <m.icon className="h-5 w-5 text-gray-600 group-hover:text-[#007BFF]" />
-                      <span className="text-sm font-medium text-gray-800 group-hover:text-[#007BFF]">
-                        {m.label}
-                      </span>
-                      {m.children && (
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="h-4 w-4 text-gray-400 group-hover:text-[#007BFF]"
-                        >
-                          <path
-                            d="M8 10l4 4 4-4"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      )}
-                    </button>
-
-                    {/* Dropdown */}
-                    {m.children && openMenu === m.key && (
-                      <div className="absolute right-0 top-full mt-1 w-64 rounded-xl border bg-white shadow-lg py-2 z-50">
-                        {m.children.map((child) =>
-                          child.isGroup ? (
-                            <div
-                              key={child.key}
-                              className="px-4 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500"
-                            >
-                              {child.label}
-                            </div>
-                          ) : (
-                            <button
-                              key={child.key}
-                              onClick={() => handleNav(child)}
-                              className="w-full text-left px-4 py-1.5 text-sm text-slate-700 hover:bg-blue-50"
-                            >
-                              {child.label}
-                            </button>
-                          )
+                      {/* Main button */}
+                      <button
+                        className={`inline-flex items-center gap-2 px-2 py-1 rounded-md transition-colors duration-200 ${
+                          isOpen ? "bg-blue-50/70" : "hover:bg-blue-50/40"
+                        }`}
+                        onClick={() => toggleMenu(m.key, !!m.children, m)}
+                      >
+                        <m.icon className="h-5 w-5 text-gray-600" />
+                        <span className="text-sm font-medium text-gray-800">
+                          {m.label}
+                        </span>
+                        {m.children && (
+                          <svg
+                            viewBox="0 0 24 24"
+                            className={`h-4 w-4 text-gray-400 transition-transform ${
+                              isOpen ? "rotate-180" : ""
+                            }`}
+                          >
+                            <path
+                              d="M8 10l4 4 4-4"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                            />
+                          </svg>
                         )}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      </button>
+
+                      {/* Dropdown (CLICK to open) */}
+                      {m.children && isOpen && (
+                        <div
+                          className="
+                            absolute right-0 top-full mt-2 w-64 rounded-xl border bg-white shadow-xl py-2 z-[10000]
+                            pointer-events-auto
+                          "
+                        >
+                          {m.children.map((child) =>
+                            child.isGroup ? (
+                              <div
+                                key={child.key}
+                                className="px-4 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500"
+                              >
+                                {child.label}
+                              </div>
+                            ) : (
+                              <button
+                                key={child.key}
+                                onClick={() => handleNav(child)}
+                                className="w-full text-left px-4 py-1.5 text-sm text-slate-700 hover:bg-blue-50"
+                              >
+                                {child.label}
+                              </button>
+                            )
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </nav>
             </div>
           </div>
@@ -236,7 +276,7 @@ export default function Header() {
 
       {/* MOBILE DRAWER */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-gray-100 bg-white">
+        <div className="md:hidden border-t border-gray-100 bg-white z-[9999]">
           <div className="px-4 py-3">
             {/* Top links */}
             <div className="flex flex-col gap-2 mb-3">
@@ -253,7 +293,13 @@ export default function Header() {
                 </button>
               ))}
             </div>
-
+      {/* CLICK-AWAY OVERLAY (desktop only) */}
+      {openMenu && (
+        <div
+          className="fixed inset-0 z-[9000] hidden md:block"
+          onClick={() => setOpenMenu(null)}
+        />
+      )}
             {/* Menus + children */}
             <div className="flex flex-col gap-2">
               {SECONDARY_MENUS.map((m) => (
@@ -264,6 +310,8 @@ export default function Header() {
                       if (!m.children) {
                         handleNav(m);
                         setMobileOpen(false);
+                      } else {
+                        setOpenMenu((prev) => (prev === m.key ? null : m.key));
                       }
                     }}
                   >
@@ -272,11 +320,13 @@ export default function Header() {
                       {m.label}
                     </span>
                     {m.children && (
-                      <span className="text-xs text-gray-500">Menu</span>
+                      <span className="text-xs text-gray-500">
+                        {openMenu === m.key ? "Hide" : "Menu"}
+                      </span>
                     )}
                   </button>
 
-                  {m.children && (
+                  {m.children && openMenu === m.key && (
                     <div className="mt-2 space-y-1 pl-7">
                       {m.children.map((child) =>
                         child.isGroup ? (

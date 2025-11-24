@@ -59,87 +59,89 @@ export default function Home() {
       {/* (No header here) The global header comes from src/components/Header.jsx */}
 
       {/* Hero */}
-<section className="bg-gradient-to-br from-blue-50 to-cyan-50 border-b" id="home-hero">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-    <div className="grid md:grid-cols-2 gap-10 items-center">
-      {/* Left: Copy + CTAs */}
-      <div>
-        <div className="inline-flex items-center gap-2 rounded-full bg-white/80 border px-3 py-1 text-xs text-slate-700">
-          <span className="inline-block h-2 w-2 rounded-full bg-[#007BFF]" />
-          Real-time monitoring • Controllers • Cloud
-        </div>
+      <section className="bg-gradient-to-br from-blue-50 to-cyan-50 border-b" id="home-hero">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            {/* Left: Copy + CTAs */}
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/80 border px-3 py-1 text-xs text-slate-700">
+                <span className="inline-block h-2 w-2 rounded-full bg-[#007BFF]" />
+                IoT Sensors • Gateways & Controllers • Cloud Analytics
+              </div>
 
-        <h1 className="mt-3 text-3xl md:text-5xl font-extrabold leading-tight text-slate-900">
-          Sensors to Cloud — <span className="text-[#007BFF]">CoolGuard</span>
-        </h1>
+              <h1 className="mt-3 text-2xl md:text-4xl font-semibold leading-tight text-slate-900">
+                <span className="text-[#007BFF] font-bold">CoolGuard</span><br />
+                <span className="text-slate-600 font-normal">Intelligence for the Cold Chain</span>
+              </h1>
 
-        <p className="mt-4 text-slate-600 md:text-lg">
-          Temperature, humidity and facility control for cold rooms, warehouses, and pharma storage.
-          Deploy controllers, nodes & gateways and manage everything on the CoolGuard Cloud Platform.
-        </p>
+              <p className="mt-4 text-slate-600 md:text-lg">
+                Cold storage environments demand precision, accountability, and uninterrupted visibility.
+                CoolGuard ensures compliance, reduces operational risk, and protects product integrity through continuous
+                monitoring and automated oversight — across every facility, asset, and region.
+                Whether it's one facility or a distributed network of cold rooms, freezers, chillers, and warehouses —
+                CoolGuard provides unified visibility and control.
+              </p>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href="#cloud-platform"
-            className="inline-flex items-center rounded-xl bg-[#007BFF] px-4 py-2.5 text-white font-medium hover:opacity-90 shadow transition"
-          >
-            Contact Us
-          </a>
-     
-        </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="#cloud-platform"
+                  className="inline-flex items-center rounded-xl bg-[#007BFF] px-4 py-2.5 text-white font-medium hover:opacity-90 shadow transition"
+                >
+                  Contact Us
+                </a>
+              </div>
 
-        {/* Quick links row to match navbar order */}
-        <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
-          <a href="#cloud-loggers" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-            <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-            Cloud Loggers
-          </a>
-          <a href="#nodes-gateways" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-            <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-            Nodes & Gateways
-          </a>
-          <a href="#controllers" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-            <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-            Controllers
-          </a>
-          <a href="#sensors" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-            <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-            Sensors
-          </a>
-          <a href="#services" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-            <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-            Services
-          </a>
-          <a href="#cloud-platform" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-            <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-            Cloud Platform
-          </a>
-        </div>
-      </div>
+              {/* Quick links row to match navbar order */}
+              <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
+                <a href="#cloud-loggers" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
+                  Cloud Loggers
+                </a>
+                <a href="#nodes-gateways" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
+                  Nodes & Gateways
+                </a>
+                <a href="#controllers" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
+                  Controllers
+                </a>
+                <a href="#sensors" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
+                  Sensors
+                </a>
+                <a href="#services" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
+                  Services
+                </a>
+                <a href="#cloud-platform" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
+                  Cloud Platform
+                </a>
+              </div>
+            </div>
 
-      {/* Right: Visual card (auto-swaps to image if present) */}
-      <div className="order-first md:order-last">
-        <div className="relative rounded-2xl border bg-white p-6 shadow-sm">
-          {/* Optional: Add /public/coolguard-hero.png */}
-          <img
-            src="/cold-storage-hero.png"
-            alt=""
-            className="hidden md:block mx-auto h-48 w-auto object-contain"
-            onError={(e) => { e.currentTarget.style.display = 'none'; }}
-          />
-          <div className="md:hidden flex items-center justify-center">
-            <img src="/coolguard-logo.png" alt="CoolGuard Logo" className="mx-auto h-16 w-auto" />
+            {/* Right: Visual card (auto-swaps to image if present) */}
+            <div className="order-first md:order-last">
+              <div className="relative rounded-2xl border bg-white p-6 shadow-sm">
+                {/* Optional: Add /public/coolguard-hero.png */}
+                <img
+                  src="/cold-storage-hero.png"
+                  alt=""
+                  className="hidden md:block mx-auto h-48 w-auto object-contain"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+                <div className="md:hidden flex items-center justify-center">
+                  <img src="/coolguard-logo.png" alt="CoolGuard Logo" className="mx-auto h-16 w-auto" />
+                </div>
+                <p className="mt-4 text-center text-sm text-slate-600">
+                  Smart sensors, reliable hardware, and a cloud platform working together to protect your cold chain—24/7.
+                </p>
+              </div>
+            </div>
           </div>
-          <p className="mt-4 text-center text-sm text-slate-600">
-            Reliable hardware + cloud platform for continuous monitoring.
-          </p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-      {/* Downloads ... your existing section ends here */}
-      
+      </section>
+
       {/* Feature Highlights / Advantages */}
       <section id="features" className="bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -148,403 +150,523 @@ export default function Home() {
               Why <span className="text-[#007BFF]">CoolGuard</span>
             </h2>
             <p className="mt-2 text-slate-600">
-              Industrial-grade hardware + a secure cloud platform designed for cold rooms, warehouses,
-              and pharma environments—built for reliability, compliance, and scale.
+              CoolGuard combines industrial-grade hardware, certified measurement accuracy, and a secure cloud platform
+              — built specifically for temperature-controlled storage where reliability and compliance cannot fail.
             </p>
           </div>
 
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {/* Card 1 */}
+            {/* 1. Hardware foundation */}
             <div className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50">
                   <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-                    <path d="M12 3l7 3v5a10 10 0 0 1-7 9 10 10 0 0 1-7-9V6l7-3z" strokeWidth="2" />
-                    <path d="M9.5 12l1.8 1.8L15 10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <rect x="3" y="8" width="7" height="10" rx="1.5" strokeWidth="2" />
+                    <rect x="14" y="6" width="7" height="12" rx="1.5" strokeWidth="2" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-slate-900">21 CFR–ready Audit Trails</h3>
-                  <p className="mt-1 text-sm text-slate-600">Immutable actions, e-sign & version history for validation.</p>
+                  <h3 className="text-base font-semibold text-slate-900">Industrial-Grade Hardware</h3>
+                  <p className="mt-1 text-sm text-slate-600">
+                    Sensors, gateways, and controllers designed for cold rooms, freezers, chillers, and warehouses —
+                    not repurposed generic IoT devices.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-                    <path d="M6 10a6 6 0 1 1 12 0v3l1.5 2.5H4.5L6 13v-3z" strokeWidth="2" />
-                    <path d="M9 18a3 3 0 0 0 6 0" strokeWidth="2" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-base font-semibold text-slate-900">Real-time Alerts</h3>
-                  <p className="mt-1 text-sm text-slate-600">SMS/Email/WhatsApp for excursions, door open, power fail.</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3 */}
+            {/* 2. Measurement accuracy */}
             <div className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50">
                   <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
                     <circle cx="12" cy="12" r="9" strokeWidth="2" />
-                    <path d="M3 12h18M12 3a16 16 0 0 1 0 18M12 3a16 16 0 0 0 0 18" strokeWidth="2" />
+                    <path d="M12 7v6l3 2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-slate-900">Multi-Site Dashboard</h3>
-                  <p className="mt-1 text-sm text-slate-600">Monitor all sites with role-based access and grouping.</p>
+                  <h3 className="text-base font-semibold text-slate-900">NABL-Calibrated Accuracy</h3>
+                  <p className="mt-1 text-sm text-slate-600">
+                    Traceable calibration and offset correction to ensure temperature and humidity readings
+                    match regulatory and QA expectations.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Card 4 */}
+            {/* 3. Monitoring & alerts */}
             <div className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50">
                   <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-                    <path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2V6z" strokeWidth="2" />
-                    <path d="M9 4v14M15 6v14" strokeWidth="2" />
+                    <path d="M12 4l7 4v4c0 3.87-3.13 7-7 7s-7-3.13-7-7V8l7-4z" strokeWidth="2" />
+                    <path d="M12 10v3M12 17h.01" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-slate-900">Mapping & PQ Workflows</h3>
-                  <p className="mt-1 text-sm text-slate-600">WHO-style empty/loaded mapping, defrost & uniformity.</p>
+                  <h3 className="text-base font-semibold text-slate-900">Real-Time Monitoring & Alerts</h3>
+                  <p className="mt-1 text-sm text-slate-600">
+                    Continuous monitoring with SMS, Email, and WhatsApp alerts for excursions, door openings,
+                    power failures, and equipment issues.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Card 5 */}
+            {/* 4. Compliance & reporting */}
             <div className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50">
                   <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-                    <path d="M10 14a4 4 0 1 0 6 3.5V6a2 2 0 1 0-4 0v11.5A4 4 0 0 0 10 14z" strokeWidth="2" />
+                    <rect x="4" y="4" width="16" height="16" rx="2" strokeWidth="2" />
+                    <path d="M8 9h8M8 13h5" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-slate-900">NABL-Calibrated Sensors</h3>
-                  <p className="mt-1 text-sm text-slate-600">Traceable calibration with offset correction & certificates.</p>
+                  <h3 className="text-base font-semibold text-slate-900">Compliance & Audit-Ready Records</h3>
+                  <p className="mt-1 text-sm text-slate-600">
+                    Secure, timestamped logs and structured reports to support audits, investigations,
+                    and regulatory documentation without manual logbooks.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Card 6 */}
+            {/* 5. Multi-site scalability */}
             <div className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50">
                   <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-                    <path d="M7 17h8a4 4 0 1 0-.5-7.98A6 6 0 0 0 6 9" strokeWidth="2" />
-                    <path d="M8 20l-2-2 2-2M16 16l2 2-2 2" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="6" cy="9" r="2" strokeWidth="2" />
+                    <circle cx="18" cy="9" r="2" strokeWidth="2" />
+                    <circle cx="12" cy="16" r="2" strokeWidth="2" />
+                    <path d="M8 9h3l1 5m2-5h3l-1 5" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-slate-900">Offline Logging & Sync</h3>
-                  <p className="mt-1 text-sm text-slate-600">Stores locally during outages; auto-syncs when online.</p>
+                  <h3 className="text-base font-semibold text-slate-900">Scales Across Sites & Assets</h3>
+                  <p className="mt-1 text-sm text-slate-600">
+                    Start with a single cold room and grow to multi- state / country deployments using the same
+                    platform, dashboards, and processes.
+                  </p>
                 </div>
+              </div>
+            </div>
+
+            {/* 6. Resilience & validation */}
+            <div className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
+                    <path d="M4 7h9l5 5v5H4V7z" strokeWidth="2" />
+                    <path d="M9 12h3" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold text-slate-900">Resilient by Design</h3>
+                  <p className="mt-1 text-sm text-slate-600">
+                    Offline logging during network outages, seamless sync when connectivity returns,
+                    and built-in support for mapping and PQ workflows.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* KPI / Stats Band */}
+      <section className="bg-white border-t">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+            <div className="rounded-xl border p-4">
+              <div className="text-2xl font-extrabold text-[#007BFF]">10k+</div>
+              <div className="text-xs text-slate-600 mt-1">Sensors Deployed</div>
+            </div>
+            <div className="rounded-xl border p-4">
+              <div className="text-2xl font-extrabold text-[#007BFF]">200+</div>
+              <div className="text-xs text-slate-600 mt-1">Sites Monitored</div>
+            </div>
+            <div className="rounded-xl border p-4">
+              <div className="text-2xl font-extrabold text-[#007BFF]">99.9%</div>
+              <div className="text-xs text-slate-600 mt-1">Uptime</div>
+            </div>
+            <div className="rounded-xl border p-4">
+              <div className="text-2xl font-extrabold text-[#007BFF]">72 hr</div>
+              <div className="text-xs text-slate-600 mt-1">Offline Buffer</div>
+            </div>
+            <div className="rounded-xl border p-4">
+              <div className="text-2xl font-extrabold text-[#007BFF]">21 CFR</div>
+              <div className="text-xs text-slate-600 mt-1">Audit-Ready</div>
+            </div>
+            <div className="rounded-xl border p-4">
+              <div className="text-2xl font-extrabold text-[#007BFF]">NABL</div>
+              <div className="text-xs text-slate-600 mt-1">Calibration</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Flow */}
+      <section id="process" className="bg-slate-50 border-t">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">
+  <span>CoolGuard Architecture</span><br />
+  <span className="text-[#007BFF]">End-to-End Monitoring Pipeline</span>
+</h2>
+          <p className="mt-2 text-slate-600 max-w-3xl">
+            From hardware to dashboards — a unified pipeline designed for cold rooms, warehouses,
+            and storage, ensuring that every reading is captured, validated, and made actionable.
+          </p>
+
+          {/* Architecture diagram */}
+          <div className="mt-6 rounded-3xl bg-white border border-slate-200 shadow-sm px-4 py-5 md:px-8 md:py-6">
+            <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 md:gap-6">
+              {/* Node 1 */}
+              <div className="flex items-center gap-3 md:gap-2">
+                <div className="h-9 w-9 rounded-2xl bg-blue-50 flex items-center justify-center">
+                  <span className="text-xs font-semibold text-[#007BFF]">1</span>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-slate-900 uppercase tracking-wide">
+                    Sensors
+                  </div>
+                  <div className="text-[11px] text-slate-600">
+                    RTD / Temp / RH · NABL-traceable calibration
+                  </div>
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div className="hidden md:flex items-center justify-center">
+                <span className="text-slate-300 text-xl">➜</span>
+              </div>
+              <div className="md:hidden flex items-center justify-center">
+                <span className="text-slate-300 text-lg">⬇</span>
+              </div>
+
+              {/* Node 2 */}
+              <div className="flex items-center gap-3 md:gap-2">
+                <div className="h-9 w-9 rounded-2xl bg-blue-50 flex items-center justify-center">
+                  <span className="text-xs font-semibold text-[#007BFF]">2</span>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-slate-900 uppercase tracking-wide">
+                    Nodes &amp; Gateways
+                  </div>
+                  <div className="text-[11px] text-slate-600">
+                    LoRa / RS-485 / 4G · Secure data backbone
+                  </div>
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div className="hidden md:flex items-center justify-center">
+                <span className="text-slate-300 text-xl">➜</span>
+              </div>
+              <div className="md:hidden flex items-center justify-center">
+                <span className="text-slate-300 text-lg">⬇</span>
+              </div>
+
+              {/* Node 3 */}
+              <div className="flex items-center gap-3 md:gap-2">
+                <div className="h-9 w-9 rounded-2xl bg-blue-50 flex items-center justify-center">
+                  <span className="text-xs font-semibold text-[#007BFF]">3</span>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-slate-900 uppercase tracking-wide">
+                    Cloud Platform
+                  </div>
+                  <div className="text-[11px] text-slate-600">
+                    Storage · alerts · audit trails · PQ workflows
+                  </div>
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div className="hidden md:flex items-center justify-center">
+                <span className="text-slate-300 text-xl">➜</span>
+              </div>
+              <div className="md:hidden flex items-center justify-center">
+                <span className="text-slate-300 text-lg">⬇</span>
+              </div>
+
+              {/* Node 4 */}
+              <div className="flex items-center gap-3 md:gap-2">
+                <div className="h-9 w-9 rounded-2xl bg-blue-50 flex items-center justify-center">
+                  <span className="text-xs font-semibold text-[#007BFF]">4</span>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-slate-900 uppercase tracking-wide">
+                    Dashboards &amp; Reports
+                  </div>
+                  <div className="text-[11px] text-slate-600">
+                    Multi-site views · analytics · PDF / XLS / API
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Optional caption */}
+            <p className="mt-4 text-[11px] text-slate-500 text-center">
+              Data flows from calibrated field hardware to a validated cloud platform, then into dashboards and reports
+              used by operations, quality, and compliance teams.
+            </p>
+          </div>
+
+          {/* Existing cards below (kept, but you can tweak text to match) */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { title: "Sensors", desc: "RTD/Temp/RH with NABL-traceable calibration & offsets." },
+              { title: "Nodes & Gateways", desc: "LoRa/RS-485/4G bridges data to the cloud securely." },
+              { title: "Cloud Platform", desc: "Storage, alerts, audit trails, PQ workflows & reports." },
+              { title: "Dashboard", desc: "Multi-site views, reports (PDF/XLS), validation & exports." },
+            ].map((s, i) => (
+              <div key={s.title} className="rounded-2xl border bg-white p-5 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-xl bg-blue-50 grid place-items-center">
+                    <span className="text-[#007BFF] font-bold text-sm">{i + 1}</span>
+                  </div>
+                  <h3 className="text-base font-semibold text-slate-900">{s.title}</h3>
+                </div>
+                <p className="mt-2 text-sm text-slate-600">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product Ecosystem Overview */}
+      <section id="overview" className="bg-white border-t">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <div className="mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+              Product <span className="text-[#007BFF]">Ecosystem Overview</span>
+            </h2>
+            <p className="mt-2 text-slate-600 max-w-2xl">
+              From field sensors to the cloud, CoolGuard delivers an integrated system for monitoring, controlling,
+              and validating cold-chain infrastructure across single or multi-site operations.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              {
+                title: "Cloud Loggers",
+                desc: "Universal temperature/RH loggers purpose-built for cold rooms, freezers, and chillers.",
+                href: "#cloud-loggers",
+              },
+              {
+                title: "Cloud Connectors",
+                desc: "Connect existing industrial controllers to the platform without hardware replacement.",
+                href: "#cloud-connectors",
+              },
+              {
+                title: "Nodes & Gateways",
+                desc: "LoRa, RS-485, and 4G connectivity enabling scalable multi-zone monitoring.",
+                href: "#nodes-gateways",
+              },
+              {
+                title: "Controllers",
+                desc: "Intelligent refrigeration control with alarms, defrost logic, and cloud sync.",
+                href: "#controllers",
+              },
+              {
+                title: "Sensors",
+                desc: "NABL-traceable temperature, humidity, door and process sensors.",
+                href: "#sensors",
+              },
+              {
+                title: "Mapping & Calibration Services",
+                desc: "WHO-aligned mapping, calibration, and validation for regulatory compliance.",
+                href: "/services",
+              },
+              {
+                title: "Cloud Platform",
+                desc: "Central dashboards, alerts, audit trails, workflows and enterprise reporting.",
+                href: "#cloud-platform",
+              },
+            ].map((item, i) => (
+              <a
+                key={i}
+                href={item.href}
+                className="group block rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="h-10 w-10 rounded-xl bg-blue-50 grid place-items-center">
+                    <span className="text-[#007BFF] text-sm font-bold">{i + 1}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-slate-900 group-hover:text-[#007BFF]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-slate-600">{item.desc}</p>
+                  </div>
+                </div>
+
+                {/* CTA aligned right with no separator line */}
+                <div className="mt-4 flex justify-end">
+                  <p className="text-xs font-medium text-[#007BFF] flex items-center gap-1">
+                    View Details <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cloud Platform */}
+      <section id="cloud-platform" className="bg-slate-50 border-t">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Copy */}
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+                CoolGuard <span className="text-[#007BFF]">Cloud Platform</span>
+              </h2>
+              <p className="mt-3 text-slate-600">
+                The central control layer for your cold-chain — consolidating sites, devices, alarms, and
+                compliance data into a single, secure platform designed for regulated environments.
+              </p>
+
+              <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700">
+                <div className="space-y-2">
+                  <div className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-[#007BFF]" />
+                    <p>
+                      <span className="font-semibold">Operational visibility</span><br />
+                      Real-time dashboards for sites, rooms, sensors, and alarm status.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-[#007BFF]" />
+                    <p>
+                      <span className="font-semibold">Alerts & escalation</span><br />
+                      Email, SMS, and WhatsApp alerts with configurable thresholds and escalation paths.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-[#007BFF]" />
+                    <p>
+                      <span className="font-semibold">Compliance & audit trails</span><br />
+                      Secure, timestamped records to support 21&nbsp;CFR, WHO PQ, and internal QA audits.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-[#007BFF]" />
+                    <p>
+                      <span className="font-semibold">Reporting & integrations</span><br />
+                      PDF/XLS exports, APIs and industrial interfaces (Modbus/RS-485) for system integration.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center rounded-xl bg-[#007BFF] px-4 py-2.5 text-white font-medium hover:opacity-90 shadow"
+                >
+                  Request a demo
+                </a>
+                <a
+                  href="/cloud-platform"
+                  className="inline-flex items-center rounded-xl px-4 py-2.5 border font-medium hover:bg-white"
+                >
+                  View platform details
+                </a>
+              </div>
+            </div>
+
+            {/* Visual */}
+            <div>
+              <div className="relative rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="/cloud-platform.png"   // place in /public
+                  alt="CoolGuard Cloud Platform dashboard"
+                  className="w-full h-[360px] md:h-[420px] object-cover"
+                  onError={(e) => { e.currentTarget.src = "/coolguard-dashboard.png"; }}
+                />
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-blue-900/0 to-blue-600/10" />
+              </div>
+
+              {/* Small feature chips */}
+              <div className="mt-4 flex flex-wrap gap-2">
+                {[
+                  "Multi-site dashboards",
+                  "Alerting & escalation",
+                  "Audit trails",
+                  "Mapping & validation",
+                  "Reporting & exports",
+                  "APIs & integrations",
+                ].map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs rounded-full border bg-white px-3 py-1 text-slate-700"
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer ... continues */}
-{/* KPI / Stats Band */}
-<section className="bg-white border-t">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
-      <div className="rounded-xl border p-4">
-        <div className="text-2xl font-extrabold text-[#007BFF]">10k+</div>
-        <div className="text-xs text-slate-600 mt-1">Sensors Deployed</div>
-      </div>
-      <div className="rounded-xl border p-4">
-        <div className="text-2xl font-extrabold text-[#007BFF]">200+</div>
-        <div className="text-xs text-slate-600 mt-1">Sites Monitored</div>
-      </div>
-      <div className="rounded-xl border p-4">
-        <div className="text-2xl font-extrabold text-[#007BFF]">99.9%</div>
-        <div className="text-xs text-slate-600 mt-1">Uptime</div>
-      </div>
-      <div className="rounded-xl border p-4">
-        <div className="text-2xl font-extrabold text-[#007BFF]">72 hr</div>
-        <div className="text-xs text-slate-600 mt-1">Offline Buffer</div>
-      </div>
-      <div className="rounded-xl border p-4">
-        <div className="text-2xl font-extrabold text-[#007BFF]">21 CFR</div>
-        <div className="text-xs text-slate-600 mt-1">Audit-Ready</div>
-      </div>
-      <div className="rounded-xl border p-4">
-        <div className="text-2xl font-extrabold text-[#007BFF]">NABL</div>
-        <div className="text-xs text-slate-600 mt-1">Calibration</div>
-      </div>
-    </div>
-  </div>
-</section>
-{/* Process Flow */}
-<section id="process" className="bg-slate-50 border-t">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-    <h2 className="text-2xl md:text-3xl font-bold text-slate-900">How CoolGuard Works</h2>
-    <p className="mt-2 text-slate-600 max-w-3xl">
-      From hardware to dashboards — a reliable pipeline designed for cold rooms, warehouses, and pharma storage.
-    </p>
+      {/*
+      =============================
+      Trusted By – logo strip (temporarily disabled)
+      =============================
 
-    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {[
-        { title: "Sensors", desc: "RTD/Temp/RH with NABL-traceable calibration & offsets." },
-        { title: "Nodes & Gateways", desc: "LoRa/RS-485/4G bridges data to the cloud securely." },
-        { title: "Cloud Platform", desc: "Storage, alerts, audit trails, PQ workflows & reports." },
-      ].map((s, i) => (
-        <div key={s.title} className="rounded-2xl border bg-white p-5 shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-blue-50 grid place-items-center">
-              <span className="text-[#007BFF] font-bold text-sm">{i + 1}</span>
-            </div>
-            <h3 className="text-base font-semibold text-slate-900">{s.title}</h3>
-          </div>
-          <p className="mt-2 text-sm text-slate-600">{s.desc}</p>
-        </div>
-      ))}
-      <div className="rounded-2xl border bg-white p-5 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-blue-50 grid place-items-center">
-            <span className="text-[#007BFF] font-bold text-sm">4</span>
-          </div>
-          <h3 className="text-base font-semibold text-slate-900">Dashboard</h3>
-        </div>
-        <p className="mt-2 text-sm text-slate-600">Multi-site views, reports (PDF/XLS), validation & exports.</p>
-      </div>
-    </div>
-  </div>
-</section>
-{/* Product Overview */}
-<section id="overview" className="bg-white border-t">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-    <div className="mb-6">
-      <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-        Product <span className="text-[#007BFF]">Overview</span>
-      </h2>
-      <p className="mt-2 text-slate-600">Everything you need — from sensors to the cloud.</p>
-    </div>
+      <section id="trusted-by" className="bg-slate-50 border-t py-12">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center text-sm md:text-base font-semibold tracking-[0.18em] text-slate-500 uppercase">
+            Trusted by cold chain, pharma, food & manufacturing leaders
+          </h2>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {/* Cloud Loggers */}
-      <a href="#cloud-loggers" className="group rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
-        <div className="flex items-start gap-3">
-          <div className="h-10 w-10 rounded-xl bg-blue-50 grid place-items-center">
-            <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-              <path d="M4 8c4 6 12 6 16 0" strokeWidth="2" strokeLinecap="round"/>
-              <rect x="5" y="10" width="14" height="8" rx="2" strokeWidth="2"/>
-              <circle cx="12" cy="14" r="2" fill="currentColor"/>
-            </svg>
+          <p className="mt-2 text-center text-xs md:text-sm text-slate-500">
+            Organizations that run mission-critical temperature operations with CoolGuard.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+            {[
+              { src: "/logos/tci.png", alt: "TCI Cold Chain" },
+              { src: "/logos/tataadvanced.png", alt: "Tata Advanced Systems" },
+              { src: "/logos/sneha.png", alt: "Sneha Fresh Chicken" },
+              { src: "/logos/jwl.png", alt: "JWL" },
+              { src: "/logos/haano.png", alt: "Haano Foods" },
+              { src: "/logos/gulfprocessing.png", alt: "Gulf Processing Industries" },
+              { src: "/logos/swiggy.png", alt: "Swiggy" },
+              { src: "/logos/hilti.png", alt: "Hilti" },
+              { src: "/logos/qatarmeat.png", alt: "Qatar Meat" },
+              { src: "/logos/khalid-scientific.png", alt: "Khalid Scientific" },
+              { src: "/logos/omanfisheries.png", alt: "Oman Fisheries" },
+              { src: "/logos/shalimar.png", alt: "Shalimar Group" },
+            ].map((logo) => (
+              <div
+                key={logo.src}
+                className="flex items-center justify-center"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
+                />
+              </div>
+            ))}
           </div>
-          <div>
-            <h3 className="text-base font-semibold text-slate-900 group-hover:text-[#007BFF]">Cloud Loggers</h3>
-            <p className="mt-1 text-sm text-slate-600">Always-on temperature/RH with secure cloud sync.</p>
+
+          <div className="mt-6 text-center text-xs md:text-sm text-slate-500">
+            + more enterprise deployments across India and the Middle East.
           </div>
         </div>
-      </a>
-
-      {/* Nodes & Gateways */}
-      <a href="#nodes-gateways" className="group rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
-        <div className="flex items-start gap-3">
-          <div className="h-10 w-10 rounded-xl bg-blue-50 grid place-items-center">
-            <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-              <circle cx="6" cy="12" r="2" strokeWidth="2" />
-              <circle cx="12" cy="6" r="2" strokeWidth="2" />
-              <circle cx="18" cy="12" r="2" strokeWidth="2" />
-              <path d="M8 12h4M12 8v4M14 12h4" strokeWidth="2" />
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-base font-semibold text-slate-900 group-hover:text-[#007BFF]">Nodes & Gateways</h3>
-            <p className="mt-1 text-sm text-slate-600">LoRa / RS-485 / 4G to bridge sensors to cloud.</p>
-          </div>
-        </div>
-      </a>
-
-      {/* Controllers */}
-      <a href="#controllers" className="group rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
-        <div className="flex items-start gap-3">
-          <div className="h-10 w-10 rounded-xl bg-blue-50 grid place-items-center">
-            <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-              <rect x="4" y="7" width="16" height="10" rx="2" strokeWidth="2" />
-              <path d="M9 10v4M12 9v6M15 11v2" strokeWidth="2" />
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-base font-semibold text-slate-900 group-hover:text-[#007BFF]">Controllers</h3>
-            <p className="mt-1 text-sm text-slate-600">Single/dual compressor control with alarms.</p>
-          </div>
-        </div>
-      </a>
-
-      {/* Sensors */}
-      <a href="#sensors" className="group rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
-        <div className="flex items-start gap-3">
-          <div className="h-10 w-10 rounded-xl bg-blue-50 grid place-items-center">
-            <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-              <path d="M12 6v12M8 10v4M16 9v6" strokeWidth="2" />
-              <circle cx="12" cy="12" r="8" strokeWidth="2" />
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-base font-semibold text-slate-900 group-hover:text-[#007BFF]">Sensors</h3>
-            <p className="mt-1 text-sm text-slate-600">NABL traceable temperature & humidity sensors.</p>
-          </div>
-        </div>
-      </a>
-
-      {/* Services */}
-      <a href="#services" className="group rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
-        <div className="flex items-start gap-3">
-          <div className="h-10 w-10 rounded-xl bg-blue-50 grid place-items-center">
-            <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-              <path d="M7 7h10v10H7z" strokeWidth="2" />
-              <path d="M7 12h10M12 7v10" strokeWidth="2" />
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-base font-semibold text-slate-900 group-hover:text-[#007BFF]">Services</h3>
-            <p className="mt-1 text-sm text-slate-600">Mapping, PQ validation, calibration & SOPs.</p>
-          </div>
-        </div>
-      </a>
-
-      {/* Cloud Platform */}
-      <a href="#cloud-platform" className="group rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
-        <div className="flex items-start gap-3">
-          <div className="h-10 w-10 rounded-xl bg-blue-50 grid place-items-center">
-            <svg viewBox="0 0 24 24" className="h-5 w-5 text-[#007BFF]" fill="none" stroke="currentColor">
-              <circle cx="12" cy="12" r="8" strokeWidth="2" />
-              <path d="M8 12h8M12 8v8" strokeWidth="2" />
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-base font-semibold text-slate-900 group-hover:text-[#007BFF]">Cloud Platform</h3>
-            <p className="mt-1 text-sm text-slate-600">Dashboards, alerts, audit trails & reports.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-{/* Cloud Platform */}
-<section id="cloud-platform" className="bg-slate-50 border-t">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-    <div className="grid md:grid-cols-2 gap-8 items-center">
-      {/* Copy */}
-      <div>
-        <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-          CoolGuard <span className="text-[#007BFF]">Cloud Platform</span>
-        </h2>
-        <p className="mt-3 text-slate-600">
-          A secure, multi-tenant platform that centralizes your sites, devices, alarms, and reports —
-          with audit-ready trails for 21 CFR and workflows for WHO PQ mapping.
-        </p>
-
-        <ul className="mt-5 space-y-2 text-sm text-slate-700">
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-2 w-2 rounded-full bg-[#007BFF]" />
-            Real-time dashboards: sites, rooms, sensors, alarm status
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-2 w-2 rounded-full bg-[#007BFF]" />
-            Alerts via Email/SMS/WhatsApp with escalation policies
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-2 w-2 rounded-full bg-[#007BFF]" />
-            Audit trails & e-sign (21 CFR–ready), user roles & permissions
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-2 w-2 rounded-full bg-[#007BFF]" />
-            WHO PQ: empty/loaded mapping, defrost, uniformity, reports
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="mt-1 h-2 w-2 rounded-full bg-[#007BFF]" />
-            PDF/XLS exports, APIs & webhooks, Modbus/RS-485 integrations
-          </li>
-        </ul>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a href="#contact" className="inline-flex items-center rounded-xl bg-[#007BFF] px-4 py-2.5 text-white font-medium hover:opacity-90 shadow">
-            Request a demo
-          </a>
-          <a href="#downloads" className="inline-flex items-center rounded-xl px-4 py-2.5 border font-medium hover:bg-white">
-            Platform datasheet
-          </a>
-        </div>
-      </div>
-
-
-      {/* Visual */}
-      <div>
-        <div className="relative rounded-2xl overflow-hidden shadow-lg">
-          <img
-            src="/cloud-platform.png"     /* put your image in /public; fallback below */
-            alt="CoolGuard Cloud Platform"
-            className="w-full h-[360px] md:h-[420px] object-cover"
-            onError={(e) => { e.currentTarget.src = "/coolguard-dashboard.png"; }}
-          />
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-blue-900/0 to-blue-600/10" />
-        </div>
-
-        {/* Small feature chips */}
-        <div className="mt-4 flex flex-wrap gap-2">
-          {["Dashboards", "Alerts", "Audit Trails", "Mapping PQ", "Reports", "APIs & Webhooks"].map((t) => (
-            <span key={t} className="text-xs rounded-full border bg-white px-3 py-1 text-slate-700">
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{/* Trusted By – premium style */}
-<section id="trusted-by" className="bg-slate-50 border-t">
-  <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
-    <h2 className="text-center text-sm md:text-base font-semibold tracking-[0.18em] text-slate-500 uppercase">
-      Trusted by leading cold chain and manufacturing brands
-    </h2>
-
-    <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
-      {[
-        { src: "tci.png", alt: "TCI Cold Chain" },
-        { src: "tataadvanced.png", alt: "Tata Advanced Systems" },
-        { src: "Sneha.png", alt: "Sneha Fresh Chicken" },
-        { src: "jwl.png", alt: "JWL Cold Store" },
-        { src: "Haano.png", alt: "Haano Foods" },
-        { src: "Gulfprocessing.png", alt: "Gulf Processing Industries" },
-        { src: "Swiggy.png", alt: "Swiggy" },
-        { src: "Hilti.png", alt: "Hilti" },
-        { src: "qatarmeat.png", alt: "Qatar Meat" },
-        { src: "khalid scientific.png", alt: "Khalid Scientific" },
-        { src: "omanfisheries.png", alt: "Oman Fisheries" },
-        { src: "shalimar.png", alt: "Shalimar Group" },
-      ].map((logo) => (
-        <div
-          key={logo.src}
-          className="flex items-center justify-center rounded-xl bg-white/80 px-3 py-3 shadow-sm"
-        >
-          <img
-            src={`/logos/${logo.src}`}
-            alt={logo.alt}
-            className="
-              h-12 md:h-14 w-auto object-contain
-              filter grayscale opacity-80
-              hover:grayscale-0 hover:opacity-100
-              transition duration-200
-            "
-          />
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
+      */}
 
       {/* Cloud Loggers (anchor only; populate later if you want a separate section) */}
       <section id="cloud-loggers" className="py-1" aria-hidden="true"></section>
@@ -552,7 +674,14 @@ export default function Home() {
       {/* Nodes & Gateways (anchor only) */}
       <section id="nodes-gateways" className="py-1" aria-hidden="true"></section>
 
-      {/* Controllers grid (existing) */}
+      {/* Controllers – anchor only while grid is disabled */}
+      <section id="controllers" className="py-1" aria-hidden="true"></section>
+
+      {/*
+      =============================
+      Controllers & Gateways grid (temporarily disabled)
+      =============================
+
       <section id="controllers" className="py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -575,7 +704,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Category pills */}
           <div className="mt-5 flex flex-wrap gap-2">
             {categories.map((c) => (
               <button
@@ -590,7 +718,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Cards */}
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((p) => (
               <article key={p?.id || p?.code} className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
@@ -636,11 +763,16 @@ export default function Home() {
           )}
         </div>
       </section>
+      */}
 
       {/* Sensors (anchor only; optional real content later) */}
       <section id="sensors" className="py-1" aria-hidden="true"></section>
-/*
-      {/* Services */}
+
+      {/*
+      =============================
+      Services section (temporarily disabled)
+      =============================
+
       <section id="services" className="py-12 md:py-16 bg-slate-50 border-t">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold">Services</h2>
@@ -659,10 +791,14 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>*/
-      {/* Downloads ... your existing section ends here */}
+      </section>
+      */}
 
-      {/* Downloads */}
+      {/*
+      =============================
+      Downloads section (temporarily disabled)
+      =============================
+
       <section id="downloads" className="py-12 md:py-16 border-t">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:3xl font-bold">Downloads</h2>
@@ -683,6 +819,46 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
+{/* Final CTA Banner */}
+<section className="bg-gradient-to-r from-[#007BFF] via-sky-500 to-cyan-500">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+    <div className="rounded-3xl bg-white/5 border border-white/20 px-6 py-8 md:px-10 md:py-10 shadow-lg backdrop-blur">
+      <div className="grid gap-6 md:grid-cols-[2fr,1fr] md:items-center">
+        {/* Copy */}
+        <div>
+          <p className="text-xs font-semibold tracking-[0.2em] text-cyan-100 uppercase">
+            Next step
+          </p>
+          <h2 className="mt-2 text-2xl md:text-3xl font-semibold text-white">
+            Ready to modernize your cold chain monitoring?
+          </h2>
+          <p className="mt-3 text-sm md:text-base text-cyan-50/90 max-w-2xl">
+            Discuss your sites, assets, and compliance requirements with our team.
+            We can help you scope a phased rollout or a focused pilot deployment
+            across selected cold rooms, freezers, or warehouses.
+          </p>
+        </div>
+
+        {/* Actions */}
+        <div className="flex flex-col sm:flex-row sm:justify-end gap-3">
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center rounded-xl bg-white px-4 py-2.5 text-sm font-medium text-[#007BFF] shadow-sm hover:bg-slate-50 transition"
+          >
+            Book a consultation
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center rounded-xl border border-white/70 px-4 py-2.5 text-sm font-medium text-white hover:bg-white/10 transition"
+          >
+            Request a pilot deployment
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Footer / Contact anchor */}
       <footer id="contact" className="border-t">
@@ -696,7 +872,12 @@ export default function Home() {
               </div>
             </div>
             <div className="text-sm text-slate-600">
-              <div>Need help? <a className="text-blue-600 hover:underline" href="mailto:support@coolguard.cloud">support@coolguard.cloud</a></div>
+              <div>
+                Need help?{" "}
+                <a className="text-blue-600 hover:underline" href="mailto:support@coolguard.cloud">
+                  support@coolguard.cloud
+                </a>
+              </div>
               <div className="mt-1">© {new Date().getFullYear()} CoolGuard</div>
             </div>
           </div>
