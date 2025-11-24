@@ -30,8 +30,8 @@ export default function Header() {
       href: "/cloud-loggers",
       children: [
         { key: "kryo-100", label: "Kryo-100 Series", isGroup: true },
-        { key: "kryo-101-aa", label: "2 Channel Cloud Logger", href: "/cloud-loggers#kryo-101-aa" },
-        { key: "kryo-101-bb", label: "8 Channel Cloud Logger", href: "/cloud-loggers#kryo-101-bb" },
+        { key: "kryo-101-aa", label: "2 Channel Cloud Logger", href: "/products/kryo-101-aa" },
+        { key: "kryo-101-bb", label: "8 Channel Cloud Logger", href: "/products/kryo-101-bb" },
         { key: "kryo-101-cc", label: "Kryo-101-CC", href: "/cloud-loggers#kryo-101-cc" },
 
         { key: "frigo-100", label: "Frigo-100 Series", isGroup: true },
