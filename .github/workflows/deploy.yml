@@ -21,11 +21,9 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      # If you’re using Vite with base './', this is fine for Hostinger.
       - name: Build
         run: npm run build
 
-      # Optional: keep build as artifact for debugging
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
         with:
@@ -42,7 +40,6 @@ jobs:
           name: dist
           path: dist
 
-      # Deploy via FTP to Hostinger
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.3
         with:
@@ -51,11 +48,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT || 21 }}
           local-dir: dist/
-          # This must be EXACTLY your web root on Hostinger (no double public_html)
-          server-dir: /
-          # Clean removed files on remote to avoid stale assets
-          dangerous-clean-slate: true
-          # Ignore files that should never be uploaded
+          server-dir: /           # keep this as-is since your current deploy works
+          dangerous-clean-slate: false  # ⬅️ IMPORTANT: do NOT clean root
           exclude: |
             **/.git*
             **/.DS_Store
