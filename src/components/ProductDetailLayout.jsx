@@ -1,5 +1,16 @@
 // src/components/ProductDetailLayout.jsx
 import React from "react";
+import {
+  WifiIcon,
+  ClockIcon,
+  BoltIcon,
+  RectangleStackIcon,
+  ComputerDesktopIcon,
+  AdjustmentsVerticalIcon,
+  Cog6ToothIcon,
+  ChartBarIcon,
+  BuildingOffice2Icon,
+} from "@heroicons/react/24/outline";
 
 export default function ProductDetailLayout({ product }) {
   const {
@@ -18,8 +29,28 @@ export default function ProductDetailLayout({ product }) {
     applications = [],
     highlights = [],
     downloads = [],
-    addons = [], // <- add-ons like display, hooter, door sensors, etc.
+    addons = [],
   } = product || {};
+
+  const TECH_ICONS = {
+    "Input Capacity": <AdjustmentsVerticalIcon className="h-4 w-4" />,
+    Connectivity: <WifiIcon className="h-4 w-4" />,
+    "Logging Interval": <ClockIcon className="h-4 w-4" />,
+    Memory: <RectangleStackIcon className="h-4 w-4" />,
+    "Power Input": <BoltIcon className="h-4 w-4" />,
+    "Relay & Local Display": <ComputerDesktopIcon className="h-4 w-4" />,
+  };
+
+  const SectionHeading = ({ label, title }) => (
+    <div className="mb-4">
+      <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#0055CC]/70">
+        {label}
+      </p>
+      <h2 className="text-xl md:text-2xl font-semibold text-slate-900">
+        {title}
+      </h2>
+    </div>
+  );
 
   return (
     <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
@@ -117,28 +148,30 @@ export default function ProductDetailLayout({ product }) {
         {/* Where Used */}
         {whereUsed.length > 0 && (
           <section>
-            <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mb-3">
-              Where {code || name} is Used
-            </h2>
+            <SectionHeading
+              label="USE CASES"
+              title={`Where ${code || name} is Used`}
+            />
+
             <p className="text-slate-600 mb-5 max-w-3xl">
               {code || name} is built for demanding cold-chain environments
               where continuous visibility and compliance are critical.
             </p>
+
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {whereUsed.map((item, idx) => (
                 <div
                   key={idx}
                   className="relative rounded-2xl bg-white border border-slate-200 shadow-sm p-4 flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition"
                 >
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-center gap-3">
                     <div className="h-9 w-9 rounded-2xl bg-[#E6F0FF] flex items-center justify-center text-sm font-semibold text-[#0055CC]">
                       {idx + 1}
                     </div>
-                    <p className="text-sm font-semibold text-slate-900 truncate">
+                    <p className="text-sm font-semibold text-slate-900 leading-snug">
                       {item}
                     </p>
                   </div>
-                  <p className="text-sm text-slate-600">{item}</p>
                 </div>
               ))}
             </div>
@@ -148,9 +181,11 @@ export default function ProductDetailLayout({ product }) {
         {/* How it works */}
         {howItWorks.length > 0 && (
           <section>
-            <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mb-4">
-              How {code || name} Works
-            </h2>
+            <SectionHeading
+              label="HOW IT WORKS"
+              title={`How ${code || name} Works`}
+            />
+
             <p className="text-slate-600 mb-6 max-w-3xl">
               From sensors in the cold room to dashboards in the cloud, the
               device fits neatly into your existing infrastructure.
@@ -200,11 +235,12 @@ export default function ProductDetailLayout({ product }) {
               {features.length > 0 && (
                 <div className="rounded-2xl bg-white shadow-sm border border-slate-200/80 p-5">
                   <h3 className="flex items-center gap-2 text-sm font-semibold text-slate-900 mb-2.5">
-                    <span className="h-7 w-7 rounded-xl bg-[#0055CC]/10 flex items-center justify-center text-[#0055CC] text-xs">
-                      ⚙️
+                    <span className="h-7 w-7 rounded-xl bg-[#0055CC]/10 flex items-center justify-center text-[#0055CC]">
+                      <Cog6ToothIcon className="h-4 w-4" />
                     </span>
                     Key Features
                   </h3>
+
                   <ul className="space-y-1.5 text-sm text-slate-700">
                     {features.map((f) => (
                       <li key={f} className="flex gap-2">
@@ -220,11 +256,12 @@ export default function ProductDetailLayout({ product }) {
               {benefits.length > 0 && (
                 <div className="rounded-2xl bg-white shadow-sm border border-slate-200/80 p-5">
                   <h3 className="flex items-center gap-2 text-sm font-semibold text-slate-900 mb-2.5">
-                    <span className="h-7 w-7 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 text-xs">
-                      📈
+                    <span className="h-7 w-7 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-700">
+                      <ChartBarIcon className="h-4 w-4" />
                     </span>
                     Business Benefits
                   </h3>
+
                   <ul className="space-y-1.5 text-sm text-slate-700">
                     {benefits.map((b) => (
                       <li key={b} className="flex gap-2">
@@ -240,11 +277,12 @@ export default function ProductDetailLayout({ product }) {
               {applications.length > 0 && (
                 <div className="rounded-2xl bg-white shadow-sm border border-slate-200/80 p-5">
                   <h3 className="flex items-center gap-2 text-sm font-semibold text-slate-900 mb-2.5">
-                    <span className="h-7 w-7 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700 text-xs">
-                      🎯
+                    <span className="h-7 w-7 rounded-xl bg-amber-50 flex items-center justify-center text-amber-700">
+                      <BuildingOffice2Icon className="h-4 w-4" />
                     </span>
                     Typical Applications
                   </h3>
+
                   <ul className="space-y-1.5 text-sm text-slate-700">
                     {applications.map((a) => (
                       <li key={a} className="flex gap-2">
@@ -261,27 +299,27 @@ export default function ProductDetailLayout({ product }) {
             <div className="space-y-6 flex flex-col h-full">
               {/* Technical Highlights */}
               {highlights.length > 0 && (
-                <div className="rounded-2xl bg-gradient-to-br from-[#EAF2FF] via-[#F7FAFF] to-white shadow-md border border-[#cfdfff] p-6 flex-1 backdrop-blur-sm">
+                <div className="rounded-2xl bg-gradient-to-br from-[#EAF2FF] to-white shadow-sm border border-[#d6e4ff] p-5 flex-1">
                   <h3 className="flex items-center gap-2 text-sm font-semibold text-slate-900 mb-4 pb-2 border-b border-[#dbe6ff]">
-                    <span className="h-7 w-7 rounded-xl bg-[#dce9ff] flex items-center justify-center text-[#0055CC] text-xs shadow-sm">
-                      🔧
+                    <span className="h-7 w-7 rounded-xl bg-[#dce9ff] flex items-center justify-center text-[#0055CC]">
+                      <AdjustmentsVerticalIcon className="h-4 w-4" />
                     </span>
                     Technical Highlights
                   </h3>
 
-                  <dl className="space-y-3 text-sm">
-                    {highlights.map((h, idx) => (
+                  <dl className="space-y-1.5 text-sm">
+                    {highlights.map((h) => (
                       <div
                         key={h.label}
-                        className={`flex items-center justify-between py-2 px-3 rounded-lg transition ${
-                          idx % 2 === 0 ? "bg-[#f5f9ff]" : "bg-white/80"
-                        }`}
+                        className="flex items-center justify-between py-1.5 px-2 rounded-md"
                       >
-                        <dt className="flex items-center gap-2 text-slate-600">
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#0055CC]" />
+                        <dt className="flex items-center gap-2 text-slate-700">
+                          <span className="h-4 w-4 text-[#0055CC]">
+                            {TECH_ICONS[h.label]}
+                          </span>
                           {h.label}
                         </dt>
-                        <dd className="text-right font-medium text-slate-900 max-w-[180px]">
+                        <dd className="text-right font-medium text-slate-900 max-w-[150px]">
                           {h.value}
                         </dd>
                       </div>
@@ -370,9 +408,9 @@ export default function ProductDetailLayout({ product }) {
                 Ready to deploy {code || name} in your facility?
               </h2>
               <p className="text-sm md:text-base text-white/90 max-w-xl">
-                Talk to our team to plan sensor placement, installation and alert
-                strategy for your cold rooms, pharma storage, or warehouses using
-                this device and the CoolGuard Cloud platform.
+                Talk to our team to plan sensor placement, installation and
+                alert strategy for your cold rooms, pharma storage, or
+                warehouses using this device and the CoolGuard Cloud platform.
               </p>
             </div>
 

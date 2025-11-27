@@ -18,6 +18,8 @@ import NodesGateways from "./pages/NodesGateways.jsx";
 import CloudPlatform from "./pages/CloudPlatform";
 import AboutUs from "./pages/AboutUs.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
+import BCC100 from "./pages/BCC100.jsx";
+
 
 
 function AppInner() {
@@ -62,6 +64,7 @@ function AppInner() {
 <Route path="/cloud-platform" element={<CloudPlatform />} />
 <Route path="/about-us" element={<AboutUs />} />
 <Route path="/contact" element={<ContactUs />} />
+<Route path="/products/bcc-100" element={<BCC100 />} />
 
 
         {/* Fallback → Home */}

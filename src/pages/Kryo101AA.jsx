@@ -26,13 +26,13 @@ export default function Kryo101AA() {
     ],
 
     // HOW IT WORKS
-    howItWorks: [
-      "Connect up to two sensors to monitor room temperature, product temperature, or inlet/outlet airflow as required.",
-      "Kryo-101-AA continuously records readings and stores them safely in local memory.",
-      "At configured intervals, data is transmitted securely to CoolGuard Cloud over GSM-GPRS.",
-      "CoolGuard Cloud visualizes the data through live dashboards, trend graphs, and downloadable reports.",
-      "Alert rules trigger notifications when temperatures move outside defined limits, helping you intervene before spoilage or non-compliance.",
-    ],
+   howItWorks: [
+  "Connect up to two sensors to monitor room temperature, product temperature, or inlet/outlet airflow as required.",
+  "Kryo-101-AA continuously samples and records readings, storing them safely in local memory.",
+  "At configured intervals, buffered data is transmitted securely to CoolGuard Cloud over 4G LTE with GSM fallback.",
+  "CoolGuard Cloud presents live dashboards, trends and reports, and sends alerts when limits are breached so you can intervene before spoilage or non-compliance.",
+],
+
 
     // FEATURES
     features: [
@@ -61,24 +61,18 @@ export default function Kryo101AA() {
 
     // TECH HIGHLIGHTS
     highlights: [
-      { label: "Input Capacity", value: "2 independent channels (Temp / RH)" },
-      {
-        label: "Connectivity",
-        value: "GSM-GPRS (LTE-ready variants possible)",
-      },
-      {
-        label: "Data Backup",
-        value: "Local storage with automatic cloud sync",
-      },
-      {
-        label: "Ingress Protection",
-        value: "IP55 industrial-grade housing",
-      },
-      {
-        label: "Logging Interval",
-        value: "Configurable 1–60 minutes",
-      },
-    ],
+  { label: "Input Capacity",        value: "2 independent channels (Temp / RH)" },
+  { label: "Connectivity",          value: "4G LTE with GSM fallback" },
+  { label: "Logging Interval",      value: "Configurable 1–60 minutes" },
+  { label: "Memory",                value: "Internal buffer for offline data retention" },
+  { label: "Firmware Updates",      value: "OTA (Over-the-Air upgrade support)" },
+  { label: "Integrated Relay",      value: "1 A relay for alarm / compressor control" },
+  { label: "Housing",               value: "IP55 industrial-grade enclosure" },
+  { label: "Power Input",           value: "12 V DC, low-power optimised" },
+  { label: "Sensor Compatibility",  value: "High-accuracy NTC & RH sensors" },
+  { label: "Display Support",       value: "Optional local LED / TFT display" },
+],
+
 
     // ADD-ONS & ACCESSORIES
     addons: [

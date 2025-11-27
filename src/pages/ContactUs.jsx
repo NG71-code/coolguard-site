@@ -1,7 +1,57 @@
 // src/pages/ContactUs.jsx
-import React from "react";
+import React, { useState } from "react";
 
 export default function ContactUs() {
+  const [form, setForm] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    enquiryType: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("idle"); // idle | sending | ok | error
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+      const res = await fetch("/api/contact.php", {
+        // if your site is in a subfolder (e.g. /coolguard/), use "/coolguard/api/contact.php"
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setStatus("ok");
+        setForm({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          enquiryType: "",
+          message: "",
+        });
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
+  };
+
   return (
     <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
       {/* HERO */}
@@ -35,14 +85,18 @@ export default function ContactUs() {
               Share a few details and we’ll get back to you with a tailored response.
             </p>
 
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
                   <label className="block text-xs font-medium text-slate-700 mb-1">
-                    Name
+                    Name *
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
                     className="w-full rounded-xl border border-[#d7e3ff] bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0055cc]/60"
                     placeholder="Your full name"
                   />
@@ -53,6 +107,9 @@ export default function ContactUs() {
                   </label>
                   <input
                     type="text"
+                    name="company"
+                    value={form.company}
+                    onChange={handleChange}
                     className="w-full rounded-xl border border-[#d7e3ff] bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0055cc]/60"
                     placeholder="Organisation name"
                   />
@@ -62,10 +119,14 @@ export default function ContactUs() {
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
                   <label className="block text-xs font-medium text-slate-700 mb-1">
-                    Email
+                    Email * 
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
                     className="w-full rounded-xl border border-[#d7e3ff] bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0055cc]/60"
                     placeholder="you@example.com"
                   />
@@ -76,6 +137,9 @@ export default function ContactUs() {
                   </label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
                     className="w-full rounded-xl border border-[#d7e3ff] bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0055cc]/60"
                     placeholder="+91 ..."
                   />
@@ -87,12 +151,12 @@ export default function ContactUs() {
                   Enquiry Type
                 </label>
                 <select
+                  name="enquiryType"
+                  value={form.enquiryType}
+                  onChange={handleChange}
                   className="w-full rounded-xl border border-[#d7e3ff] bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0055cc]/60"
-                  defaultValue=""
                 >
-                  <option value="" disabled>
-                    Select an option
-                  </option>
+                  <option value="">Select an option</option>
                   <option>New installation / project</option>
                   <option>Existing customer support</option>
                   <option>Calibration / mapping services</option>
@@ -103,25 +167,44 @@ export default function ContactUs() {
 
               <div>
                 <label className="block text-xs font-medium text-slate-700 mb-1">
-                  Message
+                  Message *
                 </label>
                 <textarea
                   rows="4"
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
                   className="w-full rounded-xl border border-[#d7e3ff] bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0055cc]/60"
                   placeholder="Briefly describe your requirement, number of sites, type of assets, etc."
                 />
               </div>
 
-              <div className="flex items-center justify-between gap-4 pt-2">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-2">
                 <button
-                  type="button"
-                  className="inline-flex items-center justify-center rounded-full bg-[#0055cc] px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#0044aa] transition-colors"
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="inline-flex items-center justify-center rounded-full bg-[#0055cc] px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#0044aa] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Submit Enquiry
+                  {status === "sending" ? "Sending..." : "Submit Enquiry"}
                 </button>
-                <p className="text-[11px] text-slate-500">
-                  We typically respond within 1–2 business days.
-                </p>
+
+                <div className="flex flex-col gap-1">
+                  <p className="text-[11px] text-slate-500">
+                    We typically respond within 1–2 business days.
+                  </p>
+                  {status === "ok" && (
+                    <p className="text-[11px] text-emerald-600">
+                      ✅ Thank you. We’ve received your enquiry.
+                    </p>
+                  )}
+                  {status === "error" && (
+                    <p className="text-[11px] text-red-600">
+                      ⚠️ Something went wrong. Please try again or email us at
+                      sales@coolguard.cloud.
+                    </p>
+                  )}
+                </div>
               </div>
             </form>
           </div>
