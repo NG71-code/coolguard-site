@@ -19,38 +19,49 @@ export default function ContactUs() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("sending");
+  e.preventDefault();
+  setStatus("sending");
 
+  try {
+    const res = await fetch("/api/contact.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    const raw = await res.text();
+    console.log("API status:", res.status);
+    console.log("API raw response:", raw);
+
+    let data;
     try {
-      const res = await fetch("/api/contact.php", {
-        // if your site is in a subfolder (e.g. /coolguard/), use "/coolguard/api/contact.php"
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        setStatus("ok");
-        setForm({
-          name: "",
-          company: "",
-          email: "",
-          phone: "",
-          enquiryType: "",
-          message: "",
-        });
-      } else {
-        setStatus("error");
-      }
+      data = JSON.parse(raw);
     } catch (err) {
-      console.error(err);
+      throw new Error("Non-JSON response from API: " + raw);
+    }
+
+    if (data.success) {
+      setStatus("ok");
+      setForm({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        enquiryType: "",
+        message: "",
+      });
+    } else {
+      console.error("API error:", data.message);
       setStatus("error");
     }
-  };
+  } catch (err) {
+    console.error("Fetch error:", err);
+    setStatus("error");
+  }
+};
+
 
   return (
     <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
