@@ -1,270 +1,400 @@
+// src/pages/products/Frigo101BB.jsx
 import React from "react";
+import {
+  Thermometer,
+  Smartphone,
+  Cloud,
+  Bell,
+  BarChart3,
+  ShieldCheck,
+  Download,
+  PlayCircle,
+  MapPin,
+} from "lucide-react";
+
 export default function Frigo101BB() {
-  const product = {
-    name: "Frigo-101-BB",
-    code: "FR-101-BB",
-    family: "Frigo-100 Series",
-    tagline: "IoT-based Indoor Location Tracker for Branded Coolers",
-    heroImage: "/images/products/frigo-hero4.png", // update path when you add the image
-    intro:
-      "Frigo-101-BB is an IoT-based indoor location and temperature tracking device designed for branded coolers deployed in shops, malls, and high-traffic outlets. Using GSM triangulation and proprietary algorithms, it pinpoints cooler locations even where GPS does not work, while optional temperature monitoring ensures that every cooler is operating at the right conditions. By automating cooler tracking and compliance, Frigo-101-BB removes manual audits, prevents asset loss, and gives you full visibility of your cooler network across regions.",
-
-    // Key Features (from PDF + sales-friendly wording)
-    features: [
-      "IoT-based indoor location tracking using GSM triangulation and proprietary algorithms",
-      "Works reliably in indoor environments where GPS signals are weak or unavailable",
-      "Optional temperature monitoring from –40°C to +60°C with high-sensitivity NTC sensor",
-      "Configurable data logging interval from 1 to 60 minutes",
-      "On-device memory for up to 5000 logs when GSM network is unavailable",
-      "Real-time motion, vibration, and orientation change detection",
-      "Over-the-air (OTA) firmware updates for remote feature upgrades and fixes",
-      "Industrial-grade ABS enclosure (approx. 40 × 78 × 55 mm)",
-      "External 12 V DC power input with low power consumption design",
-      "Built-in 3.7 V, 450 mAh backup battery for power interruptions",
-    ],
-
-    // Benefits (from “Benefits / Monitor / Save time & cost” sections)
-    benefits: [
-      "Eliminates the need for expensive third-party agencies to perform annual cooler inventory audits",
-      "Provides accurate, up-to-date location data for every branded cooler in the field",
-      "Improves operational efficiency by automating location and temperature tracking",
-      "Ensures proper cooling conditions and helps prevent product spoilage",
-      "Delivers reliable inventory and quality records for internal audits and brand reporting",
-      "Enhances security by detecting unauthorized relocation, tilting, or movement of coolers",
-      "Gives sales and operations teams real-time visibility and control over the cooler network",
-    ],
-
-    // Suggested applications
-    applications: [
-      "Branded FMCG and beverage coolers at retail outlets",
-      "Ice cream and frozen dessert freezers placed at kirana shops and supermarkets",
-      "Promotional coolers and display chillers in malls and multiplexes",
-      "QSR and café coolers deployed across franchise locations",
-      "Cooler networks managed by distributors and channel partners",
-    ],
-
-    // Sidebar spec-style highlights
-    highlights: [
-      { label: "Model", value: "Frigo-101-BB" },
-      { label: "Location Method", value: "Cellular-based GSM triangulation" },
-      { label: "Communication", value: "GSM / GPRS (850/900/1800/1900 MHz)" },
-      { label: "Logging Interval", value: "Configurable 1–60 minutes" },
-      { label: "Memory", value: "Up to 5000 logs (offline buffer)" },
-      { label: "Temperature Range", value: "–40°C to +60°C (optional sensor)" },
-      { label: "Sensor Type", value: "NTC, epoxy encapsulated with Teflon cable" },
-      { label: "Power Supply", value: "12 V DC, 1 A + 3.7 V, 450 mAh battery" },
-      { label: "Enclosure", value: "ABS plastic, approx. 40 × 78 × 55 mm" },
-    ],
-
-    downloads: [
-      {
-        label: "Download Frigo-101-BB Datasheet (PDF)",
-        href: "/docs/frigo-101-bb-datasheet.pdf", // point this to your actual uploaded PDF path
-      },
-    ],
-  };
-
   return (
-    <main className="w-full bg-[#F4F7FB] min-h-screen pb-16">
+    <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
       {/* HERO */}
-      <section className="relative border-b bg-gradient-to-b from-[#e6f0ff] to-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-          <div className="relative overflow-hidden rounded-2xl bg-white border border-[#cfe0ff] shadow-sm">
-            <div className="relative aspect-[16/6] w-full overflow-hidden">
-              {product.heroImage ? (
-                <img
-                  src={product.heroImage}
-                  alt={product.name}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm">
-                  (Product image placeholder)
-                </div>
-              )}
-            </div>
+      <section className="relative overflow-hidden border-b bg-gradient-to-br from-[#e6f2ff] via-white to-[#f3f7ff]">
+        {/* soft glow blobs */}
+        <div className="pointer-events-none absolute -right-40 -top-40 h-80 w-80 rounded-full bg-sky-300/30 blur-3xl" />
+        <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl" />
 
-            <div className="absolute inset-x-0 bottom-0">
-              <div className="flex flex-wrap items-center justify-between gap-3 bg-white/90 backdrop-blur px-4 sm:px-6 lg:px-8 py-3">
-                <div className="min-w-0">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="inline-flex items-center rounded-full bg-[#e6f0ff] text-[#003b8f] border border-[#cfe0ff] px-3 py-1 text-xs">
-                      {product.family}
-                    </span>
-                    <span className="inline-flex items-center rounded-full bg-[#0055cc] text-white px-3 py-1 text-xs">
-                      {product.code}
-                    </span>
-                    <span className="inline-flex items-center rounded-full border border-[#9ec1ff] text-[#003b8f] px-3 py-1 text-xs">
-                      GSM Indoor Tracking
-                    </span>
-                    <span className="inline-flex items-center rounded-full border border-[#9ec1ff] text-[#003b8f] px-3 py-1 text-xs">
-                      Optional Temperature
-                    </span>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-18">
+          <div className="grid lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-10 items-center">
+            {/* Left: text */}
+            <div>
+              <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#0055cc] mb-4">
+                Frigo-100 Series · Universal Cloud Loggers
+              </p>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+                Frigo-101-BB
+                <span className="block text-xl md:text-2xl font-normal text-slate-700 mt-2">
+                  Location-Aware Cloud Logger for Display &amp; Visi Coolers
+                </span>
+              </h1>
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-xl mb-6">
+                Frigo-101-BB is a location-first IoT device for cooler fleets.
+                It tells you exactly where your branded coolers are deployed,
+                alerts you when units move from their assigned outlet, and
+                gives you a single cloud view of all assets. Optional
+                temperature channels can be enabled where product temperature
+                monitoring is also required.
+              </p>
+
+              {/* Key badges */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                <span className="inline-flex items-center gap-1 rounded-full bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700 border border-sky-100">
+                  <MapPin className="w-3.5 h-3.5" />
+                  Cooler Location Tracking
+                </span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 border border-emerald-100">
+                  <Cloud className="w-3.5 h-3.5" />
+                  Cloud Inventory View
+                </span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700 border border-amber-100">
+                  <Bell className="w-3.5 h-3.5" />
+                  Movement Alerts
+                </span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700 border border-slate-200">
+                  <Thermometer className="w-3.5 h-3.5" />
+                  Optional Temperature Add-on
+                </span>
+              </div>
+
+              {/* Bullets */}
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex gap-3">
+                  <div className="mt-1">
+                    <ShieldCheck className="w-5 h-5 text-emerald-600" />
                   </div>
-                  <h1 className="mt-1 text-2xl md:text-3xl font-semibold tracking-tight">
-                    {product.name}
-                  </h1>
-                  <p className="text-sm text-gray-600">{product.tagline}</p>
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">
+                      Know where every cooler is
+                    </p>
+                    <p className="text-xs text-slate-600">
+                      Outlet, city and geo-tag visibility for each cooler, so
+                      sales and supply chain teams no longer rely on periodic
+                      third-party asset surveys.
+                    </p>
+                  </div>
                 </div>
+                <div className="flex gap-3">
+                  <div className="mt-1">
+                    <BarChart3 className="w-5 h-5 text-sky-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">
+                      Stop unapproved relocations
+                    </p>
+                    <p className="text-xs text-slate-600">
+                      Get alerts when a cooler moves away from its designated
+                      outlet or city, helping prevent theft, misuse and
+                      unplanned redeployment.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-                <div className="flex flex-wrap gap-2">
-                  <a
-                    href="/contact?product=Frigo-101-BB"
-                    className="inline-flex items-center justify-center rounded-2xl px-4 py-2 text-sm bg-[#0055cc] text-white hover:bg-[#004bb3]"
-                  >
-                    Request a Quote
-                  </a>
-                  <a
-                    href="/products/frigo-100/compare"
-                    className="inline-flex items-center justify-center rounded-2xl px-4 py-2 text-sm border border-[#9ec1ff] text-[#003b8f] hover:bg-[#e6f0ff]"
-                  >
-                    Compare Models
-                  </a>
+              {/* CTAs */}
+              <div className="flex flex-wrap items-center gap-3">
+                <button className="inline-flex items-center gap-2 rounded-full bg-[#0055cc] px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-sky-200 hover:bg-[#0042a3] transition-colors">
+                  <PlayCircle className="w-4 h-4" />
+                  Request a fleet pilot
+                </button>
+                <button className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs md:text-sm font-medium text-slate-800 border border-slate-200 hover:bg-slate-50 transition-colors">
+                  <Download className="w-4 h-4" />
+                  Download solution brief
+                </button>
+                <p className="w-full text-[11px] md:text-xs text-slate-500 mt-1">
+                  Ideal for: FMCG &amp; beverage cooler fleets, ice-cream
+                  visi-coolers, retail display coolers and franchise networks.
+                </p>
+              </div>
+            </div>
+
+            {/* Right: device image */}
+            <div className="relative">
+              <div className="absolute -inset-6 rounded-[32px] bg-gradient-to-br from-sky-100 via-white to-indigo-50 blur-xl opacity-80" />
+              <div className="relative rounded-[28px] bg-white border border-slate-200 shadow-xl shadow-sky-100 px-8 py-10 flex flex-col items-center">
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 border border-sky-100">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                  <span className="text-[11px] font-medium text-sky-800">
+                    Online · Location &amp; status synced to CoolGuard Cloud
+                  </span>
                 </div>
+                <img
+                  src="/images/products/frigo101bbbg.png"
+                  alt="Frigo-101-BB Location Cloud Logger"
+                  className="w-420px h-420px object-contain mb-4"
+                />
+                <p className="text-xs text-slate-500 text-center max-w-xs">
+                  Representative render. Replace with final Frigo-101-BB product
+                  image under{" "}
+                  <span className="font-mono text-[11px]">
+                    /images/products/frigo101bbbg.png
+                  </span>
+                  .
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* INTRO */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-        <p className="text-base leading-relaxed text-gray-800">{product.intro}</p>
-      </section>
-
-      {/* BODY */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* LEFT: features / benefits / applications */}
-          <div className="lg:col-span-8 space-y-8">
-            {/* Features */}
-            <div className="rounded-2xl bg-white border border-[#cfe0ff] shadow-sm">
-              <div className="px-6 pt-6">
-                <h2 className="text-lg font-semibold text-slate-900">Key Features</h2>
-              </div>
-              <div className="px-6 pb-6">
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {product.features.map((f) => (
-                    <li
-                      key={f}
-                      className="flex items-start gap-2 rounded-xl border border-gray-200 p-3 text-sm text-gray-800"
-                    >
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Benefits */}
-            <div className="rounded-2xl bg-white border border-[#cfe0ff] shadow-sm">
-              <div className="px-6 pt-6">
-                <h2 className="text-lg font-semibold text-slate-900">Benefits</h2>
-              </div>
-              <div className="px-6 pb-6">
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {product.benefits.map((b) => (
-                    <li
-                      key={b}
-                      className="flex items-start gap-2 rounded-xl p-3 bg-[#f2f7ff] text-sm text-gray-800"
-                    >
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Applications */}
-            <div className="rounded-2xl bg-white border border-[#cfe0ff] shadow-sm">
-              <div className="px-6 pt-6">
-                <h2 className="text-lg font-semibold text-slate-900">Applications</h2>
-              </div>
-              <div className="px-6 pb-6">
-                <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                  {product.applications.map((a) => (
-                    <li
-                      key={a}
-                      className="flex items-start gap-2 rounded-xl border border-gray-200 p-3 text-sm text-gray-800"
-                    >
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                      <span>{a}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+      {/* KEY USE CASES / FEATURES */}
+      <section className="border-b bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+                Frigo-101-BB · Key capabilities
+              </p>
+              <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
+                Built for cooler fleet visibility &amp; asset protection
+              </h2>
+              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+                Replace manual cooler census exercises and third-party surveys
+                with a live, system-driven view of where every asset is placed,
+                who is using it, and when it moves.
+              </p>
             </div>
           </div>
 
-          {/* RIGHT: highlights + resources */}
-          {/* RIGHT: device + highlights */}
-<aside className="lg:col-span-4">
-  <div className="lg:sticky lg:top-6 space-y-4">
-    {/* Device + Highlights in one card */}
-    <div className="rounded-2xl bg-white border border-[#cfe0ff] shadow-sm">
-      {/* Device image */}
-      <div className="px-6 pt-6 flex items-center justify-center">
-        <div className="w-full max-w-xs">
-          <img
-            src="/images/products/frigo-101-aa-device.png"
-            alt="Frigo-101-BB device"
-            className="w-full h-auto object-contain drop-shadow-xl rounded-2xl"
-          />
-        </div>
-      </div>
-
-      {/* Highlights title */}
-      <div className="px-6 pt-4">
-        <h2 className="text-lg font-semibold text-slate-900">Highlights</h2>
-      </div>
-
-      {/* Highlights list */}
-      <div className="px-6 pb-6">
-        <dl className="divide-y divide-gray-100">
-          {product.highlights.map((h) => (
-            <div
-              key={h.label}
-              className="flex items-start justify-between py-3"
-            >
-              <dt className="text-xs uppercase tracking-wide text-gray-500 mr-4">
-                {h.label}
-              </dt>
-              <dd className="text-sm font-medium text-right text-gray-900">
-                {h.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </div>
-
-    {/* Resources card */}
-    {product.downloads && product.downloads.length > 0 && (
-      <div className="rounded-2xl bg-white border border-[#cfe0ff] shadow-sm">
-        <div className="px-6 pt-6">
-          <h2 className="text-sm font-semibold text-slate-900">
-            Resources
-          </h2>
-        </div>
-        <div className="px-6 pb-6 space-y-2">
-          {product.downloads.map((d) => (
-            <a
-              key={d.label}
-              href={d.href}
-              className="block text-sm text-[#0055cc] hover:underline"
-            >
-              {d.label}
-            </a>
-          ))}
-        </div>
-      </div>
-    )}
-  </div>
-</aside>
+          <div className="grid md:grid-cols-3 gap-5">
+            <FeatureCard
+              icon={MapPin}
+              title="Outlet-level asset mapping"
+              description="Each cooler is tagged to a specific outlet, customer code and location, giving sales and distribution teams an up-to-date deployment map."
+              pill="Location first"
+            />
+            <FeatureCard
+              icon={Bell}
+              title="Movement &amp; tamper alerts"
+              description="Receive alerts when a cooler is moved beyond its allowed radius or disconnected, so field teams can act before assets disappear."
+              pill="Exception-based"
+            />
+            <FeatureCard
+              icon={Cloud}
+              title="Single cloud inventory"
+              description="View all coolers on a single cloud dashboard with filters by region, distributor, city and outlet type—instead of working from spreadsheets."
+              pill="Centralized view"
+            />
+            <FeatureCard
+              icon={Smartphone}
+              title="Mobile access for field teams"
+              description="Sales and service teams can look up cooler details, last known location and status directly from the CoolGuard mobile app."
+              pill="On-the-go"
+            />
+            <FeatureCard
+              icon={BarChart3}
+              title="Cost &amp; utilization insights"
+              description="Identify non-performing or idle coolers, improve placement decisions and reduce spend on outsourced asset verification exercises."
+              pill="Fleet analytics"
+            />
+            <FeatureCard
+              icon={Thermometer}
+              title="Optional temperature monitoring"
+              description="Add temperature probes where required to verify product storage conditions alongside location and utilization data."
+              pill="Add-on feature"
+            />
+          </div>
         </div>
       </section>
+
+      {/* TECH SPECS */}
+      <section className="border-b bg-[#f6f8fc]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+                Technical specification
+              </p>
+              <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
+                Frigo-101-BB – at a glance
+              </h2>
+              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+                Use this section as the reference for proposals, datasheets and
+                qualification documents. Update individual values as the final
+                hardware spec is frozen.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 text-sm">
+            {/* Column 1 */}
+            <div className="space-y-3">
+              <SpecItem label="Model" value="Frigo-101-BB – Cooler Location Cloud Logger" />
+              <SpecItem
+                label="Primary function"
+                value="Outlet / location tracking of coolers"
+              />
+              <SpecItem
+                label="Add-on sensing"
+                value="Optional temperature channels (single / dual probe)*"
+              />
+              <SpecItem
+                label="Location source"
+                value="Cell-tower based positioning / GPS (as per configuration)"
+              />
+              <SpecItem
+                label="Logging interval"
+                value="Configurable; typical 5–30 minutes for location &amp; status"
+              />
+            </div>
+
+            {/* Column 2 */}
+            <div className="space-y-3">
+              <SpecItem
+                label="Connectivity"
+                value="Cellular (GSM/4G); other options as per project"
+              />
+              <SpecItem
+                label="Cloud platform"
+                value="CoolGuard IoT – asset inventory, maps &amp; dashboards"
+              />
+              <SpecItem
+                label="Alerts"
+                value="SMS / Email / In-app for relocation, offline status &amp; excursions"
+              />
+              <SpecItem
+                label="Local memory"
+                value="Buffer for several days of readings during network outages"
+              />
+              <SpecItem
+                label="Power supply"
+                value="External adaptor; battery options as per deployment*"
+              />
+            </div>
+
+            {/* Column 3 */}
+            <div className="space-y-3">
+              <SpecItem
+                label="Enclosure"
+                value="Compact wall-mount / cooler-mount enclosure for indoor use"
+              />
+              <SpecItem
+                label="Ingress protection"
+                value="Suitable for mounting near coolers (non wash-down areas)"
+              />
+              <SpecItem
+                label="Operating environment"
+                value="+0°C to +50°C, non-condensing"
+              />
+              <SpecItem
+                label="Ideal applications"
+                value="Beverage &amp; FMCG cooler fleets, ice-cream visi coolers, retail display coolers, long-term cooler rentals"
+              />
+              <SpecItem
+                label="Business outcome"
+                value="Lower asset survey costs, reduced cooler loss and better utilization"
+              />
+            </div>
+          </div>
+
+          <p className="text-[11px] text-slate-500 mt-4">
+            *Exact sensing, connectivity and power options will be finalized in
+            the approved project specification and BOM.
+          </p>
+        </div>
+      </section>
+
+      {/* DOWNLOADS & DOCUMENTS */}
+      <section className="border-b bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+                Documentation &amp; downloads
+              </p>
+              <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
+                Everything your sales, SCM &amp; QA teams need
+              </h2>
+              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+                Link these tiles to your final PDFs so commercial, logistics and
+                quality teams have a single reference set for cooler fleet
+                digitization.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4 text-sm">
+            <DownloadCard
+              title="Frigo-101-BB – Location Solution Overview"
+              description="Business case, benefits vs. manual third-party surveys, and deployment models for cooler fleets."
+              href="#"
+            />
+            <DownloadCard
+              title="Installation &amp; Activation Guide"
+              description="Step-by-step guide for mounting on coolers, power connection and tagging each unit to an outlet."
+              href="#"
+            />
+            <DownloadCard
+              title="CoolGuard Asset Dashboard – User Guide"
+              description="How to search coolers, view maps, configure movement alerts and export inventory reports."
+              href="#"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA (kept commented out for now) */}
+      {/* ...existing commented CTA block remains unchanged... */}
     </main>
+  );
+}
+
+/* ---------- Small helper components ---------- */
+
+function FeatureCard({ icon: Icon, title, description, pill }) {
+  return (
+    <div className="h-full rounded-2xl border border-slate-200 bg-white px-4 py-4 sm:px-5 sm:py-5 shadow-sm hover:shadow-md transition-shadow">
+      <div className="flex items-center justify-between mb-3">
+        <div className="w-9 h-9 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center">
+          <Icon className="w-4.5 h-4.5 text-[#0055cc]" />
+        </div>
+        {pill && (
+          <span className="text-[10px] font-medium text-slate-500 bg-slate-50 border border-slate-100 rounded-full px-2 py-0.5">
+            {pill}
+          </span>
+        )}
+      </div>
+      <h3 className="text-sm font-semibold text-slate-900 mb-1">
+        {title}
+      </h3>
+      <p className="text-xs text-slate-600">{description}</p>
+    </div>
+  );
+}
+
+function SpecItem({ label, value }) {
+  return (
+    <div className="flex flex-col gap-0.5">
+      <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">
+        {label}
+      </span>
+      <span className="text-sm text-slate-800">{value}</span>
+    </div>
+  );
+}
+
+function DownloadCard({ title, description, href }) {
+  return (
+    <a
+      href={href}
+      className="group h-full rounded-2xl border border-slate-200 bg-white px-4 py-4 sm:px-5 sm:py-5 shadow-sm hover:shadow-md hover:border-[#0055cc] transition-all flex flex-col justify-between"
+    >
+      <div>
+        <h3 className="text-sm font-semibold text-slate-900 mb-1 group-hover:text-[#0055cc]">
+          {title}
+        </h3>
+        <p className="text-xs text-slate-600 mb-3">{description}</p>
+      </div>
+      <div className="flex items-center gap-2 text-xs font-medium text-[#0055cc]">
+        <Download className="w-4 h-4" />
+        <span>Download PDF</span>
+      </div>
+    </a>
   );
 }

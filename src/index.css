@@ -2,3 +2,23 @@
 @import "tailwindcss";
 html { scroll-behavior: smooth; }
 /* your custom styles (if any) below */
+@keyframes floatTablet {
+  0% {
+    transform: translateY(0px) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-8deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(-6deg);
+  }
+}
+@keyframes floatTilt {
+  0%   { transform: perspective(2000px) rotate(-16deg) rotateY(-18deg) rotateX(8deg) translateY(6px); }
+  50%  { transform: perspective(2000px) rotate(-14deg) rotateY(-13deg) rotateX(6deg) translateY(0px); }
+  100% { transform: perspective(2000px) rotate(-16deg) rotateY(-18deg) rotateX(8deg) translateY(6px); }
+}
+
+.float-hero {
+  animation: floatTilt 10s ease-in-out infinite;
+}

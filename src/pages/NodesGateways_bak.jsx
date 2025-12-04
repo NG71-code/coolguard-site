@@ -1,6 +1,5 @@
 // src/pages/NodesGateways.jsx
 import React from "react";
-import NodesArchitectureSection from "@/nodes/NodesArchitectureSection.jsx";
 
 const SectionLabel = ({ children }) => (
   <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#0055CC]/80">
@@ -304,9 +303,6 @@ export default function NodesGateways() {
         </div>
       </section>
 
-      {/* 🔹 NEW: ARCHITECTURE DIAGRAM (Version 3) */}
-      <NodesArchitectureSection />
-
       {/* DATASHEETS / DOWNLOADS */}
       <section id="downloads" className="mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -396,7 +392,7 @@ export default function NodesGateways() {
         </div>
       </section>
 
-      {/* ARCHITECTURE / CTA (you can keep or later simplify since diagram now exists) */}
+      {/* ARCHITECTURE / CTA */}
       <section className="mt-12 border-t border-[#dde7ff] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid gap-8 md:grid-cols-2 items-start">
@@ -414,14 +410,175 @@ export default function NodesGateways() {
               </p>
 
               <div className="space-y-3 text-sm text-slate-700">
-                {/* Steps 1–4 ... (unchanged) */}
-                {/* ... */}
+                <div className="flex gap-3">
+                  <div className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-[#E6F0FF] text-[11px] font-semibold text-[#0055CC]">
+                    1
+                  </div>
+                  <div>
+                    <p className="font-semibold text-slate-900">
+                      Capture at the edge
+                    </p>
+                    <p className="text-slate-600">
+                      Enviro nodes measure temperature and humidity inside cold
+                      rooms, freezers, walk-ins and critical storage areas at
+                      configured intervals.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <div className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-[#E6F0FF] text-[11px] font-semibold text-[#0055CC]">
+                    2
+                  </div>
+                  <div>
+                    <p className="font-semibold text-slate-900">
+                      Aggregate via Nexus gateways
+                    </p>
+                    <p className="text-slate-600">
+                      Nodes send low-power wireless packets to a Nexus Lite or
+                      Nexus Pro gateway, which validates, buffers and encrypts
+                      the data stream.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <div className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-[#E6F0FF] text-[11px] font-semibold text-[#0055CC]">
+                    3
+                  </div>
+                  <div>
+                    <p className="font-semibold text-slate-900">
+                      Deliver to CoolGuard Cloud
+                    </p>
+                    <p className="text-slate-600">
+                      The gateway forwards data to CoolGuard over 4G, Ethernet
+                      or Wi-Fi, where it is stored with full audit trail and
+                      retention policies.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-3">
+                  <div className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-[#E6F0FF] text-[11px] font-semibold text-[#0055CC]">
+                    4
+                  </div>
+                  <div>
+                    <p className="font-semibold text-slate-900">
+                      Act through alerts &amp; dashboards
+                    </p>
+                    <p className="text-slate-600">
+                      Users receive alarms on mobile and email, review trends,
+                      and generate compliance-ready reports for audits and
+                      investigations.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Layout card */}
-            {/* ... existing layout card content unchanged ... */}
-            {/* I’ve omitted here to keep the answer shorter, but you can keep exactly what you had */}
+           <div className="rounded-3xl border border-[#d7e3ff] bg-[#F5F7FF] p-6">
+  <h3 className="text-sm font-semibold text-slate-900 mb-3">
+    Typical Wireless Layout
+  </h3>
+
+  {/* Diagram-style pipeline */}
+  <div className="space-y-3 text-xs md:text-sm text-slate-700 mb-4">
+    {/* Stage 1 */}
+    <div className="flex flex-col md:flex-row md:items-center md:gap-3">
+      <div className="flex-1 rounded-2xl bg-white border border-[#cfe0ff] px-4 py-3 shadow-sm">
+        <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#0055CC]/80 mb-1">
+          Step 1 · Edge Sensing
+        </p>
+        <p className="text-sm font-semibold text-slate-900">
+          Enviro Wireless Nodes
+        </p>
+        <p className="text-xs md:text-sm text-slate-600 mt-1">
+          Measure temperature / humidity inside cold rooms, freezers and
+          critical storage areas at configured intervals.
+        </p>
+      </div>
+      <div className="hidden md:flex items-center justify-center w-8 text-slate-400 text-lg">
+        →
+      </div>
+    </div>
+
+    {/* Mobile arrow */}
+    <div className="md:hidden flex justify-center text-slate-400 text-lg">
+      ↓
+    </div>
+
+    {/* Stage 2 */}
+    <div className="flex flex-col md:flex-row md:items-center md:gap-3">
+      <div className="flex-1 rounded-2xl bg-white border border-[#cfe0ff] px-4 py-3 shadow-sm">
+        <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#0055CC]/80 mb-1">
+          Step 2 · Local Aggregation
+        </p>
+        <p className="text-sm font-semibold text-slate-900">
+          Nexus Lite / Nexus Pro
+        </p>
+        <p className="text-xs md:text-sm text-slate-600 mt-1">
+          Receive low-power wireless packets, validate and buffer readings
+          from multiple Enviro nodes on site.
+        </p>
+      </div>
+      <div className="hidden md:flex items-center justify-center w-8 text-slate-400 text-lg">
+        →
+      </div>
+    </div>
+
+    {/* Mobile arrow */}
+    <div className="md:hidden flex justify-center text-slate-400 text-lg">
+      ↓
+    </div>
+
+    {/* Stage 3 */}
+    <div className="flex flex-col md:flex-row md:items-center md:gap-3">
+      <div className="flex-1 rounded-2xl bg-white border border-[#cfe0ff] px-4 py-3 shadow-sm">
+        <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#0055CC]/80 mb-1">
+          Step 3 · Secure Uplink
+        </p>
+        <p className="text-sm font-semibold text-slate-900">
+          CoolGuard Cloud Ingest
+        </p>
+        <p className="text-xs md:text-sm text-slate-600 mt-1">
+          Nexus forwards data over 4G / Ethernet / Wi-Fi to CoolGuard Cloud
+          with full audit trail and retention policies.
+        </p>
+      </div>
+      <div className="hidden md:flex items-center justify-center w-8 text-slate-400 text-lg">
+        →
+      </div>
+    </div>
+
+    {/* Mobile arrow */}
+    <div className="md:hidden flex justify-center text-slate-400 text-lg">
+      ↓
+    </div>
+
+    {/* Stage 4 */}
+    <div className="flex flex-col md:flex-row md:items-center md:gap-3">
+      <div className="flex-1 rounded-2xl bg-white border border-[#cfe0ff] px-4 py-3 shadow-sm">
+        <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#0055CC]/80 mb-1">
+          Step 4 · Monitoring &amp; Actions
+        </p>
+        <p className="text-sm font-semibold text-slate-900">
+          Web &amp; Mobile Users
+        </p>
+        <p className="text-xs md:text-sm text-slate-600 mt-1">
+          Supervisors view live dashboards, trend charts and reports, and
+          receive alerts to act before non-compliance or product loss.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <p className="mt-1 text-[11px] text-slate-500">
+    Supports single-site and multi-site deployments, brownfield retrofits and
+    mixed wired / wireless environments.
+  </p>
+</div>
+
           </div>
 
           {/* CTA */}

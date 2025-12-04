@@ -5,13 +5,10 @@ import coolguardLogo from "/coolguard-logo.png";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState(null);   // for MOBILE submenus
-  const [hoverMenu, setHoverMenu] = useState(null); // for DESKTOP hover dropdowns
+  const [openMenu, setOpenMenu] = useState(null); // for desktop dropdowns
   const navigate = useNavigate();
-
   useEffect(() => {
     const handleScroll = () => {
-      setHoverMenu(null);
       setOpenMenu(null);
     };
 
@@ -20,7 +17,7 @@ export default function Header() {
   }, []);
 
   const TOP_LINKS = [
-    { label: "Customer Login", href: "https://app.coolguard.cloud", external: true, button: true },
+    { label: "Customer Login", href: "https://app.coolguard.cloud", external: true, button: true  },
     { label: "About Us", href: "/about-us" },
     { label: "Contact Us", href: "/contact" },
   ];
@@ -114,12 +111,6 @@ export default function Header() {
   const handleNav = (item) => {
     if (!item?.href) return;
 
-    // External links
-    if (item.external && item.href.startsWith("http")) {
-      window.open(item.href, "_blank", "noopener,noreferrer");
-      return;
-    }
-
     // In-page scroll
     if (item.href.startsWith("#")) {
       const el = document.querySelector(item.href);
@@ -127,13 +118,20 @@ export default function Header() {
       return;
     }
 
-    // Internal routes
+    // App routes
     if (item.href.startsWith("/")) {
       navigate(item.href);
       setMobileOpen(false);
       setOpenMenu(null);
-      setHoverMenu(null);
     }
+  };
+
+  const toggleMenu = (key, hasChildren, item) => {
+    if (!hasChildren) {
+      handleNav(item);
+      return;
+    }
+    setOpenMenu((prev) => (prev === key ? null : key));
   };
 
   return (
@@ -175,25 +173,18 @@ export default function Header() {
             <div className="flex items-center justify-end h-14">
               <nav className="flex items-center gap-4">
                 {SECONDARY_MENUS.map((m) => {
-                  const isOpen = !!m.children && hoverMenu === m.key;
+                  const isOpen = openMenu === m.key && !!m.children;
                   return (
                     <div
                       key={m.key}
                       className="relative"
-                      onMouseEnter={() => {
-                        if (m.children) setHoverMenu(m.key);
-                      }}
-                      onMouseLeave={() => {
-                        if (m.children) setHoverMenu(null);
-                      }}
                     >
                       {/* Main button */}
                       <button
-                        className={`
-                          inline-flex items-center gap-2 px-2 py-1 rounded-md transition-colors duration-200
-                          ${isOpen ? "bg-blue-50/70" : "hover:bg-blue-50/40"}
-                        `}
-                        onClick={() => handleNav(m)} // click goes to main page
+                        className={`inline-flex items-center gap-2 px-2 py-1 rounded-md transition-colors duration-200 ${
+                          isOpen ? "bg-blue-50/70" : "hover:bg-blue-50/40"
+                        }`}
+                        onClick={() => toggleMenu(m.key, !!m.children, m)}
                       >
                         <m.icon className="h-5 w-5 text-gray-600" />
                         <span className="text-sm font-medium text-gray-800">
@@ -217,13 +208,13 @@ export default function Header() {
                         )}
                       </button>
 
-                      {/* Dropdown (hover-controlled) */}
+                      {/* Dropdown (CLICK to open) */}
                       {m.children && isOpen && (
                         <div
                           className="
-                            absolute right-0 top-full w-64 rounded-xl border bg-white shadow-xl py-2 z-[10000]
+                            absolute right-0 top-full mt-2 w-64 rounded-xl border bg-white shadow-xl py-2 z-[10000]
+                            pointer-events-auto
                           "
-                          // no mt-2 => dropdown starts right under button, no gap
                         >
                           {m.children.map((child) =>
                             child.isGroup ? (
@@ -302,7 +293,13 @@ export default function Header() {
                 </button>
               ))}
             </div>
-
+      {/* CLICK-AWAY OVERLAY (desktop only) */}
+      {openMenu && (
+        <div
+          className="fixed inset-0 z-[9000] hidden md:block"
+          onClick={() => setOpenMenu(null)}
+        />
+      )}
             {/* Menus + children */}
             <div className="flex flex-col gap-2">
               {SECONDARY_MENUS.map((m) => (

@@ -12,7 +12,7 @@ import {
   BuildingOffice2Icon,
 } from "@heroicons/react/24/outline";
 
-export default function ProductDetailLayout({ product }) {
+export default function ProductDetailLayout({ product, showHero = true }) {
   const {
     name,
     code,
@@ -20,6 +20,7 @@ export default function ProductDetailLayout({ product }) {
     tagline,
     heroImage,
     deviceImage,
+    heroSpecLine, // optional text under the hero card
     badges = [],
     intro,
     whereUsed = [],
@@ -54,84 +55,122 @@ export default function ProductDetailLayout({ product }) {
 
   return (
     <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
-      {/* HERO */}
-      <section className="border-b bg-gradient-to-b from-[#e6f0ff] to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            {/* Text */}
-            <div>
-              {family && (
-                <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#0055cc] mb-3">
-                  {family}
-                </p>
-              )}
-              <h1 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight mb-2">
-                {name}
-              </h1>
-              {code && (
-                <p className="text-sm text-slate-500 mb-4">{code}</p>
-              )}
-              {tagline && (
-                <p className="text-base md:text-lg text-slate-700 mb-6">
-                  {tagline}
-                </p>
-              )}
+      {/* ---------------- OPTIONAL HERO ---------------- */}
+      {showHero && (
+        <section className="border-b bg-gradient-to-b from-[#e6f0ff] to-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+            <div className="grid md:grid-cols-2 gap-10 items-center">
+              {/* LEFT – TEXT */}
+              <div>
+                {family && (
+                  <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#0055cc] mb-3">
+                    {family}
+                  </p>
+                )}
+                <h1 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight mb-2">
+                  {name}
+                </h1>
+                {code && (
+                  <p className="text-sm text-slate-500 mb-4">{code}</p>
+                )}
+                {tagline && (
+                  <p className="text-base md:text-lg text-slate-700 mb-6">
+                    {tagline}
+                  </p>
+                )}
 
-              {/* Badges */}
-              {badges.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {badges.map((badge) => (
-                    <span
-                      key={badge}
-                      className="inline-flex items-center rounded-full bg-[#E6F0FF] text-[#0047AB] px-3 py-1 text-xs font-medium"
-                    >
-                      {badge}
-                    </span>
-                  ))}
+                {/* Badges */}
+                {badges.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {badges.map((badge) => (
+                      <span
+                        key={badge}
+                        className="inline-flex items-center rounded-full bg-[#E6F0FF] text-[#0047AB] px-3 py-1 text-xs font-medium"
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Hero CTAs */}
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#0055CC] text-white text-sm font-semibold shadow-sm hover:bg-[#0041a3] transition"
+                  >
+                    Request a Demo
+                  </a>
+                  <a
+                    href="#downloads"
+                    className="inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-slate-300 text-sm font-semibold text-slate-700 hover:bg-white/60 bg-white"
+                  >
+                    Download Datasheet
+                  </a>
                 </div>
-              )}
-
-              {/* Hero CTAs */}
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#0055CC] text-white text-sm font-semibold shadow-sm hover:bg-[#0041a3] transition"
-                >
-                  Request a Demo
-                </a>
-                <a
-                  href="#downloads"
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-slate-300 text-sm font-semibold text-slate-700 hover:bg-white/60 bg-white"
-                >
-                  Download Datasheet
-                </a>
               </div>
-            </div>
 
-            {/* Device image */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#c9ddff] to-[#f3f6ff] rounded-3xl blur-2xl opacity-70" />
-              <div className="relative rounded-3xl bg-white border border-[#d7e3ff] shadow-sm p-6 flex items-center justify-center">
-                {deviceImage ? (
-                  <img
-                    src={deviceImage}
-                    alt={name}
-                    className="w-full max-w-md mx-auto object-contain"
-                  />
-                ) : heroImage ? (
-                  <img
-                    src={heroImage}
-                    alt={name}
-                    className="w-full max-w-md mx-auto object-contain"
-                  />
-                ) : null}
+              {/* RIGHT – HERO CARD WITH BACKGROUND + DEVICE OVERLAY */}
+              <div className="relative flex justify-center md:justify-end">
+                {/* soft glow behind card */}
+                <div className="pointer-events-none absolute inset-0 translate-y-6 translate-x-4 rounded-[3rem] bg-sky-300/35 blur-3xl opacity-70" />
+
+                <div
+                  className="relative w-full max-w-md lg:max-w-lg
+                             rounded-[2.5rem] bg-white shadow-[0_28px_90px_rgba(15,23,42,0.28)]
+                             border border-[#dde8ff] overflow-hidden"
+                >
+                  {/* top label */}
+                  <div className="absolute top-4 left-6 z-20 text-[10px] uppercase tracking-[0.22em] text-slate-400">
+                    {family || "CoolGuard Cloud Logger"}
+                  </div>
+
+                  {/* background + overlay area */}
+                  <div className="relative mx-6 my-8 rounded-[2rem] overflow-hidden">
+                    {heroImage && (
+                      <img
+                        src={heroImage}
+                        alt={`${name} environment`}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+
+                    {/* Fallback: if no heroImage, show only device */}
+                    {!heroImage && deviceImage && (
+                      <img
+                        src={deviceImage}
+                        alt={name}
+                        className="w-full h-full object-contain"
+                      />
+                    )}
+
+                    {/* Device overlay – only when we have both */}
+                    {heroImage && deviceImage && (
+                      <img
+                        src={deviceImage}
+                        alt={name}
+                        className="absolute inset-0 m-auto
+                                   w-[55%] max-w-[260px]
+                                   drop-shadow-[0_22px_46px_rgba(15,23,42,0.55)]"
+                      />
+                    )}
+                  </div>
+
+                  {/* spec line under card (optional) */}
+                  {heroSpecLine && (
+                    <div className="relative z-20 px-6 pb-5 text-[10px] text-slate-400 flex items-center gap-2">
+                      <span className="h-1 w-1 rounded-full bg-sky-400" />
+                      {heroSpecLine}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* BODY */}
+      {/* ---------------- BODY (unchanged) ---------------- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
         {/* Overview */}
         {intro && (
@@ -229,7 +268,7 @@ export default function ProductDetailLayout({ product }) {
           </div>
 
           <div className="grid lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] gap-6 lg:gap-8">
-            {/* LEFT COLUMN: stacked cards */}
+            {/* LEFT COLUMN: Features / Benefits / Applications */}
             <div className="space-y-6">
               {/* Key Features */}
               {features.length > 0 && (

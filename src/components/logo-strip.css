@@ -1,0 +1,58 @@
+/* src/components/logo-strip.css */
+
+.logo-strip {
+  width: 100%;
+  position: relative;
+}
+
+.logo-track {
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* Speeds */
+.logo-track--slow {
+  animation: logo-scroll-slow 50s linear infinite;
+}
+
+.logo-track--normal {
+  animation: logo-scroll-normal 35s linear infinite;
+}
+
+.logo-track--fast {
+  animation: logo-scroll-fast 20s linear infinite;
+}
+
+/* Pause animation when the strip is hovered */
+.logo-strip.group:hover .logo-track,
+.logo-strip:hover .logo-track {
+  animation-play-state: paused;
+}
+
+/* Keyframes – all scroll half the content width (because we duplicated logos) */
+@keyframes logo-scroll-slow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes logo-scroll-normal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes logo-scroll-fast {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

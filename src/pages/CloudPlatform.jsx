@@ -1,426 +1,405 @@
 // src/pages/CloudPlatform.jsx
 import React from "react";
+import {
+  LayoutDashboard,
+  Map,
+  LineChart,
+  BellRing,
+  Users,
+  Wrench,
+} from "lucide-react";
 
 export default function CloudPlatform() {
   return (
     <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
-      {/* HERO */}
-      <section className="border-b bg-gradient-to-b from-[#e6f0ff] to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="rounded-3xl bg-white border border-[#cfe0ff] shadow-sm p-8 md:p-10 flex flex-col lg:flex-row gap-10 items-start">
-            {/* Text */}
+      {/* HERO (3D TABLET USING EXISTING PNG) */}
+      <section
+        className="relative overflow-hidden border-b bg-[#00132a]"
+        style={{
+          backgroundImage: "url('/images/products/cloud-hero.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Soft glowing gradient overlays */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#003b8f]/60 via-[#001a3a]/90 to-[#000814]/95 backdrop-blur-[2px]" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center relative z-10">
+            {/* LEFT TEXT */}
             <div className="flex-1">
-              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#0055cc] mb-3">
+              <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-sky-300 mb-3">
                 CoolGuard Cloud Platform
               </p>
-              <h1 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight mb-4">
-                One Unified Cloud for All Your Cold Chain Assets
+
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-4">
+                One Unified Cloud for All Your{" "}
+                <span className="text-sky-300">Cold Chain Assets</span>
               </h1>
-              <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6">
-                The CoolGuard cloud platform brings all your cold rooms, freezers,
-                controllers, and wireless nodes into a single, easy-to-use
-                interface. Monitor live temperatures, receive alerts, view history,
-                and download compliance reports from anywhere.
+
+              <p className="text-sm md:text-base text-slate-300 leading-relaxed mb-6 max-w-xl">
+                The CoolGuard cloud platform brings all your cold rooms,
+                freezers, controllers, and wireless nodes into a single
+                interface. Monitor live temperatures, receive alerts, view
+                history, and download compliance reports from anywhere.
               </p>
 
+              {/* Bullets – added Facility Layout & Sensor Mapping */}
               <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 mb-6">
-                <div className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <div className="text-xs text-slate-700">
-                    <div className="font-semibold text-slate-900">
-                      Live Dashboards
+                {[
+                  [
+                    "Live Dashboards",
+                    "Site-wise and asset-wise views updated in real time.",
+                  ],
+                  [
+                    "Alerts & Notifications",
+                    "SMS / Email / App push for excursions.",
+                  ],
+                  ["Compliance Reports", "21CFR & audit-friendly exports."],
+                  [
+                    "Multi-Site View",
+                    "HO overview across plants, DCs, branches.",
+                  ],
+                  [
+                    "Facility Layout & Sensor Mapping",
+                    "Room-wise layout view with sensor positions, live values and door status.",
+                  ],
+                ].map(([title, desc]) => (
+                  <div key={title} className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-300" />
+                    <div className="text-xs text-slate-300">
+                      <div className="font-semibold text-white">{title}</div>
+                      <div>{desc}</div>
                     </div>
-                    <div>Site-wise and asset-wise views updated in real time.</div>
                   </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <div className="text-xs text-slate-700">
-                    <div className="font-semibold text-slate-900">
-                      Alerts & Notifications
-                    </div>
-                    <div>SMS / Email / App push for temperature excursions.</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <div className="text-xs text-slate-700">
-                    <div className="font-semibold text-slate-900">
-                      Compliance Reports
-                    </div>
-                    <div>21CFR & audit-friendly exports and summaries.</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <div className="text-xs text-slate-700">
-                    <div className="font-semibold text-slate-900">
-                      Multi-Site View
-                    </div>
-                    <div>Head-office overview across plants, DCs, and branches.</div>
-                  </div>
-                </div>
+                ))}
               </div>
 
+              {/* Buttons */}
               <div className="flex flex-wrap gap-3">
                 <a
                   href="#web-features"
-                  className="inline-flex items-center justify-center rounded-full bg-[#0055cc] px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-[#0044aa] transition-colors"
+                  className="inline-flex items-center justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_40px_rgba(56,189,248,0.45)] hover:bg-sky-400 transition-colors"
                 >
                   Explore Web Platform Features
                 </a>
                 <a
                   href="#mobile"
-                  className="inline-flex items-center justify-center rounded-full border border-[#cfe0ff] bg-white px-5 py-2.5 text-sm font-medium text-[#003b8f] hover:bg-[#f3f6ff] transition-colors"
+                  className="inline-flex items-center justify-center rounded-full border border-sky-400/60 bg-white/10 px-5 py-2.5 text-sm font-medium text-sky-200 hover:bg-white/20 transition-colors"
                 >
                   See Mobile App Experience
                 </a>
               </div>
             </div>
 
-            {/* Main Screenshot */}
-            <div className="w-full max-w-lg mx-auto lg:mx-0">
-              <div className="aspect-[16/10] rounded-3xl bg-[#0f172a] border border-[#1d2840] overflow-hidden shadow-[0_18px_60px_rgba(15,23,42,0.45)]">
-                {/* Replace with real dashboard screenshot */}
+            {/* RIGHT – TABLET MOCKUP USING PNG (NO EXTRA ROTATION) */}
+            <div className="relative flex justify-center lg:justify-end">
+              {/* Glow behind tablet */}
+              <div className="pointer-events-none absolute -inset-10 rounded-[4rem] bg-sky-400/40 blur-[110px] opacity-65" />
+
+              <div className="relative w-full max-w-xl lg:max-w-2xl">
                 <img
-                  src="/images/platform/dashboard-main.png"
+                  src="/images/products/hero_float_mockup.png"
                   alt="CoolGuard Cloud Dashboard"
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto shadow-[0_40px_120px_rgba(0,0,0,0.9)]"
                 />
+                <p className="mt-3 text-[10px] text-slate-300 text-right pr-2">
+                  *Sample CoolGuard dashboard view.
+                </p>
               </div>
-              <p className="mt-3 text-xs text-slate-500 text-center">
-                *Sample CoolGuard dashboard view. Replace with final screenshot
-                from production system.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* WEB PLATFORM FEATURES */}
-      <section id="web-features" className="mt-10">
+      {/* WEB FEATURES (WHITE) */}
+      <section
+        id="web-features"
+        className="mt-10 bg-white py-14 border-y border-[#e6edff]"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4 mb-4">
-            <div>
-              <h2 className="text-xl md:text-2xl font-semibold text-slate-900">
-                Web Platform Features
-              </h2>
-              <p className="text-sm text-slate-600 mt-1">
-                Designed for operations, quality, and management teams to keep
-                complete control over the cold chain.
-              </p>
-            </div>
-          </div>
+          <p className="text-xs font-semibold tracking-[0.25em] uppercase text-sky-500 mb-2">
+            Web Platform
+          </p>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {/* Card 1 */}
-            <article className="rounded-2xl bg-white border border-[#d7e3ff] shadow-sm p-5 flex flex-col">
-              <h3 className="text-sm font-semibold text-slate-900 mb-2">
-                Multi-Site, Multi-Asset Dashboard
-              </h3>
-              <p className="text-xs text-slate-600 mb-3">
-                View all locations, cold rooms, and freezers in one place. See
-                live status, last update time, and quick health indicators.
-              </p>
-              <ul className="text-[11px] text-slate-700 space-y-1 mt-auto">
-                <li>• Color-coded status for each asset</li>
-                <li>• Drill-down to asset detail pages</li>
-                <li>• Filter by site, region, asset type</li>
-              </ul>
-            </article>
-
-            {/* Card 2 */}
-            <article className="rounded-2xl bg-white border border-[#d7e3ff] shadow-sm p-5 flex flex-col">
-              <h3 className="text-sm font-semibold text-slate-900 mb-2">
-                Historical Trends & Reports
-              </h3>
-              <p className="text-xs text-slate-600 mb-3">
-                Plot temperature, door status, and alarms over time. Export data
-                in Excel / PDF for audits and investigations.
-              </p>
-              <ul className="text-[11px] text-slate-700 space-y-1 mt-auto">
-                <li>• Custom date ranges & zoom</li>
-                <li>• Asset and batch-based views</li>
-                <li>• Automated scheduled reports*</li>
-              </ul>
-            </article>
-
-            {/* Card 3 */}
-            <article className="rounded-2xl bg-white border border-[#d7e3ff] shadow-sm p-5 flex flex-col">
-              <h3 className="text-sm font-semibold text-slate-900 mb-2">
-                Alert Center & Escalations
-              </h3>
-              <p className="text-xs text-slate-600 mb-3">
-                Centralized alert listing with acknowledgement, comments, and
-                escalation paths to ensure timely action.
-              </p>
-              <ul className="text-[11px] text-slate-700 space-y-1 mt-auto">
-                <li>• Alert filters by site / severity</li>
-                <li>• Acknowledge & add corrective actions</li>
-                <li>• Escalation chains to supervisors</li>
-              </ul>
-            </article>
-
-            {/* Card 4 */}
-            <article className="rounded-2xl bg-white border border-[#d7e3ff] shadow-sm p-5 flex flex-col">
-              <h3 className="text-sm font-semibold text-slate-900 mb-2">
-                User Management & Access Control
-              </h3>
-              <p className="text-xs text-slate-600 mb-3">
-                Role-based access for operators, quality team, maintenance, and
-                management with audit trails.
-              </p>
-              <ul className="text-[11px] text-slate-700 space-y-1 mt-auto">
-                <li>• Role-based permissions</li>
-                <li>• Site and asset-level access control</li>
-                <li>• Login & configuration audit logs*</li>
-              </ul>
-            </article>
-
-            {/* Card 5 */}
-            <article className="rounded-2xl bg-white border border-[#d7e3ff] shadow-sm p-5 flex flex-col">
-              <h3 className="text-sm font-semibold text-slate-900 mb-2">
-                Mapping & Calibration Support
-              </h3>
-              <p className="text-xs text-slate-600 mb-3">
-                Integrate temperature mapping studies and calibration records
-                directly with asset history for better traceability.
-              </p>
-              <ul className="text-[11px] text-slate-700 space-y-1 mt-auto">
-                <li>• Attach mapping reports to assets</li>
-                <li>• Store calibration certificates</li>
-                <li>• Reminder for re-calibration due</li>
-              </ul>
-            </article>
-
-            {/* Card 6 */}
-            <article className="rounded-2xl bg-white border border-[#d7e3ff] shadow-sm p-5 flex flex-col">
-              <h3 className="text-sm font-semibold text-slate-900 mb-2">
-                Maintenance & Asset View*
-              </h3>
-              <p className="text-xs text-slate-600 mb-3">
-                Track device status, firmware, signal strength, and basic
-                maintenance information in one place.
-              </p>
-              <ul className="text-[11px] text-slate-700 space-y-1 mt-auto">
-                <li>• Device health overview</li>
-                <li>• Battery / signal indicators (wireless)</li>
-                <li>• Asset-wise event summary</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* SCREENSHOTS STRIP */}
-      <section className="mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-sm font-semibold text-slate-900 mb-3">
-            Sample Screens from CoolGuard Cloud
+          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">
+            Web Platform Features
           </h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl overflow-hidden border border-[#d7e3ff] bg-white">
-              <img
-                src="/images/platform/dashboard-sites.png"
-                alt="Multi-site dashboard"
-                className="w-full h-44 md:h-52 object-cover"
-              />
-              <div className="px-3 py-2">
-                <p className="text-[11px] font-medium text-slate-800">
-                  Multi-site overview
-                </p>
-                <p className="text-[10px] text-slate-500">
-                  Head-office view of all locations and assets.
-                </p>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-[#d7e3ff] bg-white">
-              <img
-                src="/images/platform/asset-detail.png"
-                alt="Asset detail screen"
-                className="w-full h-44 md:h-52 object-cover"
-              />
-              <div className="px-3 py-2">
-                <p className="text-[11px] font-medium text-slate-800">
-                  Asset detail with graph
-                </p>
-                <p className="text-[10px] text-slate-500">
-                  Live reading, history graph, and alarm summary.
-                </p>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-[#d7e3ff] bg-white">
-              <img
-                src="/images/platform/alerts-center.png"
-                alt="Alert center screen"
-                className="w-full h-44 md:h-52 object-cover"
-              />
-              <div className="px-3 py-2">
-                <p className="text-[11px] font-medium text-slate-800">
-                  Alert center
-                </p>
-                <p className="text-[10px] text-slate-500">
-                  Consolidated list of open and closed alerts.
-                </p>
-              </div>
-            </div>
+
+          <p className="text-sm text-slate-600 mt-2 mb-8">
+            Designed for operations, quality, and management teams to get a
+            single, reliable view of the entire cold chain.
+          </p>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                icon: LayoutDashboard,
+                title: "Multi-Site, Multi-Asset Dashboard",
+                desc: "View all locations and assets in one place.",
+                bullets: ["Color-coded status", "Drill-down", "Filter by site"],
+              },
+              {
+                icon: Map,
+                title: "Facility Layout & Sensor Mapping",
+                desc: "Interactive facility layout with sensors placed at actual locations.",
+                bullets: [
+                  "Room-wise map with live values",
+                  "Door / IBT / tank status",
+                  "Quick view of hot spots",
+                ],
+              },
+              {
+                icon: LineChart,
+                title: "Historical Trends & Reports",
+                desc: "Plot temperature, door status & alarms over time.",
+                bullets: ["Custom ranges", "Batch views", "Scheduled reports*"],
+              },
+              {
+                icon: BellRing,
+                title: "Alert Center & Escalations",
+                desc: "See, acknowledge and escalate alerts.",
+                bullets: [
+                  "Severity filters",
+                  "Corrective actions",
+                  "Supervisor escalation",
+                ],
+              },
+              {
+                icon: Users,
+                title: "User Management & Access Control",
+                desc: "Role-based access for different teams & sites.",
+                bullets: ["Permissions", "Site-level access", "Audit logs*"],
+              },
+              {
+                icon: Wrench,
+                title: "Maintenance & Asset View*",
+                desc: "Device health & status for your field teams.",
+                bullets: ["Health overview", "Battery / signal", "Asset summary"],
+              },
+            ].map(({ icon: Icon, title, desc, bullets }) => (
+              <article
+                key={title}
+                className="group relative overflow-hidden rounded-3xl bg-gradient-to-b 
+                     from-white to-[#f6f8ff] border border-[#d7e3ff] shadow-sm 
+                     hover:shadow-xl hover:-translate-y-1.5 transition-all duration-200"
+              >
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-sky-400 to-sky-300 opacity-70" />
+
+                <div className="p-5 pt-6 flex flex-col h-full">
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-50 text-sky-600">
+                      <Icon size={20} strokeWidth={2} />
+                    </div>
+                    <h3 className="text-sm font-semibold text-slate-900 leading-snug">
+                      {title}
+                    </h3>
+                  </div>
+
+                  <p className="text-xs text-slate-600 mb-3">{desc}</p>
+
+                  <ul className="text-[11px] text-slate-700 space-y-1 mt-auto">
+                    {bullets.map((b) => (
+                      <li key={b} className="flex gap-1.5">
+                        <span className="mt-[5px] h-1 w-1 rounded-full bg-sky-500 group-hover:bg-sky-600" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
           </div>
-          <p className="mt-2 text-[10px] text-slate-500">
-            *Replace these placeholder images with actual screenshots exported
-            from your live CoolGuard platform.
+
+          <p className="mt-4 text-[11px] text-slate-400">
+            *Features marked with an asterisk are available in selected plans or
+            as add-ons.
           </p>
         </div>
       </section>
 
-      {/* MOBILE APP SECTION */}
-      <section id="mobile" className="mt-14">
+      {/* SCREENSHOTS SECTION – includes facility layout */}
+      <section className="mt-0 bg-[#f7f9ff] py-14 border-b border-[#dce5ff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 md:grid-cols-2 items-start">
+          <h2 className="text-base md:text-lg font-semibold text-slate-900">
+            Sample Screens from CoolGuard Cloud
+          </h2>
+          <p className="text-xs md:text-sm text-slate-600 mt-1">
+            A quick glimpse of how operations, quality and management teams see
+            the CoolGuard data.
+          </p>
+
+          <div className="grid gap-6 md:grid-cols-4 mt-6">
+            {[
+              {
+                file: "plantlayout.png",
+                title: "Facility layout view",
+                desc: "Room-wise layout with live sensor values, IBT tanks and door status.",
+              },
+              {
+                file: "assetgraph.png",
+                title: "Asset detail with graph",
+                desc: "Live readings with history graph, set-points and alarm band.",
+              },
+              {
+                file: "multisite.png",
+                title: "Multi-site dashboard",
+                desc: "At-a-glance status for all sites, cold rooms and freezers.",
+              },
+              {
+                file: "eventdetails.png",
+                title: "Alert / event details",
+                desc: "Full audit trail of alerts, acknowledgements and actions taken.",
+              },
+            ].map(({ file, title, desc }) => (
+              <div
+                key={file}
+                className="group rounded-3xl bg-gradient-to-b from-white to-[#f8faff]
+                     border border-[#e1e7ff] shadow-sm hover:shadow-xl
+                     hover:-translate-y-1 transition-all duration-300
+                     cursor-pointer overflow-hidden"
+              >
+                {/* Screenshot */}
+                <div className="aspect-[4/3] overflow-hidden rounded-t-3xl bg-slate-100">
+                  <img
+                    src={`/images/platform/${file}`}
+                    alt={title}
+                    className="w-full h-full object-cover
+                         group-hover:scale-[1.03] transition-transform duration-300"
+                  />
+                </div>
+
+                {/* Caption */}
+                <div className="px-4 py-3">
+                  <p className="text-sm font-semibold text-slate-900">{title}</p>
+                  <p className="text-xs text-slate-500 mt-1">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MOBILE APP SECTION */}
+      <section
+        id="mobile"
+        className="bg-gradient-to-b from-white to-[#f3f7ff] mt-0 py-16"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[1.2fr_0.9fr] items-center">
+            {/* LEFT – TEXT */}
             <div>
-              <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mb-3">
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-sky-500 mb-2">
+                Mobile First Monitoring
+              </p>
+              <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-4">
                 CoolGuard Mobile App Features
               </h2>
               <p className="text-sm text-slate-600 mb-4">
-                The CoolGuard mobile app keeps operations and management teams
-                connected to their cold chain 24x7. Quickly check current
-                temperatures, acknowledge alerts, and review recent trends.
+                Stay connected to your cold chain 24x7 – even when you’re away
+                from the control room.
               </p>
-              <ul className="space-y-2 text-sm text-slate-700">
-                <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <span>
-                    Live list of all assets with color-coded health status.
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <span>
-                    Instant push notifications for temperature excursions,
-                    power failures*, and door left open.
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <span>
-                    Simple trend graph for last few hours / days to quickly
-                    verify stability.
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <span>
-                    Acknowledge alerts and add short remarks for corrective
-                    actions.
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <span>
-                    Role-based access so each user sees only their assigned
-                    sites.
-                  </span>
-                </li>
+
+              <ul className="space-y-2.5 text-sm text-slate-700">
+                {[
+                  "Live list of all assets with color-coded status.",
+                  "Instant push notifications for excursions & power failures.",
+                  "Simple trend graph to quickly verify temperature stability.",
+                  "Acknowledge alerts & log corrective actions on the go.",
+                  "Role-based access so each user sees only their sites.",
+                ].map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-500" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            {/* Mobile Screenshot */}
-            <div className="flex justify-center md:justify-end">
-              <div className="relative w-52 sm:w-60">
-                <div className="rounded-[2.5rem] border border-[#111827] bg-black shadow-[0_18px_60px_rgba(15,23,42,0.55)] overflow-hidden">
-                  <div className="h-6 bg-black" />
-                  <div className="h-[360px] bg-slate-950">
-                    {/* Replace with mobile app screenshot */}
-                    <img
-                      src="/images/platform/mobile-home.png"
-                      alt="CoolGuard Mobile App"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="h-6 bg-black" />
+            {/* RIGHT – ENHANCED MOBILE MOCKUP */}
+            <div className="relative flex justify-center lg:justify-end">
+              {/* Soft glow behind phone */}
+              <div className="pointer-events-none absolute inset-0 translate-y-8 translate-x-4 rounded-full bg-sky-400/40 blur-3xl opacity-70" />
+
+              {/* Phone shell */}
+              <div
+                className="relative w-[230px] sm:w-[260px] md:w-[280px]
+                     rounded-[3rem] bg-black/95 border border-slate-900
+                     shadow-[0_28px_80px_rgba(15,23,42,0.75)] overflow-hidden
+                     -rotate-3 md:rotate-0"
+              >
+                {/* Top notch / speaker */}
+                <div className="absolute inset-x-20 top-3 h-1.5 rounded-full bg-slate-700/90 z-10" />
+
+                {/* Screen area */}
+                <div className="mt-5 mb-4 mx-3 rounded-[2.2rem] overflow-hidden bg-slate-950">
+                  <img
+                    src="/images/platform/coolguardapp.jpeg"
+                    alt="CoolGuard Mobile – asset list with alerts"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <p className="mt-3 text-[10px] text-slate-500 text-center">
-                  *Replace with your Android / iOS app screenshot showing asset
-                  list or alerts screen.
-                </p>
+
+                {/* Subtle caption on device frame */}
+                <div className="pb-4 px-5">
+                  <p className="text-[10px] text-slate-400 text-right">
+                    *Sample CoolGuard mobile app screen.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ARCHITECTURE & CTA */}
-      <section className="mt-14 border-t border-[#dde7ff] bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      {/* ARCHITECTURE SECTION */}
+      <section className="mt-0 bg-[#f2f6ff] border-t border-[#d7e3ff] py-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-2 items-start">
             <div>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mb-3">
                 Secure, Scalable Cloud Architecture
               </h2>
               <p className="text-sm text-slate-600 mb-4">
-                CoolGuard is built on a modern, scalable cloud stack with data
-                reliability at the core. From edge devices to dashboards, every
-                layer is designed for continuous operation and data integrity.
+                CoolGuard is built on a modern, scalable cloud stack designed
+                for reliability &amp; data integrity.
               </p>
+
               <ul className="space-y-2 text-sm text-slate-700">
-                <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <span>
-                    Redundant data paths from controllers and gateways to cloud
-                    servers.
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <span>
-                    Secure APIs and encrypted communication between devices and
-                    platform.
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
-                  <span>
-                    Data retention policies aligned with audit and compliance
-                    needs.
-                  </span>
-                </li>
+                {[
+                  "Redundant data paths from controllers and gateways.",
+                  "Secure APIs and encrypted communication.",
+                  "Data retention aligned with compliance needs.",
+                ].map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-600" />
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-[#d7e3ff] bg-[#f5f7ff] p-6">
+            <div className="rounded-3xl border border-[#d7e3ff] bg-white p-6">
               <h3 className="text-sm font-semibold text-slate-900 mb-3">
                 Typical Data Flow
               </h3>
-              <ol className="space-y-2 text-xs text-slate-700 mb-4">
-                <li>1. Sensors &amp; controllers measure temperature / status.</li>
-                <li>2. Data is sent via BridgePoint / Nexus gateways.</li>
-                <li>3. Cloud platform stores, analyzes, and triggers alerts.</li>
-                <li>4. Web and mobile apps present data to users.</li>
-              </ol>
-              <div className="rounded-2xl bg-white border border-dashed border-[#cfe0ff] p-4 text-xs text-slate-500">
-                Placeholder: Insert architecture diagram image here
-                (Devices → Gateways → Cloud → Web &amp; Mobile Apps).
-              </div>
-            </div>
-          </div>
 
-          {/* CTA */}
-          <div className="mt-10 rounded-3xl bg-gradient-to-r from-[#003b8f] to-[#0055cc] px-6 py-6 md:px-10 md:py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div>
-              <h3 className="text-lg md:text-xl font-semibold text-white mb-1">
-                Want a live demo of the CoolGuard platform?
-              </h3>
-              <p className="text-xs md:text-sm text-[#e0ebff]">
-                Share your application and number of sites, and we will organise
-                a walkthrough of the cloud and mobile app tailored to your use
-                case.
+              <ol className="space-y-2 text-xs text-slate-700 mb-4">
+                <li>1. Sensors &amp; controllers measure temperature.</li>
+                <li>2. Data sent via BridgePoint / Nexus gateways.</li>
+                <li>3. Cloud analyzes &amp; triggers alerts.</li>
+                <li>4. Web &amp; mobile apps present data.</li>
+              </ol>
+
+              <div className="rounded-2xl bg-white border border-dashed border-[#cfe0ff] p-4 text-xs text-slate-500">
+                Placeholder: Insert architecture diagram here.
+              </div>
+
+              <p className="text-[11px] text-slate-500 mt-4">
+                For detailed integrations &amp; enterprise options, contact our
+                support.
               </p>
             </div>
-            <a
-              href="/#contact"
-              className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#003b8f] shadow-sm hover:bg-[#f3f6ff] transition-colors"
-            >
-              Request a CoolGuard Demo
-            </a>
           </div>
         </div>
       </section>

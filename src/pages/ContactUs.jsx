@@ -19,49 +19,48 @@ export default function ContactUs() {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setStatus("sending");
+    e.preventDefault();
+    setStatus("sending");
 
-  try {
-    const res = await fetch("/api/contact.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
-
-    const raw = await res.text();
-    console.log("API status:", res.status);
-    console.log("API raw response:", raw);
-
-    let data;
     try {
-      data = JSON.parse(raw);
-    } catch (err) {
-      throw new Error("Non-JSON response from API: " + raw);
-    }
-
-    if (data.success) {
-      setStatus("ok");
-      setForm({
-        name: "",
-        company: "",
-        email: "",
-        phone: "",
-        enquiryType: "",
-        message: "",
+      const res = await fetch("/api/contact.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
       });
-    } else {
-      console.error("API error:", data.message);
+
+      const raw = await res.text();
+      console.log("API status:", res.status);
+      console.log("API raw response:", raw);
+
+      let data;
+      try {
+        data = JSON.parse(raw);
+      } catch (err) {
+        throw new Error("Non-JSON response from API: " + raw);
+      }
+
+      if (data.success) {
+        setStatus("ok");
+        setForm({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          enquiryType: "",
+          message: "",
+        });
+      } else {
+        console.error("API error:", data.message);
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
       setStatus("error");
     }
-  } catch (err) {
-    console.error("Fetch error:", err);
-    setStatus("error");
-  }
-};
-
+  };
 
   return (
     <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
@@ -130,7 +129,7 @@ export default function ContactUs() {
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
                   <label className="block text-xs font-medium text-slate-700 mb-1">
-                    Email * 
+                    Email *
                   </label>
                   <input
                     type="email"
@@ -168,7 +167,7 @@ export default function ContactUs() {
                   className="w-full rounded-xl border border-[#d7e3ff] bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0055cc]/60"
                 >
                   <option value="">Select an option</option>
-                  <option>New installation / project</option>
+                  <option>Consultation / Pilot</option>
                   <option>Existing customer support</option>
                   <option>Calibration / mapping services</option>
                   <option>Distributor / partner enquiry</option>
@@ -226,74 +225,128 @@ export default function ContactUs() {
               <h2 className="text-sm font-semibold text-slate-900 mb-3">
                 Contact Details
               </h2>
-              <div className="space-y-2 text-sm text-slate-700">
+              <div className="space-y-3 text-sm text-slate-700">
                 <div>
                   <div className="text-xs font-semibold text-slate-500">
                     Email
                   </div>
-                  <div>support@coolguard.cloud</div>
+                  <div>sales@coolguard.cloud</div>
                 </div>
                 <div>
                   <div className="text-xs font-semibold text-slate-500">
                     Phone / WhatsApp
                   </div>
-                  <div>+91-XXXXXXXXXX</div>
+                  <div>+91-7738544228</div>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-slate-500">
-                    Office Address
-                  </div>
-                  <div className="text-sm">
-                    Lateral EmSoft Pvt Ltd <br />
-                    (CoolGuard Division) <br />
-                    {/* You can add full address here */}
-                  </div>
                 </div>
               </div>
             </div>
+ {/* LOCATIONS / ADDRESSES */}
+      <section className="mt-12 border-t border-slate-200 pt-8">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#007BFF]/80">
+            Locations
+          </p>
+          <h2 className="mt-2 text-xl md:text-2xl font-semibold text-slate-900">
+            Offices & Facilities
+          </h2>
+          <p className="mt-2 text-sm text-slate-600 max-w-2xl">
+            Reach out to our head office, manufacturing facility or branch office
+            depending on the nature of your enquiry — commercial, technical or service.
+          </p>
 
-            <div className="rounded-3xl bg-white border border-[#d7e3ff] shadow-sm p-6">
-              <h3 className="text-sm font-semibold text-slate-900 mb-3">
-                Quick Contacts
+          <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {/* Head Office */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="inline-flex items-center justify-center rounded-full bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-[#007BFF]">
+                  Head Office
+                </span>
+              </div>
+              <h3 className="text-sm font-semibold text-slate-900">
+                Lateral EmSoft Pvt Ltd – CoolGuard Division
               </h3>
-              <div className="space-y-3 text-xs text-slate-700">
-                <div>
-                  <div className="font-semibold text-slate-900">
-                    Sales &amp; New Projects
-                  </div>
-                  <div>For new installations, tenders, and project enquiries.</div>
-                </div>
-                <div>
-                  <div className="font-semibold text-slate-900">
-                    Support &amp; Service
-                  </div>
-                  <div>Device issues, site visits, SIM &amp; data, and platform help.</div>
-                </div>
-                <div>
-                  <div className="font-semibold text-slate-900">
-                    Calibration &amp; Mapping
-                  </div>
-                  <div>
-                    Temperature mapping studies, calibration schedules, and
-                    documentation.
-                  </div>
-                </div>
-              </div>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                306, The Great Eastern Galleria,<br />
+                Sector 4, Nerul,<br />
+                Navi Mumbai – 400706,<br />
+                Maharashtra, India.
+              </p>
+              <p className="mt-2 text-xs text-slate-500">
+                Primary contact for commercial enquiries, accounts and overall coordination.
+              </p>
             </div>
 
+            {/* Factory Address */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="inline-flex items-center justify-center rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
+                  Factory
+                </span>
+              </div>
+              <h3 className="text-sm font-semibold text-slate-900">
+                Manufacturing & Integration Facility
+              </h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                B-101/B Punit Industrial Premises Co-op Society Ltd,<br />
+                Thane Belapur Road, Turbhe,<br />
+                Navi Mumbai – 400705,<br />
+                Maharashtra, India.
+              </p>
+              <p className="mt-2 text-xs text-slate-500">
+                For logistics, dispatches, hardware integration and factory visits.
+              </p>
+            </div>
+
+            {/* Branch / Regional Office */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="inline-flex items-center justify-center rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] font-semibold text-indigo-700">
+                  Branch Office
+                </span>
+              </div>
+              <h3 className="text-sm font-semibold text-slate-900">
+                Regional Service / Branch Office
+              </h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                608, Clifftion Corporate,<br />
+                AB Road, Near Stay Sai Square,<br />
+                Vijay Nagar, Indore – 452010,<br />
+                Madhya Pradesh, India.
+              </p>
+              <p className="mt-2 text-xs text-slate-500">
+                Frontline support for local installations, service and maintenance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+            {/* MAP CARD */}
             <div className="rounded-3xl bg-white border border-dashed border-[#d7e3ff] p-6">
               <h3 className="text-sm font-semibold text-slate-900 mb-2">
                 Location Map
               </h3>
               <p className="text-[11px] text-slate-600 mb-2">
-                Embed a Google Maps iframe or static map image here showing your
-                office / service locations.
+                Head Office – Great Eastern Galleria, Nerul, Navi Mumbai.
               </p>
-              <div className="h-40 rounded-2xl bg-[#e6f0ff]" />
+              <div className="rounded-2xl overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.444806386961!2d73.00950577992711!3d19.04417113613881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c3e71c753107%3A0x718e56cae69c6caa!2sGreat%20Eastern%20Galleria%2C%20Karmvir%20Bhau%20Rao%20Patil%20Marg%2C%20Vinu%20Veena%20CHS%2C%20Sector%204%2C%20Nerul%2C%20Navi%20Mumbai%2C%20Maharashtra%20400706!5e0!3m2!1sen!2sin!4v1764394871853!5m2!1sen!2sin"
+                  width="100%"
+                  height="260"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+     
     </main>
   );
 }

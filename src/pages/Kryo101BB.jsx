@@ -1,76 +1,410 @@
-// src/pages/Kryo101BB.jsx
+// src/pages/products/Kryo101CC.jsx
 import React from "react";
-import ProductDetailLayout from "../components/ProductDetailLayout";
+import {
+  Waves,
+  Thermometer,
+  RadioTower,
+  Cpu,
+  Download,
+  PlayCircle,
+} from "lucide-react";
 
-// Keep product outside the component to avoid any weird parsing issues
-const product = {
-  name: "Kryo-101-BB",
-  code: "KR-101-BB",
-  family: "Kryo-100 Series",
-  tagline: "16-Channel Cloud Logger for Large Cold Rooms & Multi-Point Monitoring",
+export default function Kryo101CC() {
+  return (
+    <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
+      {/* HERO – CloudPlatform-style */}
+      <section className="relative overflow-hidden border-b bg-gradient-to-br from-[#e6f2ff] via-white to-[#f3f7ff]">
+        {/* soft highlight in the corner */}
+        <div className="pointer-events-none absolute -right-40 -top-40 h-80 w-80 rounded-full bg-sky-300/30 blur-3xl" />
+        <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl" />
 
-  heroImage: "/images/products/kryo-hero2.png",      // put your hero banner here
-  deviceImage: "/images/products/kryo-101-bb-device.png",  // transparent device render
-  badges: ["16-Channel", "GSM-GPRS", "Temperature + RH"],
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-18">
+          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.95fr] items-center">
+            {/* LEFT – TEXT BLOCK */}
+            <div>
+              <p className="text-[11px] font-semibold tracking-[0.26em] uppercase text-sky-500 mb-2">
+                Kryo-100 Series
+              </p>
 
-  intro:
-    "Kryo-101-BB is a high-precision 16-channel cloud logger engineered for large cold rooms, multi-compartment storage areas, and environments requiring extensive temperature and humidity monitoring. It supports up to 16 simultaneous NTC temperature or capacitive humidity sensors and transmits the collected data to the CoolGuard Cloud via GSM-GPRS. Designed for industrial environments, Kryo-101-BB ensures real-time visibility, compliance tracking, and seamless integration with hooters and local displays for on-site alerts.",
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-900 tracking-tight mb-2">
+                8-Channel Cloud Logger
+              </h1>
 
-  features: [
-    "Supports up to 16 input channels for temperature and humidity monitoring",
-    "GSM-GPRS communication (850/900/1800/1900 MHz)",
-    "Configurable data logging interval from 1 to 60 minutes",
-    "Inbuilt memory to prevent data loss during network downtime",
-    "ABS housing with industrial-grade durability",
-    "Power-efficient 12V DC, 1A operation",
-    "Over-the-Air (OTA) firmware updates",
-    "Supports hooter integration for audible alerts",
-    "Compatible with LED/TFT local displays",
-    "Designed for high-usage industrial cold storage environments",
-  ],
+              <p className="text-xs font-medium text-slate-500 mb-4">
+                KR-101-CC &mdash; 8-Channel Cluster Cloud Logger
+              </p>
 
-  benefits: [
-    "Real-time monitoring across large or split cold storage facilities",
-    "Simultaneous visibility into 16 different temperature/humidity points",
-    "Improved quality assurance and audit readiness",
-    "Prevents product spoilage through early deviation alerts",
-    "Seamless cloud integration ensures remote access and analytics",
-    "Reliable operation even in high-moisture, industrial environments",
-  ],
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 max-w-xl">
+                8-channel cloud logger designed for clusters of walk-in chillers,
+                freezers and cold rooms located in the same plant room, corridor
+                or cold storage block. Supports flexible combinations of
+                temperature, humidity and optional CO₂ / ammonia sensors so
+                multiple chambers can be monitored through a single device and a
+                single CoolGuard cloud connection.
+              </p>
 
-  applications: [
-    "Large food & agriculture cold storages",
-    "Multi-chamber deep freezer rooms",
-    "Pharmaceutical warehouses",
-    "Refrigerated distribution centers",
-    "Logistics hubs with multiple monitoring points",
-    "Environmental monitoring for moisture-heavy storage areas",
-  ],
+              {/* TAG PILLS */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {[
+                  { label: "Up to 8 Inputs", icon: Cpu },
+                  { label: "Temp + RH + Gas", icon: Thermometer },
+                  { label: "GSM-GPRS Cloud", icon: RadioTower },
+                ].map(({ label, icon: Icon }) => (
+                  <span
+                    key={label}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-white/80 border border-sky-100 px-3 py-1 text-[11px] font-medium text-slate-700 shadow-sm"
+                  >
+                    <Icon size={14} className="text-sky-500" />
+                    {label}
+                  </span>
+                ))}
+              </div>
 
-  highlights: [
-    { label: "Channels", value: "16 temperature/humidity inputs" },
-    { label: "Communication", value: "GSM-GPRS (850/900/1800/1900 MHz)" },
-    { label: "Logging Interval", value: "1–60 minutes (configurable)" },
-    { label: "Memory", value: "Inbuilt buffer for offline logging" },
-    { label: "Power", value: "12V DC, 1A" },
-    { label: "Housing", value: "ABS plastic" },
-    { label: "Dimensions", value: "40 × 78 × 55 mm" },
-    { label: "Firmware Update", value: "OTA supported" },
-    { label: "Hooter Output", value: "Supported (for alerts)" },
-    { label: "Display", value: "LED / TFT compatible" },
-    { label: "Temp Sensor Range", value: "–40°C to +60°C (±1°C)" },
-    { label: "Humidity Range", value: "0–100% RH (±2–3%)" },
-  ],
+              {/* FEATURE BULLETS */}
+              <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 mb-7">
+                {[
+                  [
+                    "Clustered Multi-Room Coverage",
+                    "Monitor up to 8 sensing points across several adjacent walk-in chillers, freezers or potato cold rooms using a single cloud logger.",
+                  ],
+                  [
+                    "Flexible Sensor Combinations",
+                    "Mix temperature, humidity and gas channels—for example 4× temperature, 2× RH, 1× CO₂ and 1× ammonia—based on site design.",
+                  ],
+                  [
+                    "Single Uplink, Shared Visibility",
+                    "Use one SIM and one device for a group of chambers, simplifying connectivity, cabling and ongoing service management.",
+                  ],
+                  [
+                    "Engineered for 24×7 Operation",
+                    "Continuous logging with local buffering and automatic cloud sync helps ensure uninterrupted records for QA and audits.",
+                  ],
+                ].map(([title, desc]) => (
+                  <div key={title} className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-500" />
+                    <div className="text-xs text-slate-700">
+                      <div className="font-semibold text-slate-900">
+                        {title}
+                      </div>
+                      <div>{desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
 
-  downloads: [
-    {
-      label: "Download Kryo-101-BB Datasheet (PDF)",
-      href: "/docs/kryo-101-bb-datasheet.pdf",
-    },
-  ],
-};
+              {/* CTAs */}
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="#contact" // adjust if you have a specific demo/contact anchor
+                  className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_35px_rgba(56,189,248,0.55)] hover:bg-sky-400 transition-colors"
+                >
+                  <PlayCircle size={18} className="text-sky-50" />
+                  Request a Demo
+                </a>
+                <a
+                  href="/datasheets/kryo-101-cc.pdf" // update to your actual file path
+                  className="inline-flex items-center gap-2 rounded-full border border-[#cfe0ff] bg-white px-5 py-2.5 text-sm font-medium text-[#003b8f] hover:bg-[#f3f6ff] transition-colors"
+                >
+                  <Download size={18} />
+                  Download Datasheet
+                </a>
+              </div>
+            </div>
 
-// 👇 THIS is the default export Vite is complaining about
-export default function Kryo101BB() {
-  return <ProductDetailLayout product={product} />;
+            {/* RIGHT – PRODUCT MOCKUP CARD (BG + DEVICE OVERLAY) */}
+            <div className="relative flex justify-center lg:justify-end">
+              {/* glow behind card */}
+              <div className="pointer-events-none absolute inset-0 translate-y-6 translate-x-4 rounded-[3rem] bg-sky-300/35 blur-3xl opacity-70" />
+
+              <div
+                className="relative w-full max-w-md lg:max-w-lg
+                           rounded-[2.5rem] bg-white shadow-[0_28px_90px_rgba(15,23,42,0.28)]
+                           border border-[#dde8ff] overflow-hidden"
+              >
+                {/* top label */}
+                <div className="absolute top-4 left-6 text-[10px] uppercase tracking-[0.22em] text-slate-400 z-20">
+                  CoolGuard Cloud Logger
+                </div>
+
+                {/* background + device overlay */}
+                <div className="relative mx-6 my-8 rounded-[2rem] overflow-hidden">
+                  {/* background image (cold room / racks / potato storage) */}
+                  <img
+                    src="/images/products/8loggerbg.png" // background only
+                    alt="Kryo-101-CC cold room cluster environment"
+                    className="w-full h-full object-cover"
+                  />
+
+                  {/* light gradient so device pops */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-900/25 via-slate-900/5 to-transparent" />
+
+                  {/* device render on top */}
+                  <img
+                    src="/images/products/kryo-101-cc-device.png"
+                    alt=""
+                    className="absolute inset-0 m-auto w-[55%] max-w-[260px] drop-shadow-[0_22px_46px_rgba(15,23,42,0.55)]"
+                  />
+                </div>
+
+                {/* bottom spec line */}
+                <div className="px-6 pb-5 flex items-center gap-2 text-[10px] text-slate-500">
+                  <Waves size={14} className="text-sky-500" />
+                  GSM / GPRS • 8 Channels • Cloud Connected
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* KEY CAPABILITIES / DEPLOYMENT / CONNECTIVITY */}
+      <section className="bg-white py-12 border-b border-[#e4ecff]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+            Kryo-101-CC · Key capabilities &amp; deployment
+          </p>
+          <h2 className="text-lg md:text-xl font-semibold text-slate-900 mb-6">
+            Built for clustered cold rooms, potato storage and multi-parameter monitoring
+          </h2>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {/* Key Capabilities */}
+            <article className="rounded-2xl border border-[#dfe8ff] bg-[#f7f9ff] p-5 shadow-sm">
+              <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
+                Key Capabilities
+              </h3>
+              <p className="text-xs text-slate-600 mb-3">
+                Designed to capture a complete environmental picture across
+                several rooms from a single control point.
+              </p>
+              <ul className="space-y-1.5 text-[11px] text-slate-700">
+                <li>❄️ Up to 8 sensor inputs for clustered chambers</li>
+                <li>❄️ Mix of temperature, RH, CO₂ and ammonia (NH₃) channels*</li>
+                <li>❄️ Suitable for long-duration potato and agri storage</li>
+                <li>❄️ Supports local display and hooter for on-site indication</li>
+              </ul>
+            </article>
+
+            {/* Deployment Scenarios */}
+            <article className="rounded-2xl border border-[#dfe8ff] bg-[#f7f9ff] p-5 shadow-sm">
+              <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
+                Deployment Scenarios
+              </h3>
+              <p className="text-xs text-slate-600 mb-3">
+                Optimised for locations where multiple cold rooms share the same
+                service corridor, plant room or utility area.
+              </p>
+              <ul className="space-y-1.5 text-[11px] text-slate-700">
+                <li>❄️ Potato cold stores with multiple chambers in one block</li>
+                <li>❄️ Clusters of walk-in chillers and freezers on a single floor</li>
+                <li>❄️ Small cold storage facilities with 3–6 rooms side by side</li>
+                <li>❄️ Sites standardising on one logger per cluster instead of per room</li>
+              </ul>
+            </article>
+
+            {/* Connectivity & Interfaces */}
+            <article className="rounded-2xl border border-[#dfe8ff] bg-[#f7f9ff] p-5 shadow-sm">
+              <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
+                Connectivity &amp; Interfaces
+              </h3>
+              <p className="text-xs text-slate-600 mb-3">
+                Combines field-side flexibility with cloud-native visibility and
+                on-site alarms.
+              </p>
+              <ul className="space-y-1.5 text-[11px] text-slate-700">
+                <li>❄️ GSM / GPRS uplink to CoolGuard Cloud</li>
+                <li>❄️ Local display option for at-a-glance readings near the rooms</li>
+                <li>❄️ Hooter / alarm output for immediate on-site alerts</li>
+                <li>❄️ Cloud dashboards, alerts and reports accessible via web &amp; mobile</li>
+              </ul>
+            </article>
+          </div>
+
+          <p className="mt-4 text-[11px] text-slate-400">
+            *Final sensor mix and gas sensor compatibility depend on the approved
+            project design and hardware configuration.
+          </p>
+        </div>
+      </section>
+
+      {/* KEY USE-CASES / VALUE SECTION */}
+      <section className="bg-white py-12 border-b border-[#e4ecff]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-lg md:text-xl font-semibold text-slate-900 mb-2">
+            Where Kryo-101-CC fits in your cold chain
+          </h2>
+          <p className="text-sm text-slate-600 mb-6 max-w-3xl">
+            Designed for sites where multiple walk-in chillers, freezers or
+            potato cold rooms are located together. Combine several small
+            chambers into one multi-point installation and manage them as a
+            single cluster on the CoolGuard platform.
+          </p>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {[
+              {
+                title: "Potato & Agri Cold Stores",
+                desc: "Monitor temperature, humidity and gas levels across multiple potato chambers from one central logging point.",
+              },
+              {
+                title: "Clustered Pharma & Food Cold Rooms",
+                desc: "Ideal for multi-room pharma or food facilities where several positive and negative chambers share the same corridor.",
+              },
+              {
+                title: "Multi-Chamber Qualification & Routine Use",
+                desc: "Use one 8-channel system for multi-chamber qualification and continue as the permanent monitoring system for the cluster.",
+              },
+            ].map(({ title, desc }) => (
+              <article
+                key={title}
+                className="rounded-2xl border border-[#dfe8ff] bg-[#f7f9ff] p-5 shadow-sm"
+              >
+                <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
+                  {title}
+                </h3>
+                <p className="text-xs text-slate-600">{desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TECHNICAL HIGHLIGHTS SUMMARY */}
+      <section className="bg-[#f5f7ff] py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-lg md:text-xl font-semibold text-slate-900 mb-2">
+            Technical highlights (quick view)
+          </h2>
+          <p className="text-sm text-slate-600 mb-6 max-w-3xl">
+            Detailed specifications are available in the datasheet. This quick
+            view helps engineering and validation teams understand how
+            Kryo-101-CC fits into multi-room cold storage layouts.
+          </p>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-xs text-slate-700">
+            <div>
+              <p className="font-semibold text-slate-900 mb-1">
+                Channels &amp; Inputs
+              </p>
+              <ul className="space-y-1 list-disc list-inside">
+                <li>
+                  8 sensor inputs supporting temperature, humidity and optional
+                  CO₂ / NH₃ gas sensors
+                </li>
+                <li>
+                  Typical layouts: 4× temperature + 4× humidity, or other
+                  combinations as per site design
+                </li>
+                <li>
+                  Channel-to-room mapping in CoolGuard for clear association with
+                  chambers, racks or zones
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="font-semibold text-slate-900 mb-1">
+                Connectivity &amp; Cloud
+              </p>
+              <ul className="space-y-1 list-disc list-inside">
+                <li>GSM / GPRS uplink to CoolGuard Cloud platform</li>
+                <li>
+                  Automatic reconnect and background data backfill after link
+                  restoration
+                </li>
+                <li>
+                  Multi-chamber view, alerts and reporting on the CoolGuard
+                  dashboard
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="font-semibold text-slate-900 mb-1">
+                Power, Local Interfaces &amp; Reliability
+              </p>
+              <ul className="space-y-1 list-disc list-inside">
+                <li>Designed for 24×7 operation in cold-room environments</li>
+                <li>
+                  Local memory for offline logging during power or network events
+                </li>
+                <li>
+                  Provision for local display and hooter/alarm output for on-site
+                  indication*
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p className="mt-4 text-[11px] text-slate-400">
+            *Final enclosure, display type and alarm wiring to be confirmed as
+            per the approved hardware specification and project design.
+          </p>
+        </div>
+      </section>
+
+      {/* DEPLOYMENT & CONNECTIVITY – COOLGUARD ECOSYSTEM */}
+<section className="bg-white py-12 border-b border-[#e4ecff]">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+      Deployment & Connectivity
+    </p>
+    <h2 className="text-lg md:text-xl font-semibold text-slate-900 mb-6">
+      How Kryo-101-CC fits into the CoolGuard ecosystem
+    </h2>
+
+    <div className="grid gap-6 md:grid-cols-3">
+      {/* Deployment */}
+      <article className="rounded-2xl border border-[#dfe8ff] bg-[#f7f9ff] p-5 shadow-sm">
+        <h3 className="text-sm font-semibold text-slate-900 mb-1.5">Cluster Deployment</h3>
+        <p className="text-xs text-slate-600 mb-3">
+          Ideal for locations where multiple cold rooms share the same service corridor,
+          plant room or process area.
+        </p>
+        <ul className="space-y-1.5 text-[11px] text-slate-700">
+          <li>❄️ Potato storage blocks with 3–6 rooms in proximity</li>
+          <li>❄️ Walk-in chiller + freezer clusters on the same floor</li>
+          <li>❄️ Multi-chamber facilities that prefer one SIM/device per group</li>
+          <li>❄️ Long-duration agri and food storages with shared utilities</li>
+        </ul>
+      </article>
+
+      {/* Sensor & Input Flexibility */}
+      <article className="rounded-2xl border border-[#dfe8ff] bg-[#f7f9ff] p-5 shadow-sm">
+        <h3 className="text-sm font-semibold text-slate-900 mb-1.5">Sensor Flexibility</h3>
+        <p className="text-xs text-slate-600 mb-3">
+          Designed to adapt to diverse environmental monitoring needs.
+        </p>
+        <ul className="space-y-1.5 text-[11px] text-slate-700">
+          <li>❄️ Supports temperature, humidity, CO₂ and ammonia sensors*</li>
+          <li>❄️ Mix any combination — e.g., 4× Temp + 4× RH or 6× Temp + 1× CO₂ + 1× NH₃</li>
+          <li>❄️ Channel-to-room mapping inside CoolGuard dashboard</li>
+          <li>❄️ Consistent calibration workflow across all sensors</li>
+        </ul>
+      </article>
+
+      {/* Connectivity */}
+      <article className="rounded-2xl border border-[#dfe8ff] bg-[#f7f9ff] p-5 shadow-sm">
+        <h3 className="text-sm font-semibold text-slate-900 mb-1.5">Connectivity & Alarms</h3>
+        <p className="text-xs text-slate-600 mb-3">
+          Seamless integration with field devices and CoolGuard Cloud.
+        </p>
+        <ul className="space-y-1.5 text-[11px] text-slate-700">
+          <li>❄️ GSM / GPRS uplink to CoolGuard Cloud</li>
+          <li>❄️ Automatic backfill after network restoration</li>
+          <li>❄️ Local display support for on-site viewing</li>
+          <li>❄️ Hooter/alarm output for immediate local indication</li>
+          <li>❄️ Real-time dashboards, alerts and reporting via CoolGuard mobile & web</li>
+        </ul>
+      </article>
+    </div>
+
+    <p className="mt-4 text-[11px] text-slate-400">
+      *Final gas-sensor compatibility (CO₂/NH₃) depends on approved project design and selected hardware configuration.
+    </p>
+  </div>
+</section>
+
+    </main>
+  );
 }
