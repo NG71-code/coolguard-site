@@ -20,7 +20,12 @@ export default function Header() {
   }, []);
 
   const TOP_LINKS = [
-    { label: "Customer Login", href: "https://app.coolguard.cloud", external: true, button: true },
+    {
+      label: "Customer Login",
+      href: "https://app.coolguard.cloud",
+      external: true,
+      button: true,
+    },
     { label: "About Us", href: "/about-us" },
     { label: "Contact Us", href: "/contact" },
   ];
@@ -33,13 +38,33 @@ export default function Header() {
       href: "/cloud-loggers",
       children: [
         { key: "kryo-100", label: "Kryo-100 Series", isGroup: true },
-        { key: "kryo-101-aa", label: "2 Channel Cloud Logger", href: "/products/kryo-101-aa" },
-        { key: "kryo-101-bb", label: "8 Channel Cloud Logger", href: "/products/kryo-101-bb" },
-        { key: "kryo-101-cc", label: "Kryo-101-CC", href: "/cloud-loggers#kryo-101-cc" },
+        {
+          key: "kryo-101-aa",
+          label: "2 Channel Cloud Logger",
+          href: "/products/kryo-101-aa",
+        },
+        {
+          key: "kryo-101-bb",
+          label: "8 Channel Cloud Logger",
+          href: "/products/kryo-101-bb",
+        },
+        {
+          key: "kryo-101-cc",
+          label: "Kryo-101-CC",
+          href: "/cloud-loggers#kryo-101-cc",
+        },
 
         { key: "frigo-100", label: "Frigo-100 Series", isGroup: true },
-        { key: "frigo-101-aa", label: "Smart Freezer & Cooler Cloud Logger", href: "/products/frigo-101-aa" },
-        { key: "frigo-101-bb", label: "Cloud-Connected Cooler Locator", href: "/products/frigo-101-bb" },
+        {
+          key: "frigo-101-aa",
+          label: "Smart Freezer & Cooler Cloud Logger",
+          href: "/products/frigo-101-aa",
+        },
+        {
+          key: "frigo-101-bb",
+          label: "Cloud-Connected Cooler Locator",
+          href: "/products/frigo-101-bb",
+        },
       ],
     },
     {
@@ -58,50 +83,22 @@ export default function Header() {
       key: "controllers",
       label: "Controllers",
       icon: ControllerIcon,
+      // Coming soon page (no dropdown)
       href: "/controllers/cg-100-series",
-      children: [
-        {
-          key: "cg-100-series",
-          label: "CG-100 Series Controllers",
-          href: "/controllers/cg-100-series",
-        },
-        {
-          key: "saffron-controller",
-          label: "Saffron Environment Controller",
-          href: "/controllers/cg-100-series#saffron-controller",
-        },
-      ],
     },
     {
       key: "sensors",
       label: "Sensors",
       icon: SensorIcon,
+      // Simple page (no dropdown)
       href: "/sensors",
-      children: [
-        { key: "temperature", label: "Temperature Sensors", href: "/sensors#temperature" },
-        { key: "humidity", label: "Humidity Sensors", href: "/sensors#humidity" },
-        { key: "temp-rh", label: "Integrated Temp & RH", href: "/sensors#temp-rh" },
-        { key: "display", label: "Displays", href: "/sensors#display" },
-        { key: "hooters", label: "Hooters", href: "/sensors#hooters" },
-        { key: "door", label: "Door Sensors", href: "/sensors#door" },
-        { key: "nh3", label: "NH₃ Sensors", href: "/sensors#nh3" },
-        { key: "co2", label: "CO₂ Sensors", href: "/sensors#co2" },
-        { key: "lux", label: "Lux Sensors", href: "/sensors#lux" },
-      ],
     },
     {
       key: "services",
       label: "Services",
       icon: ServiceIcon,
+      // Simple page (no dropdown)
       href: "/services",
-      children: [
-        { key: "mapping", label: "Mapping Services", href: "/services#mapping-services" },
-        {
-          key: "calibration",
-          label: "Calibration Services",
-          href: "/services#calibration-services",
-        },
-      ],
     },
     {
       key: "platform",
@@ -175,16 +172,17 @@ export default function Header() {
             <div className="flex items-center justify-end h-14">
               <nav className="flex items-center gap-4">
                 {SECONDARY_MENUS.map((m) => {
-                  const isOpen = !!m.children && hoverMenu === m.key;
+                  const hasChildren = !!m.children && m.children.length > 0;
+                  const isOpen = hasChildren && hoverMenu === m.key;
                   return (
                     <div
                       key={m.key}
                       className="relative"
                       onMouseEnter={() => {
-                        if (m.children) setHoverMenu(m.key);
+                        if (hasChildren) setHoverMenu(m.key);
                       }}
                       onMouseLeave={() => {
-                        if (m.children) setHoverMenu(null);
+                        if (hasChildren) setHoverMenu(null);
                       }}
                     >
                       {/* Main button */}
@@ -199,7 +197,7 @@ export default function Header() {
                         <span className="text-sm font-medium text-gray-800">
                           {m.label}
                         </span>
-                        {m.children && (
+                        {hasChildren && (
                           <svg
                             viewBox="0 0 24 24"
                             className={`h-4 w-4 text-gray-400 transition-transform ${
@@ -217,13 +215,12 @@ export default function Header() {
                         )}
                       </button>
 
-                      {/* Dropdown (hover-controlled) */}
-                      {m.children && isOpen && (
+                      {/* Dropdown (hover-controlled, only for Cloud Loggers) */}
+                      {hasChildren && isOpen && (
                         <div
                           className="
                             absolute right-0 top-full w-64 rounded-xl border bg-white shadow-xl py-2 z-[10000]
                           "
-                          // no mt-2 => dropdown starts right under button, no gap
                         >
                           {m.children.map((child) =>
                             child.isGroup ? (
@@ -277,7 +274,11 @@ export default function Header() {
               fill="none"
               stroke="currentColor"
             >
-              <path strokeWidth="2" strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16" />
+              <path
+                strokeWidth="2"
+                strokeLinecap="round"
+                d="M4 7h16M4 12h16M4 17h16"
+              />
             </svg>
           </button>
         </div>
@@ -305,57 +306,62 @@ export default function Header() {
 
             {/* Menus + children */}
             <div className="flex flex-col gap-2">
-              {SECONDARY_MENUS.map((m) => (
-                <div key={m.key} className="border rounded-md px-3 py-2">
-                  <button
-                    className="w-full flex items-center justify-between text-gray-900 font-medium"
-                    onClick={() => {
-                      if (!m.children) {
-                        handleNav(m);
-                        setMobileOpen(false);
-                      } else {
-                        setOpenMenu((prev) => (prev === m.key ? null : m.key));
-                      }
-                    }}
-                  >
-                    <span className="flex items-center gap-2">
-                      <m.icon className="h-5 w-5 text-gray-600" />
-                      {m.label}
-                    </span>
-                    {m.children && (
-                      <span className="text-xs text-gray-500">
-                        {openMenu === m.key ? "Hide" : "Menu"}
+              {SECONDARY_MENUS.map((m) => {
+                const hasChildren = !!m.children && m.children.length > 0;
+                return (
+                  <div key={m.key} className="border rounded-md px-3 py-2">
+                    <button
+                      className="w-full flex items-center justify-between text-gray-900 font-medium"
+                      onClick={() => {
+                        if (!hasChildren) {
+                          handleNav(m);
+                          setMobileOpen(false);
+                        } else {
+                          setOpenMenu((prev) =>
+                            prev === m.key ? null : m.key
+                          );
+                        }
+                      }}
+                    >
+                      <span className="flex items-center gap-2">
+                        <m.icon className="h-5 w-5 text-gray-600" />
+                        {m.label}
                       </span>
-                    )}
-                  </button>
-
-                  {m.children && openMenu === m.key && (
-                    <div className="mt-2 space-y-1 pl-7">
-                      {m.children.map((child) =>
-                        child.isGroup ? (
-                          <div
-                            key={child.key}
-                            className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 mt-1"
-                          >
-                            {child.label}
-                          </div>
-                        ) : (
-                          <button
-                            key={child.key}
-                            className="block w-full text-left text-sm text-gray-700 py-0.5"
-                            onClick={() => {
-                              handleNav(child);
-                              setMobileOpen(false);
-                            }}
-                          >
-                            {child.label}
-                          </button>
-                        )
+                      {hasChildren && (
+                        <span className="text-xs text-gray-500">
+                          {openMenu === m.key ? "Hide" : "Menu"}
+                        </span>
                       )}
-                    </div>
-                  )}
-                </div>
-              ))}
+                    </button>
+
+                    {hasChildren && openMenu === m.key && (
+                      <div className="mt-2 space-y-1 pl-7">
+                        {m.children.map((child) =>
+                          child.isGroup ? (
+                            <div
+                              key={child.key}
+                              className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 mt-1"
+                            >
+                              {child.label}
+                            </div>
+                          ) : (
+                            <button
+                              key={child.key}
+                              className="block w-full text-left text-sm text-gray-700 py-0.5"
+                              onClick={() => {
+                                handleNav(child);
+                                setMobileOpen(false);
+                              }}
+                            >
+                              {child.label}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

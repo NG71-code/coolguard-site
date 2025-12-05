@@ -119,7 +119,7 @@ export default function BridgePointCloudConnect() {
                   </span>
                 </div>
                 <img
-                  src="/images/products/bridgepoint-bcc100.png"
+                  src="/images/products/bphero.png"
                   alt="BridgePoint CloudConnect – BCC-100 Gateway"
                   className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] object-contain mb-4"
                 />
@@ -392,7 +392,7 @@ export default function BridgePointCloudConnect() {
       </section>
 
       {/* DOWNLOADS & DOCUMENTS */}
-      <section className="border-b bg-white">
+      {/* <section className="border-b bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
             <div>
@@ -427,7 +427,7 @@ export default function BridgePointCloudConnect() {
             />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FINAL CTA */}
       {/* <section className="bg-gradient-to-r from-[#0055cc] via-[#0042a3] to-[#022b62]">

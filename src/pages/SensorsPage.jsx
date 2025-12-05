@@ -2,37 +2,60 @@ import React from "react";
 
 const SENSOR_GROUPS = [
   {
-    group: "Cold Room Probes",
-    usage: "Walk-in chillers, freezers, and blast rooms",
-    img: "/images/products/probe-standard.png",    // <--- ADD IMAGE
+    group: "Temperature Probes",
+    usage: "Cold rooms, walk-in chillers, freezer rooms, blast rooms",
+    img: "/images/products/sensor-temp-probe.png",
     items: [
-      "Food-grade stainless steel probe – standard length",
-      "Extended length probe for blast & deep freezers",
-      "High-accuracy probe for mapping & validation",
+      "Food-grade stainless-steel temperature probe (standard length)",
+      "Extended-length probe for deep freezer & blast freezer applications",
+      "High-accuracy probe for mapping, validation & stability studies",
     ],
   },
+
   {
-    group: "Ambient & Process Sensors",
-    usage: "Processing rooms, packing areas, corridors",
-    img: "/images/products/th-sensor.png",     // <--- ADD IMAGE
+    group: "Humidity & Ambient Sensors",
+    usage: "Processing rooms, cleanrooms, corridors & warehouse areas",
+    img: "/images/products/sensor-th.png",
     items: [
-      "Ambient temperature & humidity sensor",
-      "Wall-mount cleanroom T-H sensor",
-      "Compact sensor for panels and MCC rooms",
+      "Combined temperature-humidity (T-H) sensor – wall mount",
+      "Cleanroom-grade RH sensor with ±2% accuracy",
+      "Compact T-H sensor for MCC rooms & control panels",
     ],
   },
+
   {
     group: "Door & Event Sensors",
-    usage: "Door open / close, compressor / defrost status",
-    img: "/images/products/door-contact.png",  // <--- ADD IMAGE
+    usage: "Door open/close monitoring & equipment status logging",
+    img: "/images/products/door-sensor.png",
     items: [
-      "Magnetic door contact sensor",
-      "Dry-contact input for compressor / defrost",
-      "Auxiliary event input for alarms",
+      "Magnetic door contact for cold rooms & freezer doors",
+      "Dry-contact input for compressor / defrost / fan status",
+      "Auxiliary event input for panel alarms & external triggers",
+    ],
+  },
+
+  {
+    group: "Gas Sensors (CO₂ / NH₃)",
+    usage: "Industrial cold rooms, potato storage, ripening chambers",
+    img: "/images/products/gas-sensor.png",
+    items: [
+      "CO₂ sensor for confined storage ventilation monitoring",
+      "NH₃ leak-detection sensor for industrial refrigeration plants",
+      "Integrated alert pathways through BridgePoint gateway",
+    ],
+  },
+
+  {
+    group: "Display & Local Alarms",
+    usage: "On-site indication, audible alerts & QA verification",
+    img: "/images/products/display-hooter.png",
+    items: [
+      "Digital display module for showing live temperature",
+      "High-dB hooter for local deviation alerts",
+      "Mute/reset button module for operator acknowledgement",
     ],
   },
 ];
-
 
 export default function SensorsPage() {
   return (
@@ -45,19 +68,29 @@ export default function SensorsPage() {
               CoolGuard Sensors
             </p>
             <h1 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight">
-              Enterprise-grade temperature &amp; humidity sensing for the cold chain
+              Enterprise-grade sensors &amp; accessories for the cold chain
             </h1>
             <p className="mt-3 text-sm md:text-base text-slate-600 max-w-3xl">
-              CoolGuard sensors are designed for pharma, food, and cold chain
-              applications where audit trails, accuracy, and long-term stability
-              are non-negotiable. Each sensor is engineered to work seamlessly
-              with Kryo loggers, Enviro Wireless Nodes, and Bridge Point gateways.
+              CoolGuard provides a complete family of temperature, humidity, gas,
+              door, and equipment-status sensors engineered for pharma, food,
+              agriculture, and cold storage operations. All sensors are designed
+              to work seamlessly with Kryo loggers, Frigo devices, Enviro Wireless
+              Nodes, and BridgePoint gateways.
             </p>
 
             <div className="mt-6 grid gap-4 md:grid-cols-3">
-              <HeroBadge title="Accuracy" text="Typical ±0.3°C temperature accuracy with traceable calibration options." />
-              <HeroBadge title="Reliability" text="Rugged, food-grade construction for freezers down to −40°C." />
-              <HeroBadge title="Integration" text="Pre-terminated and ready to plug into Kryo / Frigo / Bridge Point." />
+              <HeroBadge
+                title="Accuracy & Stability"
+                text="High-precision sensing with traceable calibration options for audits & compliance."
+              />
+              <HeroBadge
+                title="Industrial Reliability"
+                text="Rugged construction tested for freezer, chiller & harsh-environment use."
+              />
+              <HeroBadge
+                title="Plug-and-Play Integration"
+                text="All sensors are pre-terminated & compatible with Kryo / Frigo / BridgePoint."
+              />
             </div>
           </div>
         </div>
@@ -68,10 +101,10 @@ export default function SensorsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between gap-4 mb-6">
             <h2 className="text-xl md:text-2xl font-semibold text-slate-900">
-              Sensor families for every cold-chain application
+              Complete sensor ecosystem for every cold-chain application
             </h2>
             <p className="text-[11px] text-slate-500">
-              Detailed part numbers &amp; options are available in the sensor catalogue.
+              Full part numbers &amp; options available in the sensor catalogue.
             </p>
           </div>
 
@@ -81,12 +114,11 @@ export default function SensorsPage() {
                 key={group.group}
                 className="rounded-3xl bg-white border border-[#cfe0ff] shadow-sm p-5 flex flex-col"
               >
-                  {/* ADD IMAGE HERE */}
-    <img
-      src={group.img}
-      alt={group.group}
-      className="w-24 h-24 object-contain mx-auto mb-4"
-    />
+                <img
+                  src={group.img}
+                  alt={group.group}
+                  className="w-24 h-24 object-contain mx-auto mb-4"
+                />
                 <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#0055cc] mb-1">
                   {group.group}
                 </p>
@@ -101,10 +133,23 @@ export default function SensorsPage() {
                       <span>{item}</span>
                     </li>
                   ))}
+
+                  {/* Extra NTC / RTD detail specifically for Temperature Probes */}
+                  {group.group === "Temperature Probes" && (
+                    <li className="flex gap-2 mt-2">
+                      <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-[#0055cc]" />
+                      <span className="text-[12px] text-slate-700">
+                        Available in NTC (10k / 50k) and RTD (PT100 / PT1000)
+                        variants, selected based on accuracy, range and
+                        qualification requirements.
+                      </span>
+                    </li>
+                  )}
                 </ul>
 
                 <div className="mt-4 pt-3 border-t border-dashed border-slate-200 text-[11px] text-slate-500">
-                  Works with: Kryo-100 Series, Frigo-100 Series, Enviro Wireless Nodes.
+                  Works with: Kryo-100 Series · Frigo-100 Series · Enviro Wireless
+                  Nodes · BridgePoint CloudConnect
                 </div>
               </article>
             ))}
@@ -112,11 +157,67 @@ export default function SensorsPage() {
         </div>
       </section>
 
-      {/* SIMPLE ARCHITECTURE DIAGRAM */}
+      {/* TEMPERATURE SENSOR TECHNOLOGY – NTC vs RTD */}
+      <section className="mt-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-sm md:text-base font-semibold text-slate-900 mb-3">
+            Temperature sensor technology – NTC &amp; RTD options
+          </h2>
+          <p className="text-xs md:text-sm text-slate-600 max-w-3xl mb-4">
+            CoolGuard supports both NTC thermistors and RTD elements to match
+            different accuracy and compliance needs. Engineering and QA teams can
+            choose the appropriate sensing element at the project design stage.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4 text-xs md:text-sm">
+            <div className="rounded-2xl border border-[#d4e2ff] bg-white p-4">
+              <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#0055cc] mb-1">
+                NTC Thermistor Probes
+              </p>
+              <ul className="space-y-1.5 text-slate-700">
+                <li>Available in 10kΩ / 50kΩ variants.</li>
+                <li>
+                  Ideal for refrigeration applications – cold rooms, freezers,
+                  blast rooms &amp; food storage.
+                </li>
+                <li>Fast response and cost-effective for large deployments.</li>
+                <li>Recommended where typical accuracy bands are sufficient.</li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-[#d4e2ff] bg-white p-4">
+              <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#0055cc] mb-1">
+                RTD Probes (PT100 / PT1000)
+              </p>
+              <ul className="space-y-1.5 text-slate-700">
+                <li>PT100 / PT1000 elements for high stability and linearity.</li>
+                <li>
+                  Preferred for pharma, cleanrooms, stability chambers and
+                  critical QA applications.
+                </li>
+                <li>
+                  Better long-term drift characteristics and calibration behaviour.
+                </li>
+                <li>
+                  Suitable where validation protocols demand higher accuracy and
+                  traceability.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p className="mt-3 text-[11px] text-slate-500">
+            Final sensor selection (NTC vs RTD) is done per project based on
+            application, qualification requirements, and the connected logger /
+            controller model.
+          </p>
+        </div>
+      </section>
+
       <SensorsArchitectureStrip />
 
       {/* CTA */}
-      <section className="mt-12">
+      {/* <section className="mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl bg-[#0f172a] text-white px-6 py-7 md:px-10 md:py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
@@ -124,12 +225,12 @@ export default function SensorsPage() {
                 Engineering &amp; QA teams
               </p>
               <h2 className="text-xl md:text-2xl font-semibold">
-                Need a sensor selection guide for your site?
+                Need help selecting sensors for your facility?
               </h2>
               <p className="mt-1.5 text-sm text-slate-200 max-w-xl">
-                Share your cold rooms, freezers, and ambient areas, and we’ll
-                propose a complete sensor + node + gateway architecture for your
-                facility.
+                Share your cold rooms, freezer rooms, process areas &amp;
+                equipment layout — we’ll prepare a complete sensor + wiring +
+                gateway design aligned with compliance requirements.
               </p>
             </div>
             <a
@@ -140,7 +241,7 @@ export default function SensorsPage() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
@@ -158,23 +259,29 @@ function SensorsArchitectureStrip() {
   const blocks = [
     {
       title: "Field Sensors",
-      items: ["Temperature probes", "T-H sensors", "Door contacts"],
-      caption: "Installed at the exact product or room location.",
+      items: [
+        "Temperature probes (NTC / RTD)",
+        "Humidity sensors",
+        "Door sensors",
+        "Gas sensors (CO₂ / NH₃)",
+        "Local hooter & display modules",
+      ],
+      caption: "Installed at the precise room, product or equipment location.",
     },
     {
       title: "Nodes & Loggers",
-      items: ["Kryo / Frigo loggers", "Enviro Wireless Nodes"],
-      caption: "Aggregate and validate sensor inputs.",
+      items: ["Kryo loggers", "Frigo loggers", "Enviro Wireless Nodes"],
+      caption: "Collect, validate & buffer sensor readings.",
     },
     {
       title: "Gateways",
-      items: ["Bridge Point Cloud Connect"],
-      caption: "Secure uplink to CoolGuard Cloud.",
+      items: ["BridgePoint CloudConnect"],
+      caption: "Edge connectivity for secure cloud uplink.",
     },
     {
       title: "CoolGuard Cloud",
-      items: ["Dashboards", "Alarms", "Reports"],
-      caption: "Enterprise-level monitoring and compliance.",
+      items: ["Dashboards", "Alerts & HoD notifications", "Audit-grade reports"],
+      caption: "Centralized compliance & monitoring platform.",
     },
   ];
 

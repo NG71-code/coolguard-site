@@ -163,7 +163,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="mt-12">
+      {/* <section className="mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl bg-gradient-to-r from-[#003b8f] to-[#0055cc] px-6 py-7 md:px-10 md:py-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
@@ -184,7 +184,7 @@ export default function ServicesPage() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
