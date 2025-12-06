@@ -10,20 +10,20 @@ const SectionLabel = ({ children }) => (
 
 export default function NodesGateways() {
   return (
-    <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
+    <main className="w-full bg-[#F4F7FB] min-h-screen pb-10">
       {/* HERO */}
       <section className="border-b bg-gradient-to-b from-[#E6F0FF] to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
-          <div className="rounded-3xl bg-white border border-[#cfe0ff] shadow-sm p-8 md:p-10 flex flex-col lg:flex-row gap-10 items-start">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-9 md:py-10">
+          <div className="rounded-3xl bg-white border border-[#cfe0ff] shadow-sm p-6 md:p-8 flex flex-col lg:flex-row gap-8 items-start">
             {/* Text */}
             <div className="flex-1">
               <SectionLabel>Nodes &amp; Gateways</SectionLabel>
 
-              <h1 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight mt-2 mb-4">
+              <h1 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight mt-2 mb-3">
                 Smart Wireless Gateways &amp; Sensor Nodes for CoolGuard
               </h1>
 
-              <p className="text-sm md:text-base text-slate-700 leading-relaxed mb-6 max-w-xl">
+              <p className="text-sm md:text-base text-slate-700 leading-relaxed mb-5 max-w-xl">
                 Nexus wireless gateways and Enviro sensor nodes create the
                 wireless capture layer of the CoolGuard platform. From cold
                 rooms and deep freezers to production areas and warehouses,
@@ -32,7 +32,7 @@ export default function NodesGateways() {
               </p>
 
               {/* Hero badges */}
-              <div className="flex flex-wrap gap-2.5 mb-6">
+              <div className="flex flex-wrap gap-2.5 mb-5">
                 <span className="inline-flex items-center rounded-full bg-[#E6F0FF] px-3 py-1 text-[11px] font-medium text-[#003b8f]">
                   LoRa / Sub-GHz wireless
                 </span>
@@ -71,7 +71,7 @@ export default function NodesGateways() {
                   className="w-full h-full object-contain p-6"
                 />
               </div>
-              <p className="mt-3 text-xs text-slate-500 text-center">
+              <p className="mt-2.5 text-xs text-slate-500 text-center">
                 *Representative image. Replace with final render of Nexus
                 gateways and Enviro wireless nodes.
               </p>
@@ -81,25 +81,25 @@ export default function NodesGateways() {
       </section>
 
       {/* GATEWAYS SECTION */}
-      <section id="gateways" className="mt-10">
+      <section id="gateways" className="mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4 mb-5">
+          <div className="flex items-center justify-between gap-4 mb-4">
             <div>
               <SectionLabel>Gateways</SectionLabel>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mt-1.5">
                 Nexus Wireless Gateways
               </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+              <p className="text-sm text-slate-600 mt-1.5 max-w-2xl">
                 Smart wireless gateways that aggregate data from Enviro nodes
                 and push it securely to CoolGuard Cloud over 4G or Ethernet.
               </p>
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-2">
             {/* Nexus Lite Gateway */}
             <article className="rounded-2xl bg-white border border-[#d7e3ff] shadow-sm p-5 flex flex-col">
-              <div className="flex items-start justify-between gap-3 mb-3">
+              <div className="flex items-start justify-between gap-3 mb-2.5">
                 <h3 className="text-base md:text-lg font-semibold text-slate-900">
                   Nexus Lite Gateway
                 </h3>
@@ -108,13 +108,13 @@ export default function NodesGateways() {
                 </span>
               </div>
 
-              <p className="text-sm text-slate-600 mb-4">
+              <p className="text-sm text-slate-600 mb-3.5">
                 Compact, cost-effective gateway for small and medium sites.
                 Collects data from Enviro wireless nodes and forwards it to
                 CoolGuard over 4G or Ethernet.
               </p>
 
-              <dl className="space-y-1.5 text-sm text-slate-700 mb-4">
+              <dl className="space-y-1.5 text-sm text-slate-700 mb-3.5">
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-slate-500">Typical Use</dt>
                   <dd className="font-medium text-right">
@@ -145,7 +145,7 @@ export default function NodesGateways() {
 
             {/* Nexus Pro Gateway */}
             <article className="rounded-2xl bg-white border border-[#d7e3ff] shadow-sm p-5 flex flex-col">
-              <div className="flex items-start justify-between gap-3 mb-3">
+              <div className="flex items-start justify-between gap-3 mb-2.5">
                 <h3 className="text-base md:text-lg font-semibold text-slate-900">
                   Nexus Pro Gateway
                 </h3>
@@ -154,12 +154,12 @@ export default function NodesGateways() {
                 </span>
               </div>
 
-              <p className="text-sm text-slate-600 mb-4">
+              <p className="text-sm text-slate-600 mb-3.5">
                 High-performance multi-mode gateway for larger facilities needing
                 more nodes, redundancy and flexible connectivity options.
               </p>
 
-              <dl className="space-y-1.5 text-sm text-slate-700 mb-4">
+              <dl className="space-y-1.5 text-sm text-slate-700 mb-3.5">
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-slate-500">Typical Use</dt>
                   <dd className="font-medium text-right">
@@ -194,15 +194,15 @@ export default function NodesGateways() {
       </section>
 
       {/* NODES SECTION */}
-      <section id="nodes" className="mt-12">
+      <section id="nodes" className="mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4 mb-5">
+          <div className="flex items-center justify-between gap-4 mb-4">
             <div>
               <SectionLabel>Sensor Nodes</SectionLabel>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mt-1.5">
                 Enviro Wireless Nodes
               </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+              <p className="text-sm text-slate-600 mt-1.5 max-w-2xl">
                 Battery-powered or externally powered wireless sensor nodes for
                 temperature and humidity monitoring inside cold rooms, freezers
                 and critical storage areas.
@@ -210,10 +210,10 @@ export default function NodesGateways() {
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-2">
             {/* Enviro Wireless Node - Temp */}
             <article className="rounded-2xl bg-white border border-[#d7e3ff] shadow-sm p-5 flex flex-col">
-              <div className="flex items-start justify-between gap-3 mb-3">
+              <div className="flex items-start justify-between gap-3 mb-2.5">
                 <h3 className="text-base md:text-lg font-semibold text-slate-900">
                   Enviro Wireless Node – Temp
                 </h3>
@@ -222,13 +222,13 @@ export default function NodesGateways() {
                 </span>
               </div>
 
-              <p className="text-sm text-slate-600 mb-4">
+              <p className="text-sm text-slate-600 mb-3.5">
                 Wireless temperature node for cold rooms, freezers and chillers.
                 Designed for reliable sensing even in low-temperature and
                 high-moisture environments.
               </p>
 
-              <dl className="space-y-1.5 text-sm text-slate-700 mb-4">
+              <dl className="space-y-1.5 text-sm text-slate-700 mb-3.5">
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-slate-500">Measurement</dt>
                   <dd className="font-medium text-right">Temperature only</dd>
@@ -257,7 +257,7 @@ export default function NodesGateways() {
 
             {/* Enviro Wireless Node - Temp & RH */}
             <article className="rounded-2xl bg-white border border-[#d7e3ff] shadow-sm p-5 flex flex-col">
-              <div className="flex items-start justify-between gap-3 mb-3">
+              <div className="flex items-start justify-between gap-3 mb-2.5">
                 <h3 className="text-base md:text-lg font-semibold text-slate-900">
                   Enviro Wireless Node – Temp &amp; RH
                 </h3>
@@ -266,13 +266,13 @@ export default function NodesGateways() {
                 </span>
               </div>
 
-              <p className="text-sm text-slate-600 mb-4">
+              <p className="text-sm text-slate-600 mb-3.5">
                 Wireless sensor node for applications where both product
                 temperature and ambient humidity are critical for quality and
                 compliance.
               </p>
 
-              <dl className="space-y-1.5 text-sm text-slate-700 mb-4">
+              <dl className="space-y-1.5 text-sm text-slate-700 mb-3.5">
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-slate-500">Measurement</dt>
                   <dd className="font-medium text-right">Temperature + RH</dd>
@@ -304,17 +304,17 @@ export default function NodesGateways() {
         </div>
       </section>
 
-      {/* 🔹 NEW: ARCHITECTURE DIAGRAM (Version 3) */}
+      {/* ARCHITECTURE DIAGRAM (Version 3) */}
       <NodesArchitectureSection />
 
       {/* DATASHEETS / DOWNLOADS */}
-      <section id="downloads" className="mt-12">
+      <section id="downloads" className="mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionLabel>Downloads</SectionLabel>
-          <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mt-1.5 mb-2">
+          <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mt-1.5 mb-1.5">
             Datasheets &amp; Documentation
           </h2>
-          <p className="text-sm text-slate-600 mb-6 max-w-2xl">
+          <p className="text-sm text-slate-600 mb-5 max-w-2xl">
             Download detailed technical datasheets for Nexus gateways and Enviro
             wireless nodes to share with your engineering, QA and validation
             teams.
@@ -396,36 +396,96 @@ export default function NodesGateways() {
         </div>
       </section>
 
-      {/* ARCHITECTURE / CTA (you can keep or later simplify since diagram now exists) */}
-      <section className="mt-12 border-t border-[#dde7ff] bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid gap-8 md:grid-cols-2 items-start">
-            {/* Enhanced architecture explanation */}
+      {/* ARCHITECTURE / CTA */}
+      <section className="mt-8 border-t border-[#dde7ff] bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid gap-6 md:grid-cols-2 items-start">
+            {/* Architecture explanation */}
             <div>
               <SectionLabel>Architecture</SectionLabel>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 mt-1.5 mb-3">
                 End-to-end Wireless Architecture with CoolGuard
               </h2>
-              <p className="text-sm text-slate-600 mb-5 max-w-xl">
+              <p className="text-sm text-slate-600 mb-4 max-w-xl">
                 Nodes, gateways and the CoolGuard Cloud work together as a
                 single system: nodes capture sensor data, Nexus gateways
                 aggregate and secure it, and the platform delivers alarms,
                 dashboards and reports.
               </p>
 
-              <div className="space-y-3 text-sm text-slate-700">
-                {/* Steps 1–4 ... (unchanged) */}
-                {/* ... */}
+              <div className="space-y-2.5 text-sm text-slate-700">
+                <div className="flex gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055CC]" />
+                  <p>
+                    <span className="font-semibold">1. Enviro nodes in field</span>{" "}
+                    &mdash; Nodes measure temperature / humidity inside chambers,
+                    freezers and storage areas.
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055CC]" />
+                  <p>
+                    <span className="font-semibold">2. LoRa / Sub-GHz link</span>{" "}
+                    &mdash; Data is transmitted over low-power wireless to the
+                    nearest Nexus gateway.
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055CC]" />
+                  <p>
+                    <span className="font-semibold">
+                      3. Nexus gateway aggregation
+                    </span>{" "}
+                    &mdash; Gateways validate, buffer and encrypt readings before
+                    sending them upstream.
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055CC]" />
+                  <p>
+                    <span className="font-semibold">4. Backhaul to cloud</span>{" "}
+                    &mdash; Gateways push data to CoolGuard over 4G, Ethernet or
+                    Wi-Fi, respecting project connectivity choices.
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[#0055CC]" />
+                  <p>
+                    <span className="font-semibold">5. Dashboards &amp; alerts</span>{" "}
+                    &mdash; CoolGuard turns raw readings into alarms, reports and
+                    analytics for operations, QA and compliance teams.
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Layout card */}
-            {/* ... existing layout card content unchanged ... */}
-            {/* I’ve omitted here to keep the answer shorter, but you can keep exactly what you had */}
+            <div className="rounded-3xl border border-[#d7e3ff] bg-[#F5F7FF] p-5 shadow-sm">
+              <h3 className="text-sm md:text-base font-semibold text-slate-900 mb-2.5">
+                Example layout: 2 gateways, 18 nodes
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 mb-3">
+                A typical mid-size site may use a mix of gateways and nodes to
+                cover multiple chambers and staging areas.
+              </p>
+
+              <ul className="text-xs md:text-sm text-slate-700 space-y-1.5 mb-4">
+                <li>• Nexus Pro gateway near main cold room panel</li>
+                <li>• Nexus Lite gateway covering far-end freezer bank</li>
+                <li>• 10 Enviro Temp nodes inside cold rooms &amp; blast freezers</li>
+                <li>• 8 Enviro Temp &amp; RH nodes in staging and packing areas</li>
+              </ul>
+
+              <p className="text-[11px] text-slate-500">
+                Exact counts, ranges and mounting points will be finalized after
+                a wireless survey and site walk-through. Use this only as a
+                sizing reference.
+              </p>
+            </div>
           </div>
 
           {/* CTA */}
-          <div className="mt-10 rounded-3xl bg-gradient-to-r from-[#003b8f] to-[#0055cc] px-6 py-6 md:px-10 md:py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="mt-7 rounded-3xl bg-gradient-to-r from-[#003b8f] to-[#0055cc] px-6 py-5 md:px-8 md:py-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
               <h3 className="text-lg md:text-xl font-semibold text-white mb-1">
                 Need help sizing your Nodes &amp; Gateways?

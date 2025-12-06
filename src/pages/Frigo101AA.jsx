@@ -7,11 +7,32 @@ import {
   PlayCircle,
   Download,
   Cpu,
+  Snowflake,
+  Milk,
+  ThermometerSnowflake,
 } from "lucide-react";
 
 export default function Frigo101AA() {
+  const deployments = [
+    {
+      title: "Vaccine & Pharma Freezers",
+      desc: "Deep freezers and vaccine fridges that must stay within tight limits.",
+      icon: Snowflake,
+    },
+    {
+      title: "Food & Dairy Freezers",
+      desc: "Walk-in freezers, chest freezers and display freezers in retail and hubs.",
+      icon: Milk,
+    },
+    {
+      title: "QA & QA-monitored Coolers",
+      desc: "Any temperature-sensitive cooler that needs traceable records.",
+      icon: ThermometerSnowflake,
+    },
+  ];
+
   return (
-    <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
+    <main className="w-full bg-[#F4F7FB] min-h-screen pb-8">
       {/* HERO SECTION – FREEZER / COOLER FOCUSED */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#e6f2ff] via-white to-[#f3f7ff] border-b">
         {/* Soft glows */}
@@ -144,7 +165,7 @@ export default function Frigo101AA() {
                     <div className="relative z-10 flex items-center justify-center py-5">
                       <img
                         src="/images/products/aa.png"
-                        alt="."
+                        alt="Frigo-101-AA device"
                         className="max-h-[200px] w-auto drop-shadow-[0_18px_38px_rgba(15,23,42,0.55)]"
                       />
                     </div>
@@ -163,7 +184,7 @@ export default function Frigo101AA() {
       </section>
 
       {/* WHERE IT FITS */}
-      <section className="bg-white border-b border-[#e4ecff] py-12 md:py-14">
+      <section className="bg-white border-b border-[#e4ecff] py-8 md:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-[11px] font-semibold tracking-[0.26em] uppercase text-sky-500 mb-2">
             Typical Deployments
@@ -173,28 +194,23 @@ export default function Frigo101AA() {
           </h2>
 
           <div className="grid gap-5 md:grid-cols-3">
-            {[
-              {
-                title: "Vaccine & Pharma Freezers",
-                desc: "Deep freezers and vaccine fridges that must stay within tight limits.",
-              },
-              {
-                title: "Food & Dairy Freezers",
-                desc: "Walk-in freezers, chest freezers and display freezers in retail and hubs.",
-              },
-              {
-                title: "QA & QA-monitored Coolers",
-                desc: "Any temperature-sensitive cooler that needs traceable records.",
-              },
-            ].map(({ title, desc }) => (
+            {deployments.map(({ title, desc, icon: Icon }) => (
               <article
                 key={title}
-                className="rounded-2xl border border-[#dde8ff] bg-gradient-to-b from-[#f9fbff] to-white p-5 shadow-sm"
+                className="rounded-2xl border border-[#dde8ff] bg-gradient-to-b from-[#f9fbff] to-white p-5 shadow-sm flex items-start gap-3"
               >
-                <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
-                  {title}
-                </h3>
-                <p className="text-xs text-slate-600">{desc}</p>
+                {/* ICON BUBBLE */}
+                <div className="h-9 w-9 flex items-center justify-center rounded-xl bg-white border border-[#dbe7ff] shadow-sm">
+                  <Icon size={18} className="text-sky-500" />
+                </div>
+
+                {/* TEXT BLOCK */}
+                <div>
+                  <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
+                    {title}
+                  </h3>
+                  <p className="text-xs text-slate-600">{desc}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -202,9 +218,9 @@ export default function Frigo101AA() {
       </section>
 
       {/* KEY CAPABILITIES */}
-      <section className="bg-[#f7f9ff] border-b border-[#dde8ff] py-14">
+      <section className="bg-[#f7f9ff] border-b border-[#dde8ff] py-9">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-7">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
             <div>
               <p className="text-[11px] font-semibold tracking-[0.26em] uppercase text-sky-500 mb-2">
                 Key Capabilities
@@ -245,27 +261,22 @@ export default function Frigo101AA() {
                   "Excursion summary for investigations",
                 ],
               },
-            ].map(({ title, desc, bullets }) => (
+            ].map(({ title, desc }) => (
               <article
                 key={title}
-                className="group relative overflow-hidden rounded-3xl bg-gradient-to-b 
-                           from-white to-[#f3f7ff] border border-[#d7e3ff] shadow-sm 
-                           hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+                className="rounded-2xl border border-[#dde8ff] bg-gradient-to-b from-[#f9fbff] to-white p-5 shadow-sm flex items-start gap-3"
               >
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-sky-400 to-sky-300 opacity-70" />
-                <div className="p-5 pt-6 flex flex-col h-full">
-                  <h3 className="text-sm font-semibold text-slate-900 mb-2">
+                {/* ICON BUBBLE */}
+                <div className="h-9 w-9 flex items-center justify-center rounded-xl bg-white border border-[#dbe7ff] shadow-sm">
+                  <span className="text-sky-500 text-lg">❄️</span>
+                </div>
+
+                {/* TEXT BLOCK */}
+                <div>
+                  <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
                     {title}
                   </h3>
-                  <p className="text-xs text-slate-600 mb-3">{desc}</p>
-                  <ul className="text-[11px] text-slate-700 space-y-1 mt-auto">
-                    {bullets.map((b) => (
-                      <li key={b} className="flex gap-1.5">
-                        <span className="mt-[5px] h-1 w-1 rounded-full bg-sky-500" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-xs text-slate-600">{desc}</p>
                 </div>
               </article>
             ))}
@@ -274,7 +285,7 @@ export default function Frigo101AA() {
       </section>
 
       {/* TECHNICAL SPECIFICATIONS */}
-      <section className="bg-white border-b border-[#e4ecff] py-14">
+      <section className="bg-white border-b border-[#e4ecff] py-9">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-[11px] font-semibold tracking-[0.26em] uppercase text-sky-500 mb-2">
             Technical Specifications
@@ -326,7 +337,7 @@ export default function Frigo101AA() {
       </section>
 
       {/* DEPLOYMENT & CONNECTIVITY */}
-      <section className="bg-[#f3f7ff] py-14">
+      <section className="bg-[#f3f7ff] pt-7 pb-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-[1.2fr_0.9fr] items-start">
             <div>
@@ -387,36 +398,6 @@ export default function Frigo101AA() {
           </div>
         </div>
       </section>
-
-      {/* FOOTER CTA */}
-      {/* <section className="mt-0 bg-white border-t border-[#e4ecff] py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            <p className="text-sm font-semibold text-slate-900">
-              Want to standardize all your freezers on Frigo-101-AA?
-            </p>
-            <p className="text-xs text-slate-600">
-              Talk to us about roll-out plans, calibration and cloud
-              configuration for your sites.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-white hover:bg-sky-400 transition-colors"
-            >
-              <PlayCircle size={16} />
-              Talk to Sales
-            </a>
-            <a
-              href="/cloud-platform"
-              className="inline-flex items-center gap-2 rounded-full border border-[#cfe0ff] bg-white px-5 py-2 text-sm font-medium text-[#003b8f] hover:bg-[#f3f6ff] transition-colors"
-            >
-              View Cloud Platform
-            </a>
-          </div>
-        </div>
-      </section> */}
     </main>
   );
 }
@@ -424,10 +405,16 @@ export default function Frigo101AA() {
 /* helper for spec table */
 function SpecRow({ label, value }) {
   return (
-    <div className="flex gap-3">
-      <span className="w-32 text-[11px] font-semibold text-slate-500">
+    <div className="flex items-start gap-3">
+      {/* label, right-aligned */}
+      <span className="w-32 text-[11px] font-semibold text-slate-500 text-right">
         {label}
       </span>
+
+      {/* thin vertical divider */}
+      <span className="h-4 w-px bg-[#d0dcff] mt-[2px]" />
+
+      {/* value */}
       <span className="flex-1 text-[11px] text-slate-700">{value}</span>
     </div>
   );

@@ -14,27 +14,27 @@ import {
 
 export default function Frigo101BB() {
   return (
-    <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
+    <main className="w-full bg-[#F4F7FB] min-h-screen pb-10">
       {/* HERO */}
       <section className="relative overflow-hidden border-b bg-gradient-to-br from-[#e6f2ff] via-white to-[#f3f7ff]">
         {/* soft glow blobs */}
         <div className="pointer-events-none absolute -right-40 -top-40 h-80 w-80 rounded-full bg-sky-300/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-18">
-          <div className="grid lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-10 items-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+          <div className="grid lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-8 items-center">
             {/* Left: text */}
             <div>
-              <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#0055cc] mb-4">
+              <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#0055cc] mb-3">
                 Frigo-100 Series · Universal Cloud Loggers
               </p>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-3">
                 Frigo-101-BB
-                <span className="block text-xl md:text-2xl font-normal text-slate-700 mt-2">
+                <span className="block text-xl md:text-2xl font-normal text-slate-700 mt-1.5">
                   Location-Aware Cloud Logger for Display &amp; Visi Coolers
                 </span>
               </h1>
-              <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-xl mb-6">
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-xl mb-5">
                 Frigo-101-BB is a location-first IoT device for cooler fleets.
                 It tells you exactly where your branded coolers are deployed,
                 alerts you when units move from their assigned outlet, and
@@ -44,7 +44,7 @@ export default function Frigo101BB() {
               </p>
 
               {/* Key badges */}
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-2 mb-6">
                 <span className="inline-flex items-center gap-1 rounded-full bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700 border border-sky-100">
                   <MapPin className="w-3.5 h-3.5" />
                   Cooler Location Tracking
@@ -64,7 +64,7 @@ export default function Frigo101BB() {
               </div>
 
               {/* Bullets */}
-              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+              <div className="grid sm:grid-cols-2 gap-4 mb-6">
                 <div className="flex gap-3">
                   <div className="mt-1">
                     <ShieldCheck className="w-5 h-5 text-emerald-600" />
@@ -117,8 +117,8 @@ export default function Frigo101BB() {
             {/* Right: device image */}
             <div className="relative">
               <div className="absolute -inset-6 rounded-[32px] bg-gradient-to-br from-sky-100 via-white to-indigo-50 blur-xl opacity-80" />
-              <div className="relative rounded-[28px] bg-white border border-slate-200 shadow-xl shadow-sky-100 px-8 py-10 flex flex-col items-center">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 border border-sky-100">
+              <div className="relative rounded-[28px] bg-white border border-slate-200 shadow-xl shadow-sky-100 px-7 py-8 flex flex-col items-center">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 border border-sky-100">
                   <span className="h-2 w-2 rounded-full bg-emerald-500" />
                   <span className="text-[11px] font-medium text-sky-800">
                     Online · Location &amp; status synced to CoolGuard Cloud
@@ -127,7 +127,7 @@ export default function Frigo101BB() {
                 <img
                   src="/images/products/frigo101bbbg.png"
                   alt="Frigo-101-BB Location Cloud Logger"
-                  className="w-420px h-420px object-contain mb-4"
+                  className="w-420px h-420px object-contain mb-3"
                 />
                 <p className="text-xs text-slate-500 text-center max-w-xs">
                   Representative render. Replace with final Frigo-101-BB product
@@ -145,16 +145,16 @@ export default function Frigo101BB() {
 
       {/* KEY USE CASES / FEATURES */}
       <section className="border-b bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
             <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-1.5">
                 Frigo-101-BB · Key capabilities
               </p>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
                 Built for cooler fleet visibility &amp; asset protection
               </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+              <p className="text-sm text-slate-600 mt-1.5 max-w-2xl">
                 Replace manual cooler census exercises and third-party surveys
                 with a live, system-driven view of where every asset is placed,
                 who is using it, and when it moves.
@@ -162,7 +162,7 @@ export default function Frigo101BB() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-4">
             <FeatureCard
               icon={MapPin}
               title="Outlet-level asset mapping"
@@ -205,16 +205,16 @@ export default function Frigo101BB() {
 
       {/* TECH SPECS */}
       <section className="border-b bg-[#f6f8fc]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
             <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-1.5">
                 Technical specification
               </p>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
                 Frigo-101-BB – at a glance
               </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+              <p className="text-sm text-slate-600 mt-1.5 max-w-2xl">
                 Use this section as the reference for proposals, datasheets and
                 qualification documents. Update individual values as the final
                 hardware spec is frozen.
@@ -222,9 +222,9 @@ export default function Frigo101BB() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 text-sm">
+          <div className="grid md:grid-cols-3 gap-5 text-sm">
             {/* Column 1 */}
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               <SpecItem label="Model" value="Frigo-101-BB – Cooler Location Cloud Logger" />
               <SpecItem
                 label="Primary function"
@@ -245,7 +245,7 @@ export default function Frigo101BB() {
             </div>
 
             {/* Column 2 */}
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               <SpecItem
                 label="Connectivity"
                 value="Cellular (GSM/4G); other options as per project"
@@ -269,7 +269,7 @@ export default function Frigo101BB() {
             </div>
 
             {/* Column 3 */}
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               <SpecItem
                 label="Enclosure"
                 value="Compact wall-mount / cooler-mount enclosure for indoor use"
@@ -293,7 +293,7 @@ export default function Frigo101BB() {
             </div>
           </div>
 
-          <p className="text-[11px] text-slate-500 mt-4">
+          <p className="text-[11px] text-slate-500 mt-3">
             *Exact sensing, connectivity and power options will be finalized in
             the approved project specification and BOM.
           </p>
@@ -302,16 +302,16 @@ export default function Frigo101BB() {
 
       {/* DOWNLOADS & DOCUMENTS */}
       <section className="border-b bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-5">
             <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-1.5">
                 Documentation &amp; downloads
               </p>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
                 Everything your sales, SCM &amp; QA teams need
               </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+              <p className="text-sm text-slate-600 mt-1.5 max-w-2xl">
                 Link these tiles to your final PDFs so commercial, logistics and
                 quality teams have a single reference set for cooler fleet
                 digitization.
@@ -338,9 +338,6 @@ export default function Frigo101BB() {
           </div>
         </div>
       </section>
-
-      {/* FINAL CTA (kept commented out for now) */}
-      {/* ...existing commented CTA block remains unchanged... */}
     </main>
   );
 }
@@ -350,7 +347,7 @@ export default function Frigo101BB() {
 function FeatureCard({ icon: Icon, title, description, pill }) {
   return (
     <div className="h-full rounded-2xl border border-slate-200 bg-white px-4 py-4 sm:px-5 sm:py-5 shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-2.5">
         <div className="w-9 h-9 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center">
           <Icon className="w-4.5 h-4.5 text-[#0055cc]" />
         </div>

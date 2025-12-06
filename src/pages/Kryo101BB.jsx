@@ -11,14 +11,14 @@ import {
 
 export default function Kryo101CC() {
   return (
-    <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
+    <main className="w-full bg-[#F4F7FB] min-h-screen pb-4">
       {/* HERO – CloudPlatform-style */}
       <section className="relative overflow-hidden border-b bg-gradient-to-br from-[#e6f2ff] via-white to-[#f3f7ff]">
         {/* soft highlight in the corner */}
         <div className="pointer-events-none absolute -right-40 -top-40 h-80 w-80 rounded-full bg-sky-300/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-18">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
           <div className="grid gap-10 lg:grid-cols-[1.15fr_0.95fr] items-center">
             {/* LEFT – TEXT BLOCK */}
             <div>
@@ -102,7 +102,7 @@ export default function Kryo101CC() {
                   Request a Demo
                 </a>
                 <a
-                  href="/datasheets/kryo-101-cc.pdf" // update to your actual file path
+                  href="/docs/Kryo-101-CC-datasheet.pdf" // update to your actual file path
                   className="inline-flex items-center gap-2 rounded-full border border-[#cfe0ff] bg-white px-5 py-2.5 text-sm font-medium text-[#003b8f] hover:bg-[#f3f6ff] transition-colors"
                 >
                   <Download size={18} />
@@ -158,7 +158,7 @@ export default function Kryo101CC() {
       </section>
 
       {/* KEY CAPABILITIES / DEPLOYMENT / CONNECTIVITY */}
-      <section className="bg-white py-12 border-b border-[#e4ecff]">
+      <section className="bg-white py-8 border-b border-[#e4ecff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
             Kryo-101-CC · Key capabilities &amp; deployment
@@ -228,123 +228,169 @@ export default function Kryo101CC() {
       </section>
 
       {/* KEY USE-CASES / VALUE SECTION */}
-      <section className="bg-white py-12 border-b border-[#e4ecff]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-lg md:text-xl font-semibold text-slate-900 mb-2">
-            Where Kryo-101-CC fits in your cold chain
-          </h2>
-          <p className="text-sm text-slate-600 mb-6 max-w-3xl">
-            Designed for sites where multiple walk-in chillers, freezers or
-            potato cold rooms are located together. Combine several small
-            chambers into one multi-point installation and manage them as a
-            single cluster on the CoolGuard platform.
-          </p>
+      <section className="bg-white py-10 border-b border-[#e4ecff]">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="grid gap-5 md:grid-cols-3">
-            {[
-              {
-                title: "Potato & Agri Cold Stores",
-                desc: "Monitor temperature, humidity and gas levels across multiple potato chambers from one central logging point.",
-              },
-              {
-                title: "Clustered Pharma & Food Cold Rooms",
-                desc: "Ideal for multi-room pharma or food facilities where several positive and negative chambers share the same corridor.",
-              },
-              {
-                title: "Multi-Chamber Qualification & Routine Use",
-                desc: "Use one 8-channel system for multi-chamber qualification and continue as the permanent monitoring system for the cluster.",
-              },
-            ].map(({ title, desc }) => (
-              <article
-                key={title}
-                className="rounded-2xl border border-[#dfe8ff] bg-[#f7f9ff] p-5 shadow-sm"
-              >
-                <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
-                  {title}
-                </h3>
-                <p className="text-xs text-slate-600">{desc}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+    {/* MATCHED HEADING STYLE */}
+    <p className="text-sm font-semibold tracking-[0.26em] uppercase text-[#0055cc] mb-2">
+      Typical Deployments
+    </p>
+
+    <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-4">
+      Where Kryo-101-CC fits in your cold chain
+    </h2>
+
+    <p className="text-sm text-slate-600 mb-8 max-w-3xl leading-relaxed">
+      Designed for sites where multiple walk-in chillers, freezers or potato cold
+      rooms are located together. Combine several small chambers into one
+      multi-point installation and manage them as a single cluster on the
+      CoolGuard platform.
+    </p>
+
+    {/* CARDS */}
+    <div className="grid gap-6 md:grid-cols-3">
+      {[
+        {
+          title: "Potato & Agri Cold Stores",
+          desc: "Monitor temperature, humidity and gas levels across multiple potato chambers from one central logging point.",
+        },
+        {
+          title: "Clustered Pharma & Food Cold Rooms",
+          desc: "Ideal for multi-room pharma or food facilities where several positive and negative chambers share the same corridor.",
+        },
+        {
+          title: "Multi-Chamber Qualification & Routine Use",
+          desc: "Use one 8-channel system for multi-chamber qualification and maintain it as the permanent monitoring system for the cluster.",
+        },
+      ].map(({ title, desc }) => (
+        <article
+          key={title}
+          className="rounded-2xl border border-[#dfe8ff] bg-[#f7f9ff] p-6 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <h3 className="text-base font-semibold text-slate-900 mb-2">
+            {title}
+          </h3>
+          <p className="text-sm text-slate-600 leading-relaxed">{desc}</p>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
 
       {/* TECHNICAL HIGHLIGHTS SUMMARY */}
-      <section className="bg-[#f5f7ff] py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-lg md:text-xl font-semibold text-slate-900 mb-2">
-            Technical highlights (quick view)
-          </h2>
-          <p className="text-sm text-slate-600 mb-6 max-w-3xl">
-            Detailed specifications are available in the datasheet. This quick
-            view helps engineering and validation teams understand how
-            Kryo-101-CC fits into multi-room cold storage layouts.
-          </p>
+    <section className="bg-[#f5f7ff] pt-6 pb-3">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-xs text-slate-700">
-            <div>
-              <p className="font-semibold text-slate-900 mb-1">
-                Channels &amp; Inputs
-              </p>
-              <ul className="space-y-1 list-disc list-inside">
-                <li>
-                  8 sensor inputs supporting temperature, humidity and optional
-                  CO₂ / NH₃ gas sensors
-                </li>
-                <li>
-                  Typical layouts: 4× temperature + 4× humidity, or other
-                  combinations as per site design
-                </li>
-                <li>
-                  Channel-to-room mapping in CoolGuard for clear association with
-                  chambers, racks or zones
-                </li>
-              </ul>
-            </div>
+    {/* MATCHED HEADER STYLE */}
+    <p className="text-sm font-semibold tracking-[0.26em] uppercase text-[#0055cc] mb-2">
+      Technical Highlights
+    </p>
 
-            <div>
-              <p className="font-semibold text-slate-900 mb-1">
-                Connectivity &amp; Cloud
-              </p>
-              <ul className="space-y-1 list-disc list-inside">
-                <li>GSM / GPRS uplink to CoolGuard Cloud platform</li>
-                <li>
-                  Automatic reconnect and background data backfill after link
-                  restoration
-                </li>
-                <li>
-                  Multi-chamber view, alerts and reporting on the CoolGuard
-                  dashboard
-                </li>
-              </ul>
-            </div>
+    <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-4">
+      Quick view of Kryo-101-CC capabilities
+    </h2>
 
-            <div>
-              <p className="font-semibold text-slate-900 mb-1">
-                Power, Local Interfaces &amp; Reliability
-              </p>
-              <ul className="space-y-1 list-disc list-inside">
-                <li>Designed for 24×7 operation in cold-room environments</li>
-                <li>
-                  Local memory for offline logging during power or network events
-                </li>
-                <li>
-                  Provision for local display and hooter/alarm output for on-site
-                  indication*
-                </li>
-              </ul>
-            </div>
-          </div>
+    <p className="text-sm text-slate-600 mb-6 max-w-3xl leading-relaxed">
+      Detailed specifications are available in the datasheet. This quick view helps
+      engineering and validation teams understand how Kryo-101-CC fits into multi-room
+      cold storage layouts.
+    </p>
 
-          <p className="mt-4 text-[11px] text-slate-400">
-            *Final enclosure, display type and alarm wiring to be confirmed as
-            per the approved hardware specification and project design.
-          </p>
-        </div>
-      </section>
+    <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 text-xs text-slate-700">
+
+      {/* COLUMN 1 */}
+      <div>
+        <p className="font-semibold text-slate-900 mb-2">
+          Channels &amp; Inputs
+        </p>
+        <ul className="space-y-2 pl-4">
+          <li className="flex gap-2 leading-relaxed">
+            <span className="text-slate-500">•</span>
+            <span>
+              8 sensor inputs supporting temperature, humidity and optional CO₂ / NH₃ gas sensors
+            </span>
+          </li>
+
+          <li className="flex gap-2 leading-relaxed">
+            <span className="text-slate-500">•</span>
+            <span>
+              Typical layouts: 4× temperature + 4× humidity, or other combinations based on site design
+            </span>
+          </li>
+
+          <li className="flex gap-2 leading-relaxed">
+            <span className="text-slate-500">•</span>
+            <span>
+              Channel-to-room mapping in CoolGuard for clear association with chambers, racks or zones
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      {/* COLUMN 2 */}
+      <div>
+        <p className="font-semibold text-slate-900 mb-2">
+          Connectivity &amp; Cloud
+        </p>
+        <ul className="space-y-2 pl-4">
+          <li className="flex gap-2 leading-relaxed">
+            <span className="text-slate-500">•</span>
+            <span>GSM / GPRS uplink to CoolGuard Cloud platform</span>
+          </li>
+
+          <li className="flex gap-2 leading-relaxed">
+            <span className="text-slate-500">•</span>
+            <span>Automatic reconnect and background data backfill after link restoration</span>
+          </li>
+
+          <li className="flex gap-2 leading-relaxed">
+            <span className="text-slate-500">•</span>
+            <span>
+              Multi-chamber view, alerts and reporting on the CoolGuard dashboard
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      {/* COLUMN 3 */}
+      <div>
+        <p className="font-semibold text-slate-900 mb-2">
+          Power, Local Interfaces &amp; Reliability
+        </p>
+        <ul className="space-y-2 pl-4">
+          <li className="flex gap-2 leading-relaxed">
+            <span className="text-slate-500">•</span>
+            <span>Designed for 24×7 operation in cold-room environments</span>
+          </li>
+
+          <li className="flex gap-2 leading-relaxed">
+            <span className="text-slate-500">•</span>
+            <span>Local memory for offline logging during power or network events</span>
+          </li>
+
+          <li className="flex gap-2 leading-relaxed">
+            <span className="text-slate-500">•</span>
+            <span>
+              Provision for local display and hooter/alarm output for on-site indication*
+            </span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p className="mt-5 text-[11px] text-slate-400 leading-relaxed">
+      *Final enclosure, display type and alarm wiring to be confirmed based on approved
+      hardware specification and project design.
+    </p>
+
+  </div>
+</section>
+
 
       {/* DEPLOYMENT & CONNECTIVITY – COOLGUARD ECOSYSTEM */}
-<section className="bg-white py-12 border-b border-[#e4ecff]">
+<section className="bg-white pt-4 pb-6 border-b border-[#e4ecff]">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
       Deployment & Connectivity

@@ -15,36 +15,36 @@ import {
 
 export default function BridgePointCloudConnect() {
   return (
-    <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
+    <main className="w-full bg-[#F4F7FB] min-h-screen pb-10">
       {/* HERO */}
       <section className="relative overflow-hidden border-b bg-gradient-to-br from-[#e6f2ff] via-white to-[#f3f7ff]">
         {/* soft glow blobs */}
         <div className="pointer-events-none absolute -right-40 -top-40 h-80 w-80 rounded-full bg-sky-300/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-18">
-          <div className="grid lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-10 items-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+          <div className="grid lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-8 items-center">
             {/* Left: text */}
             <div>
-              <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#0055cc] mb-4">
+              <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#0055cc] mb-3">
                 BridgePoint BCC-100 Series
               </p>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-3">
                 BridgePoint CloudConnect
-                <span className="block text-xl md:text-2xl font-normal text-slate-700 mt-2">
+                <span className="block text-xl md:text-2xl font-normal text-slate-700 mt-1.5">
                   RS-485 Gateway for Controllers to CoolGuard Cloud
                 </span>
               </h1>
-              <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-xl mb-6">
-                The BCC-100 Series is a modular IoT gateway that connects
-                cold room controllers over RS-485 / Modbus and streams
-                real-time data to the CoolGuard Cloud for centralized
-                monitoring, reporting, analytics, and alerts – across
-                single sites or multi-facility deployments.
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-xl mb-5">
+                The BCC-100 Series is a modular IoT gateway that connects cold
+                room controllers over RS-485 / Modbus and streams real-time data
+                to the CoolGuard Cloud for centralized monitoring, reporting,
+                analytics, and alerts – across single sites or multi-facility
+                deployments.
               </p>
 
               {/* Key badges */}
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-2 mb-6">
                 <span className="inline-flex items-center gap-1 rounded-full bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700 border border-sky-100">
                   <Network className="w-3.5 h-3.5" />
                   RS-485 / Modbus RTU
@@ -60,7 +60,7 @@ export default function BridgePointCloudConnect() {
               </div>
 
               {/* Bullets */}
-              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+              <div className="grid sm:grid-cols-2 gap-4 mb-6">
                 <div className="flex gap-3">
                   <div className="mt-1">
                     <ShieldCheck className="w-5 h-5 text-emerald-600" />
@@ -102,8 +102,8 @@ export default function BridgePointCloudConnect() {
                   Download BCC-100 overview (PDF)
                 </button>
                 <p className="w-full text-[11px] md:text-xs text-slate-500 mt-1">
-                  Ideal for: pharma cold rooms, food distribution centers, walk-in
-                  freezers, blast freezers &amp; central plants.
+                  Ideal for: pharma cold rooms, food distribution centers,
+                  walk-in freezers, blast freezers &amp; central plants.
                 </p>
               </div>
             </div>
@@ -111,8 +111,8 @@ export default function BridgePointCloudConnect() {
             {/* Right: device / architecture image */}
             <div className="relative">
               <div className="absolute -inset-6 rounded-[32px] bg-gradient-to-br from-sky-100 via-white to-indigo-50 blur-xl opacity-80" />
-              <div className="relative rounded-[28px] bg-white border border-slate-200 shadow-xl shadow-sky-100 px-8 py-10 flex flex-col items-center">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 border border-sky-100">
+              <div className="relative rounded-[28px] bg-white border border-slate-200 shadow-xl shadow-sky-100 px-7 py-8 flex flex-col items-center">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 border border-sky-100">
                   <span className="h-2 w-2 rounded-full bg-emerald-500" />
                   <span className="text-[11px] font-medium text-sky-800">
                     Online · Controllers streaming data to CoolGuard Cloud
@@ -121,7 +121,7 @@ export default function BridgePointCloudConnect() {
                 <img
                   src="/images/products/bphero.png"
                   alt="BridgePoint CloudConnect – BCC-100 Gateway"
-                  className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] object-contain mb-4"
+                  className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[360px] lg:h-[360px] object-contain mb-3"
                 />
                 <p className="text-xs text-slate-500 text-center max-w-xs">
                   Representative diagram. Replace with final BridgePoint
@@ -139,16 +139,16 @@ export default function BridgePointCloudConnect() {
 
       {/* MODELS / EDITIONS */}
       <section className="border-b bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
             <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-1.5">
                 BCC-100 Series Editions
               </p>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
                 Scalable gateways for every facility size
               </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+              <p className="text-sm text-slate-600 mt-1.5 max-w-2xl">
                 Choose the right edition based on the number of cold room
                 controllers at your site. All models run the same firmware and
                 integrate with the same CoolGuard Cloud platform.
@@ -156,7 +156,7 @@ export default function BridgePointCloudConnect() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-4">
             <EditionCard
               title="BCC-101-4"
               subtitle="Zone Edition"
@@ -182,24 +182,24 @@ export default function BridgePointCloudConnect() {
 
       {/* ARCHITECTURE OVERVIEW */}
       <section className="border-b bg-[#f6f8fc]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
             <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-1.5">
                 System architecture
               </p>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
                 From controller RS-485 bus to cloud dashboards
               </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+              <p className="text-sm text-slate-600 mt-1.5 max-w-2xl">
                 BridgePoint CloudConnect sits between your existing cold room
-                controllers and the CoolGuard Cloud, acting as a secure, always-on
-                data bridge.
+                controllers and the CoolGuard Cloud, acting as a secure,
+                always-on data bridge.
               </p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 text-sm">
+          <div className="grid md:grid-cols-3 gap-5 text-sm">
             <FeatureCard
               icon={Network}
               title="Controller interface"
@@ -220,7 +220,7 @@ export default function BridgePointCloudConnect() {
             />
           </div>
 
-          <p className="text-[11px] text-slate-500 mt-4">
+          <p className="text-[11px] text-slate-500 mt-3">
             *Available data points depend on the connected controller model and
             supported Modbus register map.
           </p>
@@ -229,23 +229,23 @@ export default function BridgePointCloudConnect() {
 
       {/* KEY FEATURES */}
       <section className="border-b bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
             <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-1.5">
                 Key capabilities
               </p>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
                 Built for real-world cold room operations
               </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+              <p className="text-sm text-slate-600 mt-1.5 max-w-2xl">
                 Move from local controller displays to centralized, multi-site
                 visibility – without replacing your existing equipment.
               </p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-4">
             <FeatureCard
               icon={Cpu}
               title="Plug-and-play RS-485 integration"
@@ -282,16 +282,16 @@ export default function BridgePointCloudConnect() {
 
       {/* TECH SPECS + NOTICE */}
       <section className="border-b bg-[#f6f8fc]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
             <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-1.5">
                 Technical specification
               </p>
               <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
                 BridgePoint CloudConnect — BCC-100 Series
               </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+              <p className="text-sm text-slate-600 mt-1.5 max-w-2xl">
                 Use this section as a reference for proposals, engineering
                 drawings and qualification documents. Update values as final
                 hardware decisions are frozen.
@@ -299,9 +299,9 @@ export default function BridgePointCloudConnect() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 text-sm">
+          <div className="grid md:grid-cols-3 gap-5 text-sm">
             {/* Column 1 */}
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               <SpecItem label="Models" value="BCC-101-4, BCC-101-8, BCC-101-16" />
               <SpecItem
                 label="Controller capacity"
@@ -322,7 +322,7 @@ export default function BridgePointCloudConnect() {
             </div>
 
             {/* Column 2 */}
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               <SpecItem
                 label="Uplink connectivity"
                 value="GSM (4G/2G fallback) / Ethernet (where available)"
@@ -346,7 +346,7 @@ export default function BridgePointCloudConnect() {
             </div>
 
             {/* Column 3 */}
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               <SpecItem
                 label="Mounting"
                 value="Panel / wall-mount indoor enclosure near controller panel"
@@ -370,14 +370,14 @@ export default function BridgePointCloudConnect() {
             </div>
           </div>
 
-          <p className="text-[11px] text-slate-500 mt-4">
+          <p className="text-[11px] text-slate-500 mt-3">
             *To be finalized based on the selected controller makes, site
             engineering design and customer integration requirements.
           </p>
 
           {/* Highlight notice box */}
-          <div className="mt-8 rounded-2xl bg-[#eef5ff] border border-[#cfe0ff] p-6">
-            <h3 className="text-sm font-semibold text-slate-900 mb-2">
+          <div className="mt-6 rounded-2xl bg-[#eef5ff] border border-[#cfe0ff] p-5">
+            <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
               Data Compatibility Notice
             </h3>
             <p className="text-xs md:text-sm text-gray-700">
@@ -390,83 +390,16 @@ export default function BridgePointCloudConnect() {
           </div>
         </div>
       </section>
-
-      {/* DOWNLOADS & DOCUMENTS */}
-      {/* <section className="border-b bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-2">
-                Documentation &amp; downloads
-              </p>
-              <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
-                Hand-over packs for engineering &amp; QA teams
-              </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl">
-                Link each item below to your finalized PDFs so that customers
-                have a clean, self-contained handover bundle.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-4 text-sm">
-            <DownloadCard
-              title="BridgePoint CloudConnect – BCC-100 Datasheet"
-              description="One-pager covering models, capacity, connectivity and key specifications."
-              href="#"
-            />
-            <DownloadCard
-              title="Installation &amp; Wiring Guide"
-              description="Panel wiring, RS-485 bus topology, grounding and GSM / Ethernet setup."
-              href="#"
-            />
-            <DownloadCard
-              title="CoolGuard Cloud – Controller Integration Guide"
-              description="Explains how controller tags, alarms and sites are configured in the platform."
-              href="#"
-            />
-          </div>
-        </div>
-      </section> */}
-
-      {/* FINAL CTA */}
-      {/* <section className="bg-gradient-to-r from-[#0055cc] via-[#0042a3] to-[#022b62]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.3em] uppercase text-sky-100 mb-2">
-                Ready to connect your controllers to the cloud?
-              </p>
-              <h2 className="text-xl md:text-2xl font-semibold text-white tracking-tight mb-2">
-                Start with a BridgePoint CloudConnect pilot.
-              </h2>
-              <p className="text-sm text-sky-100 max-w-xl">
-                Enable a few critical cold rooms, validate data and alarms with
-                your engineering and QA teams, and then roll out across all
-                facilities – without replacing your existing controllers.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <button className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-[#0055cc] shadow-md shadow-sky-900/40 hover:bg-slate-50 transition-colors">
-                Book a consultation
-              </button>
-              <button className="inline-flex items-center gap-2 rounded-full bg-transparent border border-sky-200/60 px-4 py-2.5 text-xs md:text-sm font-medium text-sky-50 hover:bg-white/5 transition-colors">
-                Download solution overview
-              </button>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </main>
   );
 }
 
-/* ---------- Helper components (same style as Frigo/Kryo pages) ---------- */
+/* ---------- Helper components ---------- */
 
 function FeatureCard({ icon: Icon, title, description, pill }) {
   return (
     <div className="h-full rounded-2xl border border-slate-200 bg-white px-4 py-4 sm:px-5 sm:py-5 shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-2.5">
         <div className="w-9 h-9 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center">
           <Icon className="w-4.5 h-4.5 text-[#0055cc]" />
         </div>
@@ -476,7 +409,9 @@ function FeatureCard({ icon: Icon, title, description, pill }) {
           </span>
         )}
       </div>
-      <h3 className="text-sm font-semibold text-slate-900 mb-1">{title}</h3>
+      <h3 className="text-sm font-semibold text-slate-900 mb-1">
+        {title}
+      </h3>
       <p className="text-xs text-slate-600">{description}</p>
     </div>
   );
@@ -516,13 +451,13 @@ function DownloadCard({ title, description, href }) {
 function EditionCard({ title, subtitle, tag, description, highlighted }) {
   return (
     <div
-      className={`h-full rounded-2xl border p-6 shadow-sm bg-white ${
+      className={`h-full rounded-2xl border p-5 shadow-sm bg-white ${
         highlighted
           ? "border-[#0055cc] shadow-sky-100 ring-1 ring-sky-100"
           : "border-[#cfe0ff]"
       }`}
     >
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-2.5">
         <div>
           <h3 className="text-lg font-semibold text-[#003b8f]">{title}</h3>
           <p className="text-xs text-gray-500">{subtitle}</p>
