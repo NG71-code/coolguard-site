@@ -21,7 +21,7 @@ import CloudPlatform from "./pages/CloudPlatform.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import BCC100 from "./pages/BCC100.jsx";
-import SensorsPage from "./pages/SensorsPage.jsx";
+import SensorsPage from "./pages/Sensors.jsx";
 
 function AppInner() {
   const location = useLocation();

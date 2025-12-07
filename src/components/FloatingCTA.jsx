@@ -5,19 +5,34 @@ export default function FloatingCTA() {
   const [dismissed, setDismissed] = useState(false);
   const [showByScroll, setShowByScroll] = useState(false);
 
+  // Simple form state
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
   // Show only after user has scrolled 30% of the page
   useEffect(() => {
-    function handleScroll() {
-      const doc = document.documentElement;
-      const scrollTop = window.scrollY || doc.scrollTop || 0;
-      const viewportHeight = window.innerHeight || doc.clientHeight || 0;
-      const fullHeight = doc.scrollHeight || 0;
+ function handleScroll() {
+  const doc = document.documentElement;
+  const scrollTop = window.scrollY || doc.scrollTop || 0;
+  const viewportHeight = window.innerHeight || doc.clientHeight || 0;
+  const fullHeight = doc.scrollHeight || 0;
 
-      const maxScrollable = Math.max(fullHeight - viewportHeight, 1);
-      const ratio = scrollTop / maxScrollable;
+  const maxScrollable = Math.max(fullHeight - viewportHeight, 1);
+  const ratio = scrollTop / maxScrollable;
 
-      setShowByScroll(ratio >= 0.3); // 30%
-    }
+  const shouldShow = ratio >= 0.3;
+
+  setShowByScroll(shouldShow);
+
+  // ✅ If user scrolls again past threshold, allow CTA to reappear
+  if (shouldShow) {
+    setDismissed(false);
+  }
+}
+
 
     handleScroll(); // run once on mount
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -25,8 +40,58 @@ export default function FloatingCTA() {
   }, []);
 
   const handleClose = () => {
-    setDismissed(true);   // only for this visit
-  };
+  setDismissed(true);   // hide it for now
+
+  // ✅ RESET FORM STATE so it can appear fresh again
+  setSubmitted(false);
+  setName("");
+  setEmail("");
+  setPhone("");
+};
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!name || !email || !phone) return; // basic check
+
+  try {
+    setSubmitting(true);
+
+    const payload = {
+      name,
+      company: "", // not captured in CTA
+      email,
+      phone,
+      enquiryType: "Floating CTA",
+      message:
+        "Lead captured from CoolGuard Floating CTA. Please contact this user for consultation or pilot deployment.",
+    };
+
+    const res = await fetch("/api/contact.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json().catch(() => null);
+
+    if (res.ok && data && data.success) {
+      setSubmitted(true);
+      // optional: clear fields
+      // setName(""); setEmail(""); setPhone("");
+    } else {
+      console.error("Server error:", data);
+      alert("We couldn't submit your details. Please try again in a moment.");
+    }
+  } catch (err) {
+    console.error("Floating CTA submit failed", err);
+    alert("Server error. Please try again later.");
+  } finally {
+    setSubmitting(false);
+  }
+};
+
+
 
   // If user closed it OR hasn't scrolled enough, don't render
   if (dismissed || !showByScroll) return null;
@@ -34,42 +99,74 @@ export default function FloatingCTA() {
   return (
     <div className="fixed inset-x-0 bottom-4 md:bottom-6 z-40 flex justify-center px-3 pointer-events-none">
       <div className="pointer-events-auto max-w-4xl w-full rounded-2xl bg-slate-900/95 text-white shadow-2xl border border-slate-700/70 px-4 py-3 md:px-6 md:py-4 flex items-center gap-3 md:gap-4">
-        {/* Text */}
+        {/* Left text */}
         <div className="flex-1">
           <p className="text-[10px] uppercase tracking-[0.2em] text-sky-300">
             COOLGUARD · COLD CHAIN MONITORING
           </p>
-          <p className="text-xs md:text-sm font-medium text-sky-50">
-            Talk to us about a consultation or pilot deployment for your cold rooms,
-            freezers, or warehouses.
-          </p>
+
+          {submitted ? (
+            <p className="text-xs md:text-sm font-medium text-emerald-200 mt-1">
+              Thank you — we’ve received your details. Our team will contact you.
+            </p>
+          ) : (
+            <>
+              <p className="text-xs md:text-sm font-medium text-sky-50 mt-1 mb-2">
+                Share your details and we’ll reach out with a consultation or pilot
+                option for your cold rooms, freezers, or warehouses.
+              </p>
+
+              {/* Form inline, keeps overall size similar */}
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col md:flex-row gap-2 md:gap-2"
+              >
+                <input
+                  type="text"
+                  required
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full md:w-40 rounded-lg border border-slate-600 bg-slate-900/40 px-2 py-1.5 text-[11px] md:text-xs text-sky-50 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-400"
+                />
+                <input
+                  type="email"
+                  required
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full md:w-44 rounded-lg border border-slate-600 bg-slate-900/40 px-2 py-1.5 text-[11px] md:text-xs text-sky-50 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-400"
+                />
+                <input
+                  type="tel"
+                  required
+                  placeholder="Phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full md:w-32 rounded-lg border border-slate-600 bg-slate-900/40 px-2 py-1.5 text-[11px] md:text-xs text-sky-50 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-400"
+                />
+
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="md:w-24 inline-flex items-center justify-center rounded-lg bg-white px-3 py-1.5 text-[11px] md:text-xs font-medium text-slate-900 hover:bg-slate-100 transition disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {submitting ? "Sending…" : "Submit"}
+                </button>
+              </form>
+            </>
+          )}
         </div>
 
-        {/* Buttons */}
-        <div className="flex items-center gap-2">
-          <a
-            href="/contact?type=consultation"
-            className="hidden sm:inline-flex items-center justify-center rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-slate-900 hover:bg-slate-100 transition"
-          >
-            Consultation
-          </a>
-          <a
-            href="/contact?type=pilot"
-            className="inline-flex items-center justify-center rounded-lg border border-sky-300/80 px-3 py-1.5 text-xs font-medium text-sky-100 hover:bg-sky-700/40 transition"
-          >
-            Pilot
-          </a>
-
-          {/* Close button */}
-          <button
-            type="button"
-            onClick={handleClose}
-            className="ml-1 inline-flex h-7 w-7 items-center justify-center rounded-full hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs"
-            aria-label="Close"
-          >
-            ✕
-          </button>
-        </div>
+        {/* Close button */}
+        <button
+          type="button"
+          onClick={handleClose}
+          className="ml-1 inline-flex h-7 w-7 items-center justify-center rounded-full hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs flex-shrink-0"
+          aria-label="Close"
+        >
+          ✕
+        </button>
       </div>
     </div>
   );

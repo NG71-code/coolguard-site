@@ -48,11 +48,11 @@ export default function Header() {
           label: "8 Channel Cloud Logger",
           href: "/products/kryo-101-bb",
         },
-        {
-          key: "kryo-101-cc",
-          label: "Kryo-101-CC",
-          href: "/cloud-loggers#kryo-101-cc",
-        },
+        // {
+        //   key: "kryo-101-cc",
+        //   label: "Kryo-101-CC",
+        //   href: "/cloud-loggers#kryo-101-cc",
+        // },
 
         { key: "frigo-100", label: "Frigo-100 Series", isGroup: true },
         {

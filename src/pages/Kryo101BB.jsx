@@ -130,7 +130,7 @@ export default function Kryo101CC() {
                 <div className="relative mx-6 my-8 rounded-[2rem] overflow-hidden">
                   {/* background image (cold room / racks / potato storage) */}
                   <img
-                    src="/images/products/8loggerbg.png" // background only
+                    src="/images/products/8channelbg.png" // background only
                     alt="Kryo-101-CC cold room cluster environment"
                     className="w-full h-full object-cover"
                   />

@@ -103,10 +103,15 @@ export default function Frigo101BB() {
                   <PlayCircle className="w-4 h-4" />
                   Request a fleet pilot
                 </button>
-                <button className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs md:text-sm font-medium text-slate-800 border border-slate-200 hover:bg-slate-50 transition-colors">
-                  <Download className="w-4 h-4" />
-                  Download solution brief
-                </button>
+               <a
+  href="/docs/Frigo-101-BB datasheet.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs md:text-sm font-medium text-slate-800 border border-slate-200 hover:bg-slate-50 transition-colors"
+>
+  <Download className="w-4 h-4" />
+  Download Datasheet
+</a>
                 <p className="w-full text-[11px] md:text-xs text-slate-500 mt-1">
                   Ideal for: FMCG &amp; beverage cooler fleets, ice-cream
                   visi-coolers, retail display coolers and franchise networks.
@@ -125,18 +130,18 @@ export default function Frigo101BB() {
                   </span>
                 </div>
                 <img
-                  src="/images/products/frigo101bbbg.png"
+                  src="/images/products/frigolocatorbg2.png"
                   alt="Frigo-101-BB Location Cloud Logger"
                   className="w-420px h-420px object-contain mb-3"
                 />
-                <p className="text-xs text-slate-500 text-center max-w-xs">
+                {/* <p className="text-xs text-slate-500 text-center max-w-xs">
                   Representative render. Replace with final Frigo-101-BB product
                   image under{" "}
                   <span className="font-mono text-[11px]">
                     /images/products/frigo101bbbg.png
                   </span>
                   .
-                </p>
+                </p> */}
               </div>
             </div>
           </div>

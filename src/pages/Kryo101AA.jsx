@@ -127,7 +127,7 @@ export default function Kryo101AA() {
                   <div className="relative rounded-[2rem] overflow-hidden">
                     {/*Cold room background*/}
                     <img
-                      src="/images/products/2channelbg3.png"
+                      src="/images/products/2channelbgwithdeviceimage.png"
                       alt="Cold storage background"
                       className="w-full h-full object-cover scale-105"
                     />
