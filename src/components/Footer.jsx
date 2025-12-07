@@ -14,19 +14,19 @@ export default function Footer() {
         <div>
           <div className="text-sm font-semibold text-slate-900">Products</div>
           <ul className="mt-2 space-y-1 text-sm text-slate-600">
-            <li><a href="#kryo" className="hover:text-slate-900">Kryo-100 Series</a></li>
-            <li><a href="#frigo" className="hover:text-slate-900">Frigo-100 Series</a></li>
-            <li><a href="#controllers" className="hover:text-slate-900">CG-100 Controllers</a></li>
-            <li><a href="#bridge" className="hover:text-slate-900">Bridge Point Series</a></li>
-            <li><a href="#services" className="hover:text-slate-900">Services</a></li>
+            <li><a href="/products/kryo-101-aa" className="hover:text-slate-900">Cloud Loggers</a></li>
+            <li><a href="/products/bridgepoint-cloudconnect" className="hover:text-slate-900">Cloud Connectors</a></li>
+            <li><a href="/nodes-gateways" className="hover:text-slate-900">Nodes and Gateways</a></li>
+            <li><a href="/controllers/cg-100-series" className="hover:text-slate-900">Controllers</a></li>
+            <li><a href="/services" className="hover:text-slate-900">Services</a></li>
           </ul>
         </div>
         <div>
           <div className="text-sm font-semibold text-slate-900">Company</div>
           <ul className="mt-2 space-y-1 text-sm text-slate-600">
-            <li><a href="#contact" className="hover:text-slate-900">Contact</a></li>
-            <li><a href="#" className="hover:text-slate-900">LinkedIn</a></li>
-            <li><a href="#" className="hover:text-slate-900">YouTube</a></li>
+            {/* <li><a href="#contact" className="hover:text-slate-900">Contact</a></li> */}
+            <li><a href="https://www.linkedin.com/showcase/74492399/admin/dashboard/" className="hover:text-slate-900">LinkedIn</a></li>
+            {/* <li><a href="#" className="hover:text-slate-900">YouTube</a></li> */}
           </ul>
         </div>
         <div>

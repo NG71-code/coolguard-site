@@ -4,7 +4,7 @@ export default function NodesArchitectureSection() {
   return (
     <section
       id="nodes-architecture"
-      className="w-full bg-[#F4F7FB] py-16 border-t border-[#d7e3ff]"
+      className="w-full bg-[#F4F7FB] pt-10 pb-8 border-t border-[#d7e3ff]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
@@ -172,7 +172,7 @@ export default function NodesArchitectureSection() {
         </div>
 
         {/* Key bullets under the diagram */}
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
           <BottomPoint
             title="Segregated OT / IT zones"
             text="Architecture clearly separates field devices, site network and cloud VPC—aligned with modern OT/IT and cybersecurity practices."

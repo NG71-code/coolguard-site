@@ -108,7 +108,7 @@ export default function NodesGateways() {
         className="border-b bg-gradient-to-b from-[#e6f0ff] to-white"
         showCta={false}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 grid md:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 grid md:grid-cols-2 gap-10 items-center">
           {/* Left copy */}
           <div>
             <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-3">

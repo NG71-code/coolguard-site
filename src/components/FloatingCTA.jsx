@@ -1,7 +1,7 @@
 // src/components/FloatingCTA.jsx
 import React, { useEffect, useState } from "react";
 
-export default function FloatingCTA() {
+export default function FloatingCTA({ forceOpen = false }) {
   const [dismissed, setDismissed] = useState(false);
   const [showByScroll, setShowByScroll] = useState(false);
 
@@ -14,90 +14,92 @@ export default function FloatingCTA() {
 
   // Show only after user has scrolled 30% of the page
   useEffect(() => {
- function handleScroll() {
-  const doc = document.documentElement;
-  const scrollTop = window.scrollY || doc.scrollTop || 0;
-  const viewportHeight = window.innerHeight || doc.clientHeight || 0;
-  const fullHeight = doc.scrollHeight || 0;
+    function handleScroll() {
+      const doc = document.documentElement;
+      const scrollTop = window.scrollY || doc.scrollTop || 0;
+      const viewportHeight = window.innerHeight || doc.clientHeight || 0;
+      const fullHeight = doc.scrollHeight || 0;
 
-  const maxScrollable = Math.max(fullHeight - viewportHeight, 1);
-  const ratio = scrollTop / maxScrollable;
+      const maxScrollable = Math.max(fullHeight - viewportHeight, 1);
+      const ratio = scrollTop / maxScrollable;
 
-  const shouldShow = ratio >= 0.3;
+      const shouldShow = ratio >= 0.3;
 
-  setShowByScroll(shouldShow);
+      setShowByScroll(shouldShow);
 
-  // ✅ If user scrolls again past threshold, allow CTA to reappear
-  if (shouldShow) {
-    setDismissed(false);
-  }
-}
-
+      // If user scrolls again past threshold, allow CTA to reappear
+      if (shouldShow) {
+        setDismissed(false);
+      }
+    }
 
     handleScroll(); // run once on mount
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleClose = () => {
-  setDismissed(true);   // hide it for now
-
-  // ✅ RESET FORM STATE so it can appear fresh again
-  setSubmitted(false);
-  setName("");
-  setEmail("");
-  setPhone("");
-};
-
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!name || !email || !phone) return; // basic check
-
-  try {
-    setSubmitting(true);
-
-    const payload = {
-      name,
-      company: "", // not captured in CTA
-      email,
-      phone,
-      enquiryType: "Floating CTA",
-      message:
-        "Lead captured from CoolGuard Floating CTA. Please contact this user for consultation or pilot deployment.",
-    };
-
-    const res = await fetch("/api/contact.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    const data = await res.json().catch(() => null);
-
-    if (res.ok && data && data.success) {
-      setSubmitted(true);
-      // optional: clear fields
-      // setName(""); setEmail(""); setPhone("");
-    } else {
-      console.error("Server error:", data);
-      alert("We couldn't submit your details. Please try again in a moment.");
+  // 🔵 When forceOpen becomes true (from "Contact Us" click),
+  // make sure the CTA is visible even if scroll threshold not met
+  useEffect(() => {
+    if (forceOpen) {
+      setDismissed(false);
+      setShowByScroll(true);
     }
-  } catch (err) {
-    console.error("Floating CTA submit failed", err);
-    alert("Server error. Please try again later.");
-  } finally {
-    setSubmitting(false);
-  }
-};
+  }, [forceOpen]);
 
+  const handleClose = () => {
+    setDismissed(true); // hide it for now
 
+    // RESET FORM STATE so it can appear fresh again
+    setSubmitted(false);
+    setName("");
+    setEmail("");
+    setPhone("");
+  };
 
-  // If user closed it OR hasn't scrolled enough, don't render
-  if (dismissed || !showByScroll) return null;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !email || !phone) return;
+
+    try {
+      setSubmitting(true);
+
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("phone", phone);
+      formData.append("source", "floating_cta");
+
+      const res = await fetch("/api/contact.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.text();
+
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        console.error("Server error:", data);
+      }
+    } catch (err) {
+      console.error("Floating CTA submit failed", err);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  // 🔵 Visibility logic:
+  // - Always respect "dismissed" (if user closes, hide)
+  // - Skip scroll check when forceOpen=true
+  if (dismissed) return null;
+  if (!showByScroll && !forceOpen) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-4 md:bottom-6 z-40 flex justify-center px-3 pointer-events-none">
+    <div
+      id="floating-cta"  // 🔵 anchor we scroll to
+      className="fixed inset-x-0 bottom-4 md:bottom-6 z-40 flex justify-center px-3 pointer-events-none"
+    >
       <div className="pointer-events-auto max-w-4xl w-full rounded-2xl bg-slate-900/95 text-white shadow-2xl border border-slate-700/70 px-4 py-3 md:px-6 md:py-4 flex items-center gap-3 md:gap-4">
         {/* Left text */}
         <div className="flex-1">
