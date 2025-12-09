@@ -16,13 +16,16 @@ export default function FloatingCTA({ forceOpen = false }) {
 
   const [prefill, setPrefill] = useState(null);
 
-  // Decide where to post
+  // Decide where to post:
+  // - On localhost: hit the live PHP on coolguard.tech
+  // - On production: use relative path (/api/contact.php)
   const API_BASE =
-    window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
       ? "https://coolguard.tech"
       : "";
 
-  /* ---- Scroll trigger (30%) ---- */
+  /* ---------------- Scroll trigger (30%) ---------------- */
   useEffect(() => {
     function handleScroll() {
       const doc = document.documentElement;
@@ -43,7 +46,7 @@ export default function FloatingCTA({ forceOpen = false }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [openFromButton, submitted]);
 
-  /* ---- Listen to RequestDemoButton ---- */
+  /* ---------------- Listen to RequestDemoButton ---------------- */
   useEffect(() => {
     const handler = (event) => {
       const detail = event?.detail || null;
@@ -63,7 +66,7 @@ export default function FloatingCTA({ forceOpen = false }) {
     return () => window.removeEventListener("open-floating-cta", handler);
   }, []);
 
-  /* ---- Optional external forceOpen ---- */
+  /* ---------------- Optional forceOpen prop ---------------- */
   useEffect(() => {
     if (forceOpen) {
       setDismissed(false);
@@ -78,7 +81,7 @@ export default function FloatingCTA({ forceOpen = false }) {
     setOpenFromButton(false);
   };
 
-  /* ---- Auto-hide after success ---- */
+  /* ---------------- Auto-hide after success ---------------- */
   useEffect(() => {
     if (!submitted) return;
     const t = setTimeout(() => {
@@ -88,67 +91,78 @@ export default function FloatingCTA({ forceOpen = false }) {
     return () => clearTimeout(t);
   }, [submitted]);
 
+  /* ---------------- Submit handler (JSON POST) ---------------- */
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  console.log("FloatingCTA: submit clicked");
+    e.preventDefault();
+    console.log("FloatingCTA: submit clicked");
 
-  if (!name || !email || !phone) return;
+    if (!name || !email || !phone) return;
 
-  try {
-    setSubmitting(true);
-    setErrorMsg("");
-
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("phone", phone);
-
-    const source =
-      prefill?.source ||
-      (prefill?.productCode
-        ? `demo-${prefill.productCode.toLowerCase().replace(/\s+/g, "-")}`
-        : "floating_cta");
-
-    formData.append("source", source);
-    if (prefill?.productCode) formData.append("product_code", prefill.productCode);
-    if (prefill?.productName) formData.append("product_name", prefill.productName);
-
-    const API_BASE =
-      window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-        ? "https://coolguard.tech"
-        : "";
-
-    console.log("FloatingCTA: posting to", `${API_BASE}/api/contact.php`);
-
-    const res = await fetch(`${API_BASE}/api/contact.php`, {
-      method: "POST",
-      body: formData,
-    });
-
-    const text = await res.text();
-    console.log("FloatingCTA: server response", res.status, text);
-
-    if (res.ok) {
-      setSubmitted(true);
+    try {
+      setSubmitting(true);
       setErrorMsg("");
-    } else {
-      // 🔴 Show the actual server message if any
-      setErrorMsg(
-        text?.trim()
-          ? `Server responded: ${text}`
-          : "Something went wrong while submitting. Please try again."
+
+      const source =
+        prefill?.source ||
+        (prefill?.productCode
+          ? `demo-${prefill.productCode.toLowerCase().replace(/\s+/g, "-")}`
+          : "floating_cta");
+
+      const payload = {
+        name,
+        email,
+        phone,
+        source,
+        product_code: prefill?.productCode || "",
+        product_name: prefill?.productName || "",
+      };
+
+      console.log(
+        "FloatingCTA: posting JSON to",
+        `${API_BASE}/api/contact.php`,
+        payload
       );
+
+      const res = await fetch(`${API_BASE}/api/contact.php`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const text = await res.text();
+      console.log("FloatingCTA: server response", res.status, text);
+
+      let data = null;
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch {
+        // text is not valid JSON, leave data = null
+      }
+
+      if (res.ok && data && data.success) {
+        // ✅ Success from PHP
+        setSubmitted(true);
+        setErrorMsg("");
+      } else {
+        // ❌ Some error / validation failure from PHP
+        const msgFromServer =
+          (data && data.message) ||
+          (text && text.trim()) ||
+          `HTTP ${res.status} error`;
+
+        setErrorMsg(`Server responded: ${msgFromServer}`);
+      }
+    } catch (err) {
+      console.error("FloatingCTA: submit failed", err);
+      setErrorMsg("Network error while submitting. Please try again.");
+    } finally {
+      setSubmitting(false);
     }
-  } catch (err) {
-    console.error("FloatingCTA: submit failed", err);
-    setErrorMsg("Network error while submitting. Please try again.");
-  } finally {
-    setSubmitting(false);
-  }
-};
+  };
 
-
-  /* ---- Visibility ---- */
+  /* ---------------- Visibility ---------------- */
   const shouldShow =
     !dismissed && (openFromButton || showByScroll || forceOpen);
 
@@ -177,8 +191,8 @@ export default function FloatingCTA({ forceOpen = false }) {
 
           {submitted ? (
             <p className="text-xs md:text-sm font-medium text-emerald-200 mt-1">
-              ✅ Thank you — we’ve received your details. Our team will contact you
-              shortly.
+              ✅ Thank you — we’ve received your details. Our team will contact
+              you shortly.
             </p>
           ) : (
             <>
@@ -188,9 +202,7 @@ export default function FloatingCTA({ forceOpen = false }) {
               </p>
 
               {errorMsg && (
-                <p className="text-[11px] text-rose-300 mb-1">
-                  {errorMsg}
-                </p>
+                <p className="text-[11px] text-rose-300 mb-1">{errorMsg}</p>
               )}
 
               <form
