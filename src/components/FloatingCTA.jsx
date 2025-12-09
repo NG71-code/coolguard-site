@@ -89,53 +89,64 @@ export default function FloatingCTA({ forceOpen = false }) {
   }, [submitted]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("FloatingCTA: submit clicked");
+  e.preventDefault();
+  console.log("FloatingCTA: submit clicked");
 
-    if (!name || !email || !phone) return;
+  if (!name || !email || !phone) return;
 
-    try {
-      setSubmitting(true);
+  try {
+    setSubmitting(true);
+    setErrorMsg("");
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+
+    const source =
+      prefill?.source ||
+      (prefill?.productCode
+        ? `demo-${prefill.productCode.toLowerCase().replace(/\s+/g, "-")}`
+        : "floating_cta");
+
+    formData.append("source", source);
+    if (prefill?.productCode) formData.append("product_code", prefill.productCode);
+    if (prefill?.productName) formData.append("product_name", prefill.productName);
+
+    const API_BASE =
+      window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+        ? "https://coolguard.tech"
+        : "";
+
+    console.log("FloatingCTA: posting to", `${API_BASE}/api/contact.php`);
+
+    const res = await fetch(`${API_BASE}/api/contact.php`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const text = await res.text();
+    console.log("FloatingCTA: server response", res.status, text);
+
+    if (res.ok) {
+      setSubmitted(true);
       setErrorMsg("");
-
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("phone", phone);
-
-      const source =
-        prefill?.source ||
-        (prefill?.productCode
-          ? `demo-${prefill.productCode.toLowerCase().replace(/\s+/g, "-")}`
-          : "floating_cta");
-
-      formData.append("source", source);
-      if (prefill?.productCode) formData.append("product_code", prefill.productCode);
-      if (prefill?.productName) formData.append("product_name", prefill.productName);
-
-      console.log("FloatingCTA: posting to", `${API_BASE}/api/contact.php`);
-
-      const res = await fetch(`${API_BASE}/api/contact.php`, {
-        method: "POST",
-        body: formData,
-      });
-
-      const text = await res.text();
-      console.log("FloatingCTA: server response", res.status, text);
-
-      if (res.ok) {
-        setSubmitted(true);
-        setErrorMsg("");
-      } else {
-        setErrorMsg("Something went wrong while submitting. Please try again.");
-      }
-    } catch (err) {
-      console.error("FloatingCTA: submit failed", err);
-      setErrorMsg("Network error while submitting. Please try again.");
-    } finally {
-      setSubmitting(false);
+    } else {
+      // 🔴 Show the actual server message if any
+      setErrorMsg(
+        text?.trim()
+          ? `Server responded: ${text}`
+          : "Something went wrong while submitting. Please try again."
+      );
     }
-  };
+  } catch (err) {
+    console.error("FloatingCTA: submit failed", err);
+    setErrorMsg("Network error while submitting. Please try again.");
+  } finally {
+    setSubmitting(false);
+  }
+};
+
 
   /* ---- Visibility ---- */
   const shouldShow =
