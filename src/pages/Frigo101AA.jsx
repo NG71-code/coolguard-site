@@ -124,7 +124,7 @@ export default function Frigo101AA() {
                 </a>
 
                 <a
-                  href="/docs/frigo-101-aa-datasheet.pdf"
+                  href="/docs/Frigo-101-AA datasheet.pdf"
                   className="inline-flex items-center gap-2 rounded-full border border-[#cfe0ff] bg-white px-5 py-2.5 text-sm font-medium text-[#003b8f] hover:bg-[#f3f6ff] transition-colors"
                 >
                   <Download size={18} />

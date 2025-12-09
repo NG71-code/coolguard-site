@@ -95,7 +95,7 @@ export default function BridgePointCloudConnect() {
               <div className="flex flex-wrap items-center gap-3">
                 <button className="inline-flex items-center gap-2 rounded-full bg-[#0055cc] px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-sky-200 hover:bg-[#0042a3] transition-colors">
                   <Smartphone className="w-4 h-4" />
-                  Schedule a technical demo
+                  Contact Us
                 </button>
                 <a
   href="/docs/Bridgepoint datasheet.pdf"
@@ -128,14 +128,14 @@ export default function BridgePointCloudConnect() {
                   alt="BridgePoint CloudConnect – BCC-100 Gateway"
                   className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[360px] lg:h-[360px] object-contain mb-3"
                 />
-                <p className="text-xs text-slate-500 text-center max-w-xs">
+                {/* <p className="text-xs text-slate-500 text-center max-w-xs">
                   Representative diagram. Replace with final BridgePoint
                   CloudConnect gateway / architecture visual under{" "}
                   <span className="font-mono text-[11px]">
                     /images/products/bridgepoint-bcc100.png
                   </span>
                   .
-                </p>
+                </p> */}
               </div>
             </div>
           </div>

@@ -2,24 +2,32 @@
 import React, { useEffect, useState } from "react";
 
 export default function FloatingCTA({ forceOpen = false }) {
+  // Whether user has explicitly closed it
   const [dismissed, setDismissed] = useState(false);
+
+  // Shown because user scrolled
   const [showByScroll, setShowByScroll] = useState(false);
 
-  // Simple form state
+  // Shown because a RequestDemoButton explicitly opened it
+  const [openFromButton, setOpenFromButton] = useState(false);
+
+  // Form state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // Show only after user has scrolled 30% of the page
+  // Extra info from RequestDemoButton (product, source)
+  const [prefill, setPrefill] = useState(null);
+
+  /* -------- Scroll trigger: show after ~30% scroll -------- */
   useEffect(() => {
-    function handleScroll() {
+    const handleScroll = () => {
       const doc = document.documentElement;
       const scrollTop = window.scrollY || doc.scrollTop || 0;
       const viewportHeight = window.innerHeight || doc.clientHeight || 0;
       const fullHeight = doc.scrollHeight || 0;
-
       const maxScrollable = Math.max(fullHeight - viewportHeight, 1);
       const ratio = scrollTop / maxScrollable;
 
@@ -27,38 +35,67 @@ export default function FloatingCTA({ forceOpen = false }) {
 
       setShowByScroll(shouldShow);
 
-      // If user scrolls again past threshold, allow CTA to reappear
-      if (shouldShow) {
+      // If user scrolls beyond threshold, allow CTA to appear
+      if (shouldShow && !openFromButton && !submitted) {
         setDismissed(false);
       }
-    }
+    };
 
-    handleScroll(); // run once on mount
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, [openFromButton, submitted]);
+
+  /* -------- Event from RequestDemoButton -------- */
+  useEffect(() => {
+    const handler = (event) => {
+      const detail = event?.detail || null;
+      console.log("FloatingCTA: open-floating-cta received", detail);
+
+      setPrefill(detail);
+      setDismissed(false);
+      setSubmitted(false);
+      setName("");
+      setEmail("");
+      setPhone("");
+      setOpenFromButton(true);
+    };
+
+    window.addEventListener("open-floating-cta", handler);
+    return () => window.removeEventListener("open-floating-cta", handler);
   }, []);
 
-  // 🔵 When forceOpen becomes true (from "Contact Us" click),
-  // make sure the CTA is visible even if scroll threshold not met
+  /* -------- Optional forceOpen prop (if ever used) -------- */
   useEffect(() => {
     if (forceOpen) {
       setDismissed(false);
-      setShowByScroll(true);
+      setSubmitted(false);
+      setOpenFromButton(true);
     }
   }, [forceOpen]);
 
   const handleClose = () => {
-    setDismissed(true); // hide it for now
-
-    // RESET FORM STATE so it can appear fresh again
-    setSubmitted(false);
-    setName("");
-    setEmail("");
-    setPhone("");
+    console.log("FloatingCTA: close clicked");
+    setDismissed(true);
+    setOpenFromButton(false);
   };
+
+  /* -------- Auto-hide a few seconds after success -------- */
+  useEffect(() => {
+    if (!submitted) return;
+
+    const timer = setTimeout(() => {
+      setDismissed(true);
+      setOpenFromButton(false);
+    }, 6000); // 6 seconds
+
+    return () => clearTimeout(timer);
+  }, [submitted]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("FloatingCTA: submit clicked");
+
     if (!name || !email || !phone) return;
 
     try {
@@ -68,60 +105,85 @@ export default function FloatingCTA({ forceOpen = false }) {
       formData.append("name", name);
       formData.append("email", email);
       formData.append("phone", phone);
-      formData.append("source", "floating_cta");
 
-      const res = await fetch("/api/contact.php", {
+      const source =
+        prefill?.source ||
+        (prefill?.productCode
+          ? `demo-${prefill.productCode.toLowerCase().replace(/\s+/g, "-")}`
+          : "floating_cta");
+
+      formData.append("source", source);
+      if (prefill?.productCode) formData.append("product_code", prefill.productCode);
+      if (prefill?.productName) formData.append("product_name", prefill.productName);
+
+      // Call production PHP endpoint
+      const API_BASE = import.meta.env.DEV
+        ? "https://coolguard.tech"
+        : "";
+
+      const res = await fetch(`${API_BASE}/api/contact.php`, {
         method: "POST",
         body: formData,
       });
 
       const data = await res.text();
+      console.log("FloatingCTA: server response", res.status, data);
 
       if (res.ok) {
         setSubmitted(true);
       } else {
-        console.error("Server error:", data);
+        console.error("FloatingCTA: server error", data);
       }
     } catch (err) {
-      console.error("Floating CTA submit failed", err);
+      console.error("FloatingCTA: submit failed", err);
     } finally {
       setSubmitting(false);
     }
   };
 
-  // 🔵 Visibility logic:
-  // - Always respect "dismissed" (if user closes, hide)
-  // - Skip scroll check when forceOpen=true
-  if (dismissed) return null;
-  if (!showByScroll && !forceOpen) return null;
+  /* -------- Visibility logic -------- */
+  const shouldShow =
+    !dismissed && (openFromButton || showByScroll || forceOpen);
 
+  if (!shouldShow) return null;
+
+  /* -------- UI -------- */
   return (
     <div
-      id="floating-cta"  // 🔵 anchor we scroll to
-      className="fixed inset-x-0 bottom-4 md:bottom-6 z-40 flex justify-center px-3 pointer-events-none"
+      id="floating-cta"
+      className="fixed bottom-4 left-0 right-0 z-[9999] flex justify-center px-3"
     >
-      <div className="pointer-events-auto max-w-4xl w-full rounded-2xl bg-slate-900/95 text-white shadow-2xl border border-slate-700/70 px-4 py-3 md:px-6 md:py-4 flex items-center gap-3 md:gap-4">
-        {/* Left text */}
+      <div className="w-full max-w-4xl rounded-2xl bg-slate-900/95 text-white shadow-2xl border border-slate-700 px-4 py-3 md:px-6 md:py-4 flex items-start gap-3 md:gap-4">
         <div className="flex-1">
           <p className="text-[10px] uppercase tracking-[0.2em] text-sky-300">
             COOLGUARD · COLD CHAIN MONITORING
           </p>
 
+          {prefill?.productName || prefill?.productCode ? (
+            <p className="text-[11px] md:text-xs font-medium text-sky-100 mt-1 mb-1">
+              You’re requesting a demo for{" "}
+              <span className="font-semibold">
+                {prefill.productName || prefill.productCode}
+              </span>
+              .
+            </p>
+          ) : null}
+
           {submitted ? (
             <p className="text-xs md:text-sm font-medium text-emerald-200 mt-1">
-              Thank you — we’ve received your details. Our team will contact you.
+              Thank you — we’ve received your details. Our team will contact you
+              shortly.
             </p>
           ) : (
             <>
               <p className="text-xs md:text-sm font-medium text-sky-50 mt-1 mb-2">
-                Share your details and we’ll reach out with a consultation or pilot
-                option for your cold rooms, freezers, or warehouses.
+                Share your details and we’ll reach out with a consultation or
+                pilot option for your cold rooms, freezers, or warehouses.
               </p>
 
-              {/* Form inline, keeps overall size similar */}
               <form
                 onSubmit={handleSubmit}
-                className="flex flex-col md:flex-row gap-2 md:gap-2"
+                className="flex flex-col md:flex-row gap-2"
               >
                 <input
                   type="text"
@@ -160,11 +222,10 @@ export default function FloatingCTA({ forceOpen = false }) {
           )}
         </div>
 
-        {/* Close button */}
         <button
           type="button"
           onClick={handleClose}
-          className="ml-1 inline-flex h-7 w-7 items-center justify-center rounded-full hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs flex-shrink-0"
+          className="mt-1 ml-1 inline-flex h-7 w-7 items-center justify-center rounded-full hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs flex-shrink-0"
           aria-label="Close"
         >
           ✕

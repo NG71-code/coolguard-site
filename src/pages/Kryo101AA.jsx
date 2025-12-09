@@ -1,16 +1,16 @@
-// src/pages/products/Kryo101AA.jsx
+// src/pages/Kryo101AA.jsx
 import React from "react";
+import RequestDemoButton from "../components/RequestDemoButton.jsx";
 import {
-  Gauge,
   RadioTower,
   Thermometer,
-  PlayCircle,
   Download,
   Cpu,
   FlaskRound,
   Milk,
   Package,
 } from "lucide-react";
+
 
 export default function Kryo101AA() {
   return (
@@ -95,16 +95,15 @@ export default function Kryo101AA() {
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-3">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_35px_rgba(56,189,248,0.55)] hover:bg-sky-400 transition-colors"
-                >
-                  <PlayCircle size={18} className="text-sky-50" />
-                  Request a Demo
-                </a>
+                <RequestDemoButton
+                  productCode="Kryo-101-AA"
+                  productName="Kryo-101-AA 2-Channel Cloud Logger"
+                  // optional: custom source tag
+                  // source="product-page-kryo-101-aa"
+                />
 
                 <a
-                  href="/datasheets/kryo-101-aa.pdf"
+                  href="/docs/Kryo-101-AA-datasheet.pdf"
                   className="inline-flex items-center gap-2 rounded-full border border-[#cfe0ff] bg-white px-5 py-2.5 text-sm font-medium text-[#003b8f] hover:bg-[#f3f6ff] transition-colors"
                 >
                   <Download size={18} />
@@ -312,8 +311,8 @@ export default function Kryo101AA() {
       </section>
 
       {/* DEPLOYMENT & CONNECTIVITY */}
-<section className="bg-[#f3f7ff] pt-8 pb-4">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#f3f7ff] pt-8 pb-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 md:grid-cols-[1.2fr_0.9fr] items-start">
             <div>
               <p className="text-[11px] font-semibold tracking-[0.26em] uppercase text-sky-500 mb-2">
@@ -397,5 +396,3 @@ function SpecRow({ label, value }) {
     </div>
   );
 }
-
-

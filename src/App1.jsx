@@ -1,0 +1,31 @@
+// src/App.jsx
+import React from "react";
+
+import Header from "@/components/Header";
+import Home from "./pages/Home.jsx";
+import CloudLoggersPage from "./pages/CloudLoggersPage.jsx";
+import Frigo101AA from "./pages/Frigo101AA.jsx";
+import Frigo101BB from "./pages/Frigo101BB.jsx"; // <-- make sure this path & filename match exactly
+
+export default function App() {
+  const path = window.location.pathname || "/";
+
+  let PageComponent = Home;
+
+  if (path === "/cloud-loggers") {
+    PageComponent = CloudLoggersPage;
+  } else if (path === "/products/frigo-101-aa") {
+    PageComponent = Frigo101AA;
+  } else if (path === "/products/frigo-101-bb") {
+    PageComponent = Frigo101BB; // <-- route BB path here
+  }
+
+  console.log("Current path:", path, "Rendering:", PageComponent.name);
+
+  return (
+    <>
+      <Header />
+      <PageComponent />
+    </>
+  );
+}

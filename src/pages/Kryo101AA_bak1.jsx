@@ -15,7 +15,7 @@ export default function Kryo101AA() {
     badges: ["Dual Sensor", "Cloud Connected", "Industrial Grade", "IP55"],
 
     intro:
-      "Kryo-101-AA is a dual-channel IoT temperature logger designed for cold rooms, pharmaceutical storage facilities, and food supply chains. It supports two independent temperature or temperature-plus-humidity sensors and transmits readings securely to CoolGuard Cloud over GSM-GPRS. With configurable alert thresholds, automatic data buffering, and full audit-ready history, Kryo-101-AA ensures uninterrupted compliance and operational visibility.",
+      "Kryo-101-AA is a dual-channel IoT temperature logger designed for cold rooms, pharmaceutical storage facilities, and food supply chains. It supports two independent temperature or temperature-plus-humidity sensors and transmits readings securely to CoolGuard Cloud over 4G LTE with GSM fallback. With configurable alert thresholds, automatic data buffering, and full audit-ready history, Kryo-101-AA ensures uninterrupted compliance and operational visibility.",
 
     // WHERE IT IS USED
     whereUsed: [
@@ -26,18 +26,17 @@ export default function Kryo101AA() {
     ],
 
     // HOW IT WORKS
-   howItWorks: [
-  "Connect up to two sensors to monitor room temperature, product temperature, or inlet/outlet airflow as required.",
-  "Kryo-101-AA continuously samples and records readings, storing them safely in local memory.",
-  "At configured intervals, buffered data is transmitted securely to CoolGuard Cloud over 4G LTE with GSM fallback.",
-  "CoolGuard Cloud presents live dashboards, trends and reports, and sends alerts when limits are breached so you can intervene before spoilage or non-compliance.",
-],
-
+    howItWorks: [
+      "Connect up to two sensors to monitor room temperature, product temperature, or inlet/outlet airflow as required.",
+      "Kryo-101-AA continuously samples and records readings, storing them safely in local memory.",
+      "At configured intervals, buffered data is transmitted securely to CoolGuard Cloud over 4G LTE with GSM fallback.",
+      "CoolGuard Cloud presents live dashboards, trends and reports, and sends alerts when limits are breached so you can intervene before spoilage or non-compliance.",
+    ],
 
     // FEATURES
     features: [
       "Dual sensor inputs for room, product, inlet/outlet airflow, or redundancy monitoring",
-      "Secure GSM-GPRS data connectivity with local buffer storage during outages",
+      "Secure 4G LTE connectivity with GSM fallback and local buffer storage during outages",
       "Configurable logging and reporting intervals (1–60 minutes)",
       "Supports temperature-only or temperature-plus-humidity installations",
       "Industrial IP55-rated enclosure for harsh cold-chain environments",
@@ -61,18 +60,19 @@ export default function Kryo101AA() {
 
     // TECH HIGHLIGHTS
     highlights: [
-  { label: "Input Capacity",        value: "2 independent channels (Temp / RH)" },
-  { label: "Connectivity",          value: "4G LTE with GSM fallback" },
-  { label: "Logging Interval",      value: "Configurable 1–60 minutes" },
-  { label: "Memory",                value: "Internal buffer for offline data retention" },
-  { label: "Firmware Updates",      value: "OTA (Over-the-Air upgrade support)" },
-  { label: "Integrated Relay",      value: "1 A relay for alarm / compressor control" },
-  { label: "Housing",               value: "IP55 industrial-grade enclosure" },
-  { label: "Power Input",           value: "12 V DC, low-power optimised" },
-  { label: "Sensor Compatibility",  value: "High-accuracy NTC & RH sensors" },
-  { label: "Display Support",       value: "Optional local LED / TFT display" },
-],
-
+      { label: "Input Capacity", value: "2 independent channels (Temp / RH)" },
+      { label: "Connectivity", value: "4G LTE with GSM fallback" },
+      { label: "Logging Interval", value: "Configurable 1–60 minutes" },
+      {
+        label: "Memory",
+        value: "Internal buffer for offline data retention",
+      },
+      { label: "Power Input", value: "12 V DC" },
+      {
+        label: "Relay & Local Display",
+        value: "1 A relay output with optional LED / TFT display",
+      },
+    ],
 
     // ADD-ONS & ACCESSORIES
     addons: [
@@ -97,7 +97,6 @@ export default function Kryo101AA() {
           "Configurable door-open time delay before alarm triggers",
         ],
       },
- 
     ],
 
     // DOWNLOADS
