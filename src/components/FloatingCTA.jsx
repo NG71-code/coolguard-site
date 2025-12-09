@@ -9,10 +9,18 @@ export default function FloatingCTA({ forceOpen = false }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const [prefill, setPrefill] = useState(null);
+
+  // Decide where to post
+  const API_BASE =
+    window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+      ? "https://coolguard.tech"
+      : "";
 
   /* ---- Scroll trigger (30%) ---- */
   useEffect(() => {
@@ -26,9 +34,7 @@ export default function FloatingCTA({ forceOpen = false }) {
 
       if (ratio >= 0.3 && !submitted) {
         setShowByScroll(true);
-        if (!openFromButton) {
-          setDismissed(false);
-        }
+        if (!openFromButton) setDismissed(false);
       }
     }
 
@@ -46,6 +52,7 @@ export default function FloatingCTA({ forceOpen = false }) {
       setPrefill(detail);
       setDismissed(false);
       setSubmitted(false);
+      setErrorMsg("");
       setName("");
       setEmail("");
       setPhone("");
@@ -61,6 +68,7 @@ export default function FloatingCTA({ forceOpen = false }) {
     if (forceOpen) {
       setDismissed(false);
       setSubmitted(false);
+      setErrorMsg("");
       setOpenFromButton(true);
     }
   }, [forceOpen]);
@@ -88,6 +96,7 @@ export default function FloatingCTA({ forceOpen = false }) {
 
     try {
       setSubmitting(true);
+      setErrorMsg("");
 
       const formData = new FormData();
       formData.append("name", name);
@@ -104,25 +113,25 @@ export default function FloatingCTA({ forceOpen = false }) {
       if (prefill?.productCode) formData.append("product_code", prefill.productCode);
       if (prefill?.productName) formData.append("product_name", prefill.productName);
 
-      const API_BASE = import.meta.env.DEV
-        ? "https://coolguard.tech"
-        : "";
+      console.log("FloatingCTA: posting to", `${API_BASE}/api/contact.php`);
 
       const res = await fetch(`${API_BASE}/api/contact.php`, {
         method: "POST",
         body: formData,
       });
 
-      const data = await res.text();
-      console.log("FloatingCTA: server response", res.status, data);
+      const text = await res.text();
+      console.log("FloatingCTA: server response", res.status, text);
 
       if (res.ok) {
         setSubmitted(true);
+        setErrorMsg("");
       } else {
-        console.error("FloatingCTA: server error", data);
+        setErrorMsg("Something went wrong while submitting. Please try again.");
       }
     } catch (err) {
       console.error("FloatingCTA: submit failed", err);
+      setErrorMsg("Network error while submitting. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -157,7 +166,7 @@ export default function FloatingCTA({ forceOpen = false }) {
 
           {submitted ? (
             <p className="text-xs md:text-sm font-medium text-emerald-200 mt-1">
-              Thank you — we’ve received your details. Our team will contact you
+              ✅ Thank you — we’ve received your details. Our team will contact you
               shortly.
             </p>
           ) : (
@@ -166,6 +175,12 @@ export default function FloatingCTA({ forceOpen = false }) {
                 Share your details and we’ll reach out with a consultation or
                 pilot option for your cold rooms, freezers, or warehouses.
               </p>
+
+              {errorMsg && (
+                <p className="text-[11px] text-rose-300 mb-1">
+                  {errorMsg}
+                </p>
+              )}
 
               <form
                 onSubmit={handleSubmit}
