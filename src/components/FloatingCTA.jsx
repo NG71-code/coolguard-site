@@ -108,14 +108,26 @@ export default function FloatingCTA({ forceOpen = false }) {
           ? `demo-${prefill.productCode.toLowerCase().replace(/\s+/g, "-")}`
           : "floating_cta");
 
-      const payload = {
-        name,
-        email,
-        phone,
-        source,
-        product_code: prefill?.productCode || "",
-        product_name: prefill?.productName || "",
-      };
+const productLabel =
+  prefill?.productName || prefill?.productCode || "CoolGuard product";
+
+const payload = {
+  // Required fields
+  name,
+  email,
+  message: `Demo request for ${productLabel} from CoolGuard website.`,
+
+  // Optional but part of the normal contact structure
+  company: "", // CTA doesn't ask, so send empty
+  phone,
+  enquiry_type: `Demo request - ${productLabel}`,
+
+  // Extra tracking fields (your PHP can log these if you want)
+  source,
+  product_code: prefill?.productCode || "",
+  product_name: prefill?.productName || "",
+};
+
 
       console.log(
         "FloatingCTA: posting JSON to",
