@@ -2,28 +2,21 @@
 import React, { useEffect, useState } from "react";
 
 export default function FloatingCTA({ forceOpen = false }) {
-  // Whether user has explicitly closed it
   const [dismissed, setDismissed] = useState(false);
-
-  // Shown because user scrolled
   const [showByScroll, setShowByScroll] = useState(false);
-
-  // Shown because a RequestDemoButton explicitly opened it
   const [openFromButton, setOpenFromButton] = useState(false);
 
-  // Form state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // Extra info from RequestDemoButton (product, source)
   const [prefill, setPrefill] = useState(null);
 
-  /* -------- Scroll trigger: show after ~30% scroll -------- */
+  /* ---- Scroll trigger (30%) ---- */
   useEffect(() => {
-    const handleScroll = () => {
+    function handleScroll() {
       const doc = document.documentElement;
       const scrollTop = window.scrollY || doc.scrollTop || 0;
       const viewportHeight = window.innerHeight || doc.clientHeight || 0;
@@ -31,22 +24,20 @@ export default function FloatingCTA({ forceOpen = false }) {
       const maxScrollable = Math.max(fullHeight - viewportHeight, 1);
       const ratio = scrollTop / maxScrollable;
 
-      const shouldShow = ratio >= 0.3;
-
-      setShowByScroll(shouldShow);
-
-      // If user scrolls beyond threshold, allow CTA to appear
-      if (shouldShow && !openFromButton && !submitted) {
-        setDismissed(false);
+      if (ratio >= 0.3 && !submitted) {
+        setShowByScroll(true);
+        if (!openFromButton) {
+          setDismissed(false);
+        }
       }
-    };
+    }
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [openFromButton, submitted]);
 
-  /* -------- Event from RequestDemoButton -------- */
+  /* ---- Listen to RequestDemoButton ---- */
   useEffect(() => {
     const handler = (event) => {
       const detail = event?.detail || null;
@@ -65,7 +56,7 @@ export default function FloatingCTA({ forceOpen = false }) {
     return () => window.removeEventListener("open-floating-cta", handler);
   }, []);
 
-  /* -------- Optional forceOpen prop (if ever used) -------- */
+  /* ---- Optional external forceOpen ---- */
   useEffect(() => {
     if (forceOpen) {
       setDismissed(false);
@@ -75,21 +66,18 @@ export default function FloatingCTA({ forceOpen = false }) {
   }, [forceOpen]);
 
   const handleClose = () => {
-    console.log("FloatingCTA: close clicked");
     setDismissed(true);
     setOpenFromButton(false);
   };
 
-  /* -------- Auto-hide a few seconds after success -------- */
+  /* ---- Auto-hide after success ---- */
   useEffect(() => {
     if (!submitted) return;
-
-    const timer = setTimeout(() => {
+    const t = setTimeout(() => {
       setDismissed(true);
       setOpenFromButton(false);
-    }, 6000); // 6 seconds
-
-    return () => clearTimeout(timer);
+    }, 6000);
+    return () => clearTimeout(t);
   }, [submitted]);
 
   const handleSubmit = async (e) => {
@@ -116,7 +104,6 @@ export default function FloatingCTA({ forceOpen = false }) {
       if (prefill?.productCode) formData.append("product_code", prefill.productCode);
       if (prefill?.productName) formData.append("product_name", prefill.productName);
 
-      // Call production PHP endpoint
       const API_BASE = import.meta.env.DEV
         ? "https://coolguard.tech"
         : "";
@@ -141,13 +128,12 @@ export default function FloatingCTA({ forceOpen = false }) {
     }
   };
 
-  /* -------- Visibility logic -------- */
+  /* ---- Visibility ---- */
   const shouldShow =
     !dismissed && (openFromButton || showByScroll || forceOpen);
 
   if (!shouldShow) return null;
 
-  /* -------- UI -------- */
   return (
     <div
       id="floating-cta"
