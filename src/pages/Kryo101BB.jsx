@@ -1,5 +1,6 @@
 // src/pages/products/Kryo101CC.jsx
 import React from "react";
+import RequestDemoButton from "../components/RequestDemoButton.jsx";
 import {
   Waves,
   Thermometer,
@@ -94,13 +95,12 @@ export default function Kryo101CC() {
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-3">
-                <a
-                  href="#contact" // adjust if you have a specific demo/contact anchor
-                  className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_35px_rgba(56,189,248,0.55)] hover:bg-sky-400 transition-colors"
-                >
-                  <PlayCircle size={18} className="text-sky-50" />
-                  Request a Demo
-                </a>
+                             <RequestDemoButton
+                               productCode="Kryo-101-BB"
+                               productName="Kryo-101-BB 8-Channel Cloud Logger"
+                               // optional: custom source tag
+                               // source="product-page-kryo-101-aa"
+                             />
                 <a
                   href="/docs/Kryo-101-CC-datasheet.pdf" // update to your actual file path
                   className="inline-flex items-center gap-2 rounded-full border border-[#cfe0ff] bg-white px-5 py-2.5 text-sm font-medium text-[#003b8f] hover:bg-[#f3f6ff] transition-colors"
