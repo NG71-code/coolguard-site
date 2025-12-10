@@ -60,7 +60,15 @@ export default function Home() {
       {/* (No header here) The global header comes from src/components/Header.jsx */}
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-50 to-cyan-50 border-b" id="home-hero">
+     <section
+  id="home-hero"
+  className="relative overflow-hidden border-b
+             bg-gradient-to-br from-[#c4dcff] via-[#d7e6ff] to-[#b4d0ff]"
+>
+  {/* Soft background glow */}
+  <div className="pointer-events-none absolute -right-40 -top-40 h-80 w-80 rounded-full bg-sky-400/30 blur-3xl" />
+  <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-sky-300/35 blur-3xl" />
+
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 md:py-10">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Left: Copy + CTAs */}
@@ -94,7 +102,6 @@ export default function Home() {
 
               {/* Quick links row to match navbar order */}
               <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
-          
                 <a href="#features" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
                   <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
                   Why Coolguard
@@ -107,7 +114,7 @@ export default function Home() {
                   <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
                   Product Ecosystem
                 </a>
-                      <a href="/products/kryo-101-aa" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+                <a href="/products/kryo-101-aa" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
                   <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
                   Cloud Loggers
                 </a>
@@ -125,7 +132,6 @@ export default function Home() {
             {/* Right: Visual card (auto-swaps to image if present) */}
             <div className="order-first md:order-last">
               <div className="relative rounded-2xl border bg-white p-6 shadow-sm">
-                {/* Optional: Add /public/coolguard-hero.png */}
                 <img
                   src="/cold-storage-hero.png"
                   alt=""
@@ -143,7 +149,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* CUSTOMER LOGO STRIP */}
 <CustomerLogoStrip />
 

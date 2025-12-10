@@ -5,6 +5,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer.jsx";
 import FloatingCTA from "@/components/FloatingCTA.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 // Pages
 import Home from "./pages/Home.jsx";
@@ -22,6 +23,18 @@ import AboutUs from "./pages/AboutUs.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import BCC100 from "./pages/BCC100.jsx";
 import SensorsPage from "./pages/Sensors.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import CookiePolicy from "./pages/CookiePolicy.jsx";
+import Terms from "./pages/Terms.jsx";
+
+import CookieConsent from "@/components/CookieConsent";
+
+<CookieConsent />
+
+
+
+
+
 
 function AppInner() {
   const location = useLocation();
@@ -31,6 +44,8 @@ function AppInner() {
     <>
       {/* Header stays at the top */}
       <Header />
+       {/* 🔹 Add this line */}
+      <ScrollToTop />
 
       {/* All routes */}
       <Routes>
@@ -66,6 +81,12 @@ function AppInner() {
 
         {/* Other Devices */}
         <Route path="/products/bcc-100" element={<BCC100 />} />
+
+
+         {/* 🔐 New legal / policy routes */}
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/terms" element={<Terms />} />
 
         {/* Default */}
         <Route path="*" element={<Home />} />

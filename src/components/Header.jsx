@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import coolguardLogo from "/coolguard-logo.png";
+import { Lock } from "lucide-react";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -146,17 +147,44 @@ export default function Header() {
           <div className="flex-1 flex flex-col">
             {/* Top row: About / Contact */}
             <div className="flex items-center justify-end h-10 border-b border-gray-100">
-              <nav className="flex items-center gap-8">
-                {TOP_LINKS.map((link) => (
-                  <button
-                    key={link.label}
-                    className="text-sm font-medium text-gray-700 transition-colors duration-200 hover:text-[#007BFF]"
-                    onClick={() => handleNav(link)}
-                  >
-                    {link.label}
-                  </button>
-                ))}
-              </nav>
+             <nav className="flex items-center gap-8">
+  {TOP_LINKS.map((link) => (
+    <button
+      key={link.label}
+      onClick={() => handleNav(link)}
+      className={
+        link.button
+          ? `
+            group inline-flex items-center justify-center rounded-full
+            border border-[#007BFF]
+            px-4 py-1.5 text-sm font-semibold
+            text-[#007BFF]
+            hover:bg-[#007BFF] hover:text-white
+            transition shadow-sm
+          `
+          : `
+            text-sm font-medium text-gray-700
+            hover:text-[#007BFF]
+            transition
+          `
+      }
+    >
+      {link.button && (
+        <Lock
+          className="
+            h-4 w-4 mr-1.5
+            text-[#007BFF]
+            group-hover:text-white
+            animate-pulse
+          "
+        />
+      )}
+      <span>{link.label}</span>
+    </button>
+  ))}
+</nav>
+
+
             </div>
 
             {/* Bottom row: main menu */}
@@ -178,10 +206,12 @@ export default function Header() {
                     >
                       {/* Main button */}
                       <button
-                        className={`
-                          inline-flex items-center gap-2 px-2 py-1 rounded-md transition-colors duration-200
-                          ${isOpen ? "bg-blue-50/70" : "hover:bg-blue-50/40"}
-                        `}
+                      className={` inline-flex items-center gap-2 px-3 py-1.5 rounded-md transition-colors duration-200
+  ${isOpen 
+    ? "bg-[#007BFF]/15" 
+    : "hover:bg-[#007BFF]/10"}
+`}
+
                         onClick={() => {
                           // 🔒 Disable click for "Cloud Loggers" (desktop)
                           if (!(hasChildren && m.key === "cloud")) {
@@ -190,7 +220,7 @@ export default function Header() {
                         }}
                       >
                         <m.icon className="h-5 w-5 text-[#0055cc]" />
-                        <span className="text-sm font-medium text-gray-800">
+                        <span className="text-sm font-medium text-gray-800 group-hover:text-[#007BFF]">
                           {m.label}
                         </span>
                         {hasChildren && (
@@ -230,7 +260,7 @@ export default function Header() {
                               <button
                                 key={child.key}
                                 onClick={() => handleNav(child)}
-                                className="w-full text-left px-4 py-1.5 text-sm text-slate-700 hover:bg-blue-50"
+                                className="w-full text-left px-4 py-1.5 text-sm text-slate-700 hover:bg-[#0055cc]/10 hover:text-[#0055cc] transition-colors"
                               >
                                 {child.label}
                               </button>
@@ -286,19 +316,45 @@ export default function Header() {
           <div className="px-4 py-3">
             {/* Top links */}
             <div className="flex flex-col gap-2 mb-3">
-              {TOP_LINKS.map((link) => (
-                <button
-                  key={link.label}
-                  className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-50 text-gray-800"
-                  onClick={() => {
-                    handleNav(link);
-                    setMobileOpen(false);
-                  }}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
+  {TOP_LINKS.map((link) => (
+    <button
+      key={link.label}
+      onClick={() => {
+        handleNav(link);
+        setMobileOpen(false);
+      }}
+      className={
+        link.button
+          ? `
+            group w-full flex items-center gap-2
+            px-3 py-2 rounded-md
+            border border-[#007BFF]
+            text-[#007BFF] font-semibold
+            hover:bg-[#007BFF] hover:text-white
+            transition
+          `
+          : `
+            w-full text-left px-3 py-2 rounded-md
+            hover:bg-[#007BFF]/10 hover:text-[#007BFF]
+            text-gray-800 transition
+          `
+      }
+    >
+      {link.button && (
+        <Lock
+          className="
+            h-4 w-4
+            text-[#007BFF]
+            group-hover:text-white
+            animate-pulse
+          "
+        />
+      )}
+      <span>{link.label}</span>
+    </button>
+  ))}
+</div>
+
 
             {/* Menus + children */}
             <div className="flex flex-col gap-2">
@@ -346,7 +402,8 @@ export default function Header() {
                           ) : (
                             <button
                               key={child.key}
-                              className="block w-full text-left text-sm text-gray-700 py-0.5"
+                              className="block w-full text-left text-sm text-gray-700 py-0.5 
+           hover:text-[#0055cc] transition-colors"
                               onClick={() => {
                                 handleNav(child);
                                 setMobileOpen(false);
