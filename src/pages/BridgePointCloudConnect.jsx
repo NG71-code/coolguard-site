@@ -102,7 +102,7 @@ export default function BridgePointCloudConnect() {
                                                      />
                   <Smartphone className="w-4 h-4" />
                   Contact Us
-                </button>
+                
                 <a
   href="/docs/Bridgepoint datasheet.pdf"
   target="_blank"

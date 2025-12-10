@@ -1,4 +1,4 @@
-// src/pages/products/Frigo101AA.jsx
+// src/pages/Frigo101AA.jsx
 import React from "react";
 import RequestDemoButton from "../components/RequestDemoButton.jsx";
 import {
@@ -115,12 +115,11 @@ export default function Frigo101AA() {
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-3">
-                {/* Opens Floating CTA with product info */}
+                {/* 🔵 Opens Floating CTA with product info */}
                 <RequestDemoButton
                   productCode="Frigo-101-AA"
                   productName="Frigo-101-AA Cloud Temperature Logger"
-                  // optional: custom source tag
-                  // source="product-page-frigo-101-aa"
+                  // source="product-page-frigo-101-aa" // optional
                 />
 
                 {/* Datasheet download */}

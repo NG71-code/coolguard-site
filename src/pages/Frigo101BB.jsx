@@ -1,6 +1,6 @@
 // src/pages/products/Frigo101BB.jsx
 import React from "react";
-import RequestDemoButton from "@/components/RequestDemoButton.jsx";
+import RequestDemoButton from "../components/RequestDemoButton.jsx";
 import {
   Thermometer,
   Smartphone,
