@@ -100,8 +100,7 @@ export default function BridgePointCloudConnect() {
                                                        // optional: custom source tag
                                                        // source="product-page-kryo-101-aa"
                                                      />
-                  <Smartphone className="w-4 h-4" />
-                  Contact Us
+                
                 
                 <a
   href="/docs/Bridgepoint datasheet.pdf"
