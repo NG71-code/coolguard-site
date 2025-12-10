@@ -1,5 +1,6 @@
 // src/pages/products/Frigo101AA.jsx
 import React from "react";
+import RequestDemoButton from "../components/RequestDemoButton.jsx";
 import {
   Thermometer,
   RadioTower,
@@ -114,11 +115,13 @@ export default function Frigo101AA() {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_35px_rgba(56,189,248,0.55)] hover:bg-sky-400 transition-colors"
-                >
+            <div className="flex flex-wrap gap-3">
+                                        <RequestDemoButton
+                                          productCode="Frigo-101-AA"
+                                          productName="Frigo-101-AA "
+                                          // optional: custom source tag
+                                          // source="product-page-kryo-101-aa"
+                                        />
                   <PlayCircle size={18} className="text-sky-50" />
                   Request a Demo
                 </a>

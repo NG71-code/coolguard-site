@@ -1,5 +1,6 @@
 // src/pages/products/Frigo101BB.jsx
 import React from "react";
+import RequestDemoButton from "../../components/RequestDemoButton.jsx";
 import {
   Thermometer,
   Smartphone,
@@ -98,20 +99,35 @@ export default function Frigo101BB() {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-3">
-                <button className="inline-flex items-center gap-2 rounded-full bg-[#0055cc] px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-sky-200 hover:bg-[#0042a3] transition-colors">
+              <div className="flex flex-wrap gap-3">
+                {/* 🔵 This opens the Floating CTA with product info */}
+                <RequestDemoButton
+                  productCode="Frigo-101-BB"
+                  productName="Frigo-101-BB Location Cloud Logger"
+                  // optional: custom source tag
+                  // source="product-page-frigo-101-bb"
+                />
+
+                {/* Secondary CTA – goes to contact page */}
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-slate-900/90 px-4 py-2.5 text-xs md:text-sm font-medium text-white border border-slate-800/60 hover:bg-slate-900 transition-colors"
+                >
                   <PlayCircle className="w-4 h-4" />
                   Request a fleet pilot
-                </button>
-               <a
-  href="/docs/Frigo-101-BB datasheet.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs md:text-sm font-medium text-slate-800 border border-slate-200 hover:bg-slate-50 transition-colors"
->
-  <Download className="w-4 h-4" />
-  Download Datasheet
-</a>
+                </a>
+
+                {/* Datasheet link */}
+                <a
+                  href="/docs/Frigo-101-BB datasheet.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs md:text-sm font-medium text-slate-800 border border-slate-200 hover:bg-slate-50 transition-colors"
+                >
+                  <Download className="w-4 h-4" />
+                  Download Datasheet
+                </a>
+
                 <p className="w-full text-[11px] md:text-xs text-slate-500 mt-1">
                   Ideal for: FMCG &amp; beverage cooler fleets, ice-cream
                   visi-coolers, retail display coolers and franchise networks.
@@ -134,14 +150,6 @@ export default function Frigo101BB() {
                   alt="Frigo-101-BB Location Cloud Logger"
                   className="w-420px h-420px object-contain mb-3"
                 />
-                {/* <p className="text-xs text-slate-500 text-center max-w-xs">
-                  Representative render. Replace with final Frigo-101-BB product
-                  image under{" "}
-                  <span className="font-mono text-[11px]">
-                    /images/products/frigo101bbbg.png
-                  </span>
-                  .
-                </p> */}
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 // src/pages/BridgePointCloudConnect.jsx
 import React from "react";
+import RequestDemoButton from "../components/RequestDemoButton.jsx";
 import {
   Cpu,
   Network,
@@ -92,8 +93,13 @@ export default function BridgePointCloudConnect() {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-3">
-                <button className="inline-flex items-center gap-2 rounded-full bg-[#0055cc] px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-sky-200 hover:bg-[#0042a3] transition-colors">
+ <div className="flex flex-wrap gap-3">
+                                                     <RequestDemoButton
+                                                       productCode="BridgePoint"
+                                                       productName="BridgePoint"
+                                                       // optional: custom source tag
+                                                       // source="product-page-kryo-101-aa"
+                                                     />
                   <Smartphone className="w-4 h-4" />
                   Contact Us
                 </button>
