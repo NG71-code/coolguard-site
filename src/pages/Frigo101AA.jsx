@@ -5,7 +5,6 @@ import {
   Thermometer,
   RadioTower,
   Gauge,
-  PlayCircle,
   Download,
   Cpu,
   Snowflake,
@@ -40,7 +39,7 @@ export default function Frigo101AA() {
         <div className="pointer-events-none absolute -right-40 -top-40 h-80 w-80 rounded-full bg-sky-300/30 blur-3xl" />
         <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-sky-200/30 blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-18">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
             {/* LEFT – TEXT */}
             <div>
@@ -115,17 +114,16 @@ export default function Frigo101AA() {
               </div>
 
               {/* CTAs */}
-            <div className="flex flex-wrap gap-3">
-                                        <RequestDemoButton
-                                          productCode="Frigo-101-AA"
-                                          productName="Frigo-101-AA "
-                                          // optional: custom source tag
-                                          // source="product-page-kryo-101-aa"
-                                        />
-                  <PlayCircle size={18} className="text-sky-50" />
-                  Request a Demo
-                </a>
+              <div className="flex flex-wrap gap-3">
+                {/* Opens Floating CTA with product info */}
+                <RequestDemoButton
+                  productCode="Frigo-101-AA"
+                  productName="Frigo-101-AA Cloud Temperature Logger"
+                  // optional: custom source tag
+                  // source="product-page-frigo-101-aa"
+                />
 
+                {/* Datasheet download */}
                 <a
                   href="/docs/Frigo-101-AA datasheet.pdf"
                   className="inline-flex items-center gap-2 rounded-full border border-[#cfe0ff] bg-white px-5 py-2.5 text-sm font-medium text-[#003b8f] hover:bg-[#f3f6ff] transition-colors"
@@ -243,26 +241,14 @@ export default function Frigo101AA() {
               {
                 title: "Continuous Temperature Recording",
                 desc: "No gaps, no manual readings. Every minute is captured and stored.",
-                bullets: [
-                  "Configurable sampling interval",
-                  "Secure cloud backup of readings",
-                ],
               },
               {
                 title: "Real-time Alerting",
                 desc: "Know immediately when freezers warm up or doors are left open.",
-                bullets: [
-                  "High / low limits per asset",
-                  "SMS / email / app alerts and escalation",
-                ],
               },
               {
                 title: "Audit & Compliance Support",
                 desc: "Generate freezer-wise reports in a few clicks during inspections.",
-                bullets: [
-                  "Daily / monthly temperature reports",
-                  "Excursion summary for investigations",
-                ],
               },
             ].map(({ title, desc }) => (
               <article
