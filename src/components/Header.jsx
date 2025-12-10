@@ -189,7 +189,7 @@ export default function Header() {
                           }
                         }}
                       >
-                        <m.icon className="h-5 w-5 text-gray-600" />
+                        <m.icon className="h-5 w-5 text-[#0055cc]" />
                         <span className="text-sm font-medium text-gray-800">
                           {m.label}
                         </span>
@@ -323,7 +323,7 @@ export default function Header() {
                       }}
                     >
                       <span className="flex items-center gap-2">
-                        <m.icon className="h-5 w-5 text-gray-600" />
+                        <m.icon className="h-5 w-5 text-[#0055cc]" />
                         {m.label}
                       </span>
                       {hasChildren && (
