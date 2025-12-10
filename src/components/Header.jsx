@@ -35,7 +35,7 @@ export default function Header() {
       key: "cloud",
       label: "Cloud Loggers",
       icon: CloudIcon,
-      href: "/cloud-loggers",
+      href: "/cloud-loggers", // route still exists, but we'll disable click on desktop
       children: [
         { key: "kryo-100", label: "Kryo-100 Series", isGroup: true },
         {
@@ -102,17 +102,20 @@ export default function Header() {
   const handleNav = (item) => {
     if (!item?.href) return;
 
+    // External links
     if (item.external && item.href.startsWith("http")) {
       window.open(item.href, "_blank", "noopener,noreferrer");
       return;
     }
 
+    // In-page anchor scroll
     if (item.href.startsWith("#")) {
       const el = document.querySelector(item.href);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
 
+    // Internal routes
     if (item.href.startsWith("/")) {
       navigate(item.href);
       setMobileOpen(false);
@@ -180,7 +183,7 @@ export default function Header() {
                           ${isOpen ? "bg-blue-50/70" : "hover:bg-blue-50/40"}
                         `}
                         onClick={() => {
-                          // ❌ Disable click for Cloud Loggers (only dropdown)
+                          // 🔒 Disable click for "Cloud Loggers" (desktop)
                           if (!(hasChildren && m.key === "cloud")) {
                             handleNav(m);
                           }
@@ -244,12 +247,190 @@ export default function Header() {
         </div>
 
         {/* MOBILE BAR */}
-        {/* ... no changes below this point ... */}
-        {/* (rest of your file remains exactly the same) */}
+        <div className="flex md:hidden h-16 items-center justify-between">
+          <div
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <img
+              src={coolguardLogo}
+              alt="CoolGuard"
+              className="h-10 w-auto"
+              draggable="false"
+            />
+          </div>
+          <button
+            className="inline-flex items-center justify-center rounded-md border border-gray-200 px-3 py-2 text-gray-700"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                strokeWidth="2"
+                strokeLinecap="round"
+                d="M4 7h16M4 12h16M4 17h16"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* MOBILE DRAWER */}
-      {/* existing mobile code unchanged */}
+      {mobileOpen && (
+        <div className="md:hidden border-t border-gray-100 bg-white z-[9999]">
+          <div className="px-4 py-3">
+            {/* Top links */}
+            <div className="flex flex-col gap-2 mb-3">
+              {TOP_LINKS.map((link) => (
+                <button
+                  key={link.label}
+                  className="w-full text-left px-3 py-2 rounded-md hover:bg-gray-50 text-gray-800"
+                  onClick={() => {
+                    handleNav(link);
+                    setMobileOpen(false);
+                  }}
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Menus + children */}
+            <div className="flex flex-col gap-2">
+              {SECONDARY_MENUS.map((m) => {
+                const hasChildren = !!m.children && m.children.length > 0;
+                return (
+                  <div key={m.key} className="border rounded-md px-3 py-2">
+                    <button
+                      className="w-full flex items-center justify-between text-gray-900 font-medium"
+                      onClick={() => {
+                        // On mobile:
+                        // - if no children => go directly
+                        // - if has children => toggle submenu (no direct nav)
+                        if (!hasChildren) {
+                          handleNav(m);
+                          setMobileOpen(false);
+                        } else {
+                          setOpenMenu((prev) =>
+                            prev === m.key ? null : m.key
+                          );
+                        }
+                      }}
+                    >
+                      <span className="flex items-center gap-2">
+                        <m.icon className="h-5 w-5 text-gray-600" />
+                        {m.label}
+                      </span>
+                      {hasChildren && (
+                        <span className="text-xs text-gray-500">
+                          {openMenu === m.key ? "Hide" : "Menu"}
+                        </span>
+                      )}
+                    </button>
+
+                    {hasChildren && openMenu === m.key && (
+                      <div className="mt-2 space-y-1 pl-7">
+                        {m.children.map((child) =>
+                          child.isGroup ? (
+                            <div
+                              key={child.key}
+                              className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 mt-1"
+                            >
+                              {child.label}
+                            </div>
+                          ) : (
+                            <button
+                              key={child.key}
+                              className="block w-full text-left text-sm text-gray-700 py-0.5"
+                              onClick={() => {
+                                handleNav(child);
+                                setMobileOpen(false);
+                              }}
+                            >
+                              {child.label}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
     </header>
+  );
+}
+
+/* --- Icons --- */
+function CloudIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" {...props}>
+      <path d="M7 18h9a4 4 0 0 0 0-8h-1A6 6 0 1 0 7 18Z" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function ConnectorIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <rect x="3" y="9" width="6" height="6" rx="1" strokeWidth="2" />
+      <rect x="15" y="9" width="6" height="6" rx="1" strokeWidth="2" />
+      <path d="M9 12h6" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function NodeGatewayIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" {...props}>
+      <circle cx="6" cy="12" r="2" strokeWidth="2" />
+      <circle cx="12" cy="6" r="2" strokeWidth="2" />
+      <circle cx="18" cy="12" r="2" strokeWidth="2" />
+      <path d="M8 12h4M12 8v4M14 12h4" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function ControllerIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" {...props}>
+      <rect x="4" y="7" width="16" height="10" rx="2" strokeWidth="2" />
+      <path d="M9 10v4M12 9v6M15 11v2" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function SensorIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" {...props}>
+      <path d="M12 6v12M8 10v4M16 9v6" strokeWidth="2" />
+      <circle cx="12" cy="12" r="8" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function ServiceIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" {...props}>
+      <path d="M7 7h10v10H7z" strokeWidth="2" />
+      <path d="M7 12h10M12 7v10" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function PlatformIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" {...props}>
+      <circle cx="12" cy="12" r="8" strokeWidth="2" />
+      <path d="M8 12h8M12 8v8" strokeWidth="2" />
+    </svg>
   );
 }
