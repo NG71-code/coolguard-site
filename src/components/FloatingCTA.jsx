@@ -25,7 +25,7 @@ export default function FloatingCTA({ forceOpen = false }) {
       ? "https://coolguard.tech"
       : "";
 
-  /* ---------------- Scroll trigger (30%) ---------------- */
+  /* ---------------- Scroll trigger (30%–70%) ---------------- */
   useEffect(() => {
     function handleScroll() {
       const doc = document.documentElement;
@@ -33,11 +33,19 @@ export default function FloatingCTA({ forceOpen = false }) {
       const viewportHeight = window.innerHeight || doc.clientHeight || 0;
       const fullHeight = doc.scrollHeight || 0;
       const maxScrollable = Math.max(fullHeight - viewportHeight, 1);
-      const ratio = scrollTop / maxScrollable;
+      const ratio = scrollTop / maxScrollable; // 0 to 1
 
-      if (ratio >= 0.3 && !submitted) {
+      const inBand = ratio >= 0.3 && ratio <= 0.7 && !submitted;
+
+      if (inBand) {
+        // Show CTA when between 30% and 70% scroll
         setShowByScroll(true);
+        // If it wasn't opened explicitly from button, clear any prior dismissal
         if (!openFromButton) setDismissed(false);
+      } else {
+        // Hide CTA when above 30% or below 30% or beyond 70%
+        setShowByScroll(false);
+        // We do NOT touch `dismissed` here so manual close stays respected
       }
     }
 
@@ -108,26 +116,25 @@ export default function FloatingCTA({ forceOpen = false }) {
           ? `demo-${prefill.productCode.toLowerCase().replace(/\s+/g, "-")}`
           : "floating_cta");
 
-const productLabel =
-  prefill?.productName || prefill?.productCode || "CoolGuard product";
+      const productLabel =
+        prefill?.productName || prefill?.productCode || "CoolGuard product";
 
-const payload = {
-  // Required fields
-  name,
-  email,
-  message: `Demo request for ${productLabel} from CoolGuard website.`,
+      const payload = {
+        // Required fields
+        name,
+        email,
+        message: `Demo request for ${productLabel} from CoolGuard website.`,
 
-  // Optional but part of the normal contact structure
-  company: "", // CTA doesn't ask, so send empty
-  phone,
-  enquiry_type: `Demo request - ${productLabel}`,
+        // Optional but part of the normal contact structure
+        company: "", // CTA doesn't ask, so send empty
+        phone,
+        enquiry_type: `Demo request - ${productLabel}`,
 
-  // Extra tracking fields (your PHP can log these if you want)
-  source,
-  product_code: prefill?.productCode || "",
-  product_name: prefill?.productName || "",
-};
-
+        // Extra tracking fields (your PHP can log these if you want)
+        source,
+        product_code: prefill?.productCode || "",
+        product_name: prefill?.productName || "",
+      };
 
       console.log(
         "FloatingCTA: posting JSON to",

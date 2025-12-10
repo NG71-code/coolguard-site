@@ -2,6 +2,7 @@
 import React from "react";
 import Section from "../components/Section.jsx";
 import NodesArchitectureSection from "../nodes/NodesArchitectureSection.jsx";
+import RequestDemoButton from "../components/RequestDemoButton.jsx"; // 👈 NEW
 
 import {
   RadioTower,
@@ -102,13 +103,13 @@ export default function NodesGateways() {
   ];
 
   return (
-    <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
+    <main className="w-full bg-[#F4F7FB] min-h-screen pb-4">
       {/* HERO */}
       <Section
         className="border-b bg-gradient-to-b from-[#e6f0ff] to-white"
         showCta={false}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 grid md:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 md:py-4 grid md:grid-cols-2 gap-10 items-center">
           {/* Left copy */}
           <div>
             <p className="text-xs font-semibold tracking-[0.25em] uppercase text-[#0055cc] mb-3">
@@ -124,7 +125,7 @@ export default function NodesGateways() {
               wireless connectivity.
             </p>
 
-            <ul className="space-y-3 text-sm md:text-base text-slate-700 mb-2">
+            <ul className="space-y-3 text-sm md:text-base text-slate-700 mb-4">
               <li className="flex gap-2">
                 <RadioTower className="w-5 h-5 mt-0.5 text-[#0055cc]" />
                 <span>LoRa-based wireless coverage inside complex cold rooms.</span>
@@ -140,6 +141,16 @@ export default function NodesGateways() {
                 </span>
               </li>
             </ul>
+
+            {/* 👇 New Request Demo button, same CTA system as product pages */}
+            <div className="mt-2">
+              <RequestDemoButton
+                productCode="NODES-GATEWAYS"
+                productName="Nodes & Gateways"
+              >
+                Request Demo
+              </RequestDemoButton>
+            </div>
           </div>
 
           {/* Right visual / placeholder image */}
@@ -160,13 +171,12 @@ export default function NodesGateways() {
 
               {/* Replace this with your real image: /images/architecture/nodes-gateways.png */}
               <div className="rounded-2xl overflow-hidden border border-[#cfe0ff] bg-white shadow-sm aspect-[4/3]">
-  <img
-    src="/images/products/nodesbg.png"   // 👈 your final image here
-    alt="Nodes and Gateways Topology Background"
-    className="w-full h-full object-cover"
-  />
-</div>
-
+                <img
+                  src="/images/products/nodesbg.png" // 👈 your final image here
+                  alt="Nodes and Gateways Topology Background"
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
               <p className="mt-4 text-xs text-slate-500">
                 Use this diagram in presentations to explain how sensors, nodes
@@ -351,7 +361,7 @@ export default function NodesGateways() {
 
       {/* ARCHITECTURE SECTION – use your existing component */}
       <Section
-        className="border-t border-[#d5e4ff]/70"
+        className="border-t border-[#d5e4ff]/70 !pb-2 md:!pb-4"
         showCta={false}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

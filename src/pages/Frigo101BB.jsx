@@ -109,13 +109,13 @@ export default function Frigo101BB() {
                 />
 
                 {/* Secondary CTA – goes to contact page */}
-                <a
+                {/* <a
                   href="/contact"
                   className="inline-flex items-center gap-2 rounded-full bg-slate-900/90 px-4 py-2.5 text-xs md:text-sm font-medium text-white border border-slate-800/60 hover:bg-slate-900 transition-colors"
                 >
                   <PlayCircle className="w-4 h-4" />
                   Request a fleet pilot
-                </a>
+                </a> */}
 
                 {/* Datasheet link */}
                 <a
