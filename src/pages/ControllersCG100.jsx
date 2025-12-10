@@ -30,12 +30,12 @@ export default function ControllersCG100() {
               >
                 Back to Products
               </a>
-              <a
+              {/* <a
                 href="/#contact"
                 className="inline-flex items-center justify-center rounded-full border border-[#cfe0ff] bg-white px-5 py-2.5 text-sm font-medium text-[#003b8f] hover:bg-[#f3f6ff] transition-colors"
               >
                 Talk to CoolGuard Team
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
