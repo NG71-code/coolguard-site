@@ -14,6 +14,7 @@ import {
   Clock,
   PhoneCall,
 } from "lucide-react";
+import RequestDemoButton from "../components/RequestDemoButton.jsx"; // 👈 NEW
 
 export default function MappingCalibrationValidation() {
   return (
@@ -66,13 +67,13 @@ export default function MappingCalibrationValidation() {
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href="/contact?type=mapping-calibration"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#0055cc] px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-sky-200 hover:bg-[#0042a3] transition-colors"
+                {/* Floating CTA trigger – book site assessment */}
+                <RequestDemoButton
+                  productCode="MAPPING-CALIBRATION"
+                  productName="Mapping, Calibration & Validation"
                 >
-                  <PhoneCall className="w-4 h-4" />
                   Book a site assessment
-                </a>
+                </RequestDemoButton>
                 <p className="text-[11px] md:text-xs text-slate-500">
                   Ideal for pharma cold rooms, vaccine stores, food cold storage
                   and distribution centres.
@@ -361,7 +362,8 @@ export default function MappingCalibrationValidation() {
         </div>
       </section>
 
-      {/* SECTION: FAQ / short answers */}
+      {/* SECTION: FAQ / short answers – commented out */}
+      {/*
       <section className="border-b bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
           <div className="max-w-3xl mb-6">
@@ -389,6 +391,7 @@ export default function MappingCalibrationValidation() {
           </div>
         </div>
       </section>
+      */}
 
       {/* FINAL CTA */}
       {/* <section className="bg-gradient-to-r from-[#0f172a] via-[#020617] to-[#0b1120]">

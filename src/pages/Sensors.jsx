@@ -1,6 +1,7 @@
+// src/pages/Sensors.jsx
 import React from "react";
 import Section from "../components/Section.jsx";
-
+import RequestDemoButton from "../components/RequestDemoButton.jsx"; // 👈 NEW
 
 import {
   Thermometer,
@@ -13,7 +14,8 @@ import {
 } from "lucide-react";
 
 export default function Sensors() {
-    console.log("✅ SENSORS PAGE LOADED");
+  console.log("✅ SENSORS PAGE LOADED");
+
   const sensors = [
     {
       name: "Temperature Sensor",
@@ -98,7 +100,7 @@ export default function Sensors() {
   ];
 
   return (
-    <main className="w-full bg-[#F4F7FB] min-h-screen pb-20">
+    <main className="w-full bg-[#F4F7FB] min-h-screen pb-6">
       {/* HERO */}
       <Section
         className="border-b bg-gradient-to-b from-[#e6f0ff] to-white"
@@ -120,7 +122,7 @@ export default function Sensors() {
               transforming raw measurements into actionable cloud insights.
             </p>
 
-            <ul className="space-y-3 text-sm md:text-base text-slate-700">
+            <ul className="space-y-3 text-sm md:text-base text-slate-700 mb-4">
               <li className="flex gap-2">
                 <Thermometer className="w-5 h-5 mt-0.5 text-[#0055cc]" />
                 <span>High-precision sensing for audits & compliance.</span>
@@ -134,6 +136,16 @@ export default function Sensors() {
                 <span>Electrical energy & power quality monitoring.</span>
               </li>
             </ul>
+
+            {/* 👇 Request details → Floating CTA */}
+            <div className="mt-2">
+              <RequestDemoButton
+                productCode="SENSORS"
+                productName="CoolGuard Sensor Range"
+              >
+                Request details
+              </RequestDemoButton>
+            </div>
           </div>
 
           {/* Right visual placeholder */}
@@ -152,13 +164,13 @@ export default function Sensors() {
                 </div>
               </div>
 
-             <div className="rounded-2xl overflow-hidden border border-[#cfe0ff] bg-white shadow-sm aspect-[4/3]">
-  <img
-    src="/images/products/sensors.png"   // 👈 your final image here
-    alt="Sensors → Data Logger → Gateway → CoolGuard Cloud"
-    className="w-full h-full object-cover"
-  />
-</div>
+              <div className="rounded-2xl overflow-hidden border border-[#cfe0ff] bg-white shadow-sm aspect-[4/3]">
+                <img
+                  src="/images/products/sensors.png"
+                  alt="Sensors → Data Logger → Gateway → CoolGuard Cloud"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -205,16 +217,15 @@ export default function Sensors() {
                       </div>
                     </div>
                     {sensor.datasheet && (
-                    <a
-  href="/docs/temp-humi sensor datasheet.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs md:text-sm font-medium text-slate-800 border border-slate-200 hover:bg-slate-50 transition-colors"
->
-  <Download className="w-4 h-4" />
-  Download BCC-100 Datasheet (PDF)
-</a>
-
+                      <a
+                        href={sensor.datasheet}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs font-medium text-[#0055cc] hover:underline"
+                      >
+                        <Download className="w-4 h-4" />
+                        Datasheet
+                      </a>
                     )}
                   </div>
 
