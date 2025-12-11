@@ -17,9 +17,12 @@ const LOGO_GROUPS = [
       { src: "/logos/britannia.png", label: "Britannia Ltd" },
       { src: "/logos/cogent.png", label: "Cogent Foods" },
       { src: "/logos/dinshaws.png", label: "Dinshaws Icecream" },
-      { src: "/logos/jubliant.png", label: "Jubliant Food Works" },
+      { src: "/logos/jubilant.png", label: "Jubliant Food Works" },
       { src: "/logos/suguna.jpeg", label: "Suguna Foods" },
       { src: "/logos/dharampal.png", label: "Dharampal Satyapal Ltd" },
+       { src: "/logos/bluestar.jpeg", label: "Bluestar" },
+        { src: "/logos/carrier.png", label: "Carrier" },
+         { src: "/logos/rinac.jpg", label: "Rinac India Ltd" },
     ],
   },
 
@@ -39,7 +42,6 @@ const LOGO_GROUPS = [
     label: "African Customers",
     logos: [
       { src: "/logos/Haano.png", label: "Haano" },
-      { src: "/logos/ghana-agri.png", label: "Ghana Agri" },
     ],
   },
 ];
