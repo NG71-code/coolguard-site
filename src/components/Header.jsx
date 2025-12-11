@@ -10,15 +10,17 @@ export default function Header() {
   const [hoverMenu, setHoverMenu] = useState(null); // for DESKTOP hover dropdowns
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setHoverMenu(null);
-      setOpenMenu(null);
-    };
+ useEffect(() => {
+  const handleScroll = () => {
+    // Only close menus if they are actually open
+    setHoverMenu(prev => (prev ? null : prev));
+    setOpenMenu(prev => (prev ? null : prev));
+  };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
 
   const TOP_LINKS = [
     {
@@ -126,7 +128,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full sticky top-0 z-[9999] bg-white/95 backdrop-blur border-b border-gray-100 relative">
+    <header className="w-full sticky top-0 z-[9999] bg-white border-b border-gray-100 relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* DESKTOP */}
         <div className="hidden md:flex items-stretch h-24">

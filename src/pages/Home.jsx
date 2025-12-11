@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { CATALOG, LOGO_SRC } from "../data/catalog.js";
 import { SERVICES } from "../data/services.js";
 import CustomerLogoStrip from "@/components/CustomerLogoStrip.jsx";
+import { Snowflake } from "lucide-react";
 
 /* ---------------- Thumbnail helper ---------------- */
 function hashToGrad(key) {
@@ -25,6 +26,19 @@ function Thumb({ code, label }) {
     <div className={`h-14 w-14 shrink-0 rounded-xl bg-gradient-to-br ${from} ${to} flex items-center justify-center border border-white/60 shadow-sm`}>
       <span className={`text-xs font-bold ${text}`}>{initials}</span>
     </div>
+  );
+}
+function SnowflakeDot() {
+  return (
+    <span className="relative inline-flex items-center justify-center h-4 w-4">
+      {/* Soft Ice Glow */}
+      <span className="absolute inset-0 rounded-full bg-[#1a82ff] blur-[3px] opacity-40"></span>
+
+      {/* Blue Core */}
+      <span className="relative inline-flex items-center justify-center h-4 w-4 rounded-full bg-[#007BFF]">
+        <Snowflake className="w-2.5 h-2.5 text-white" strokeWidth={2} />
+      </span>
+    </span>
   );
 }
 
@@ -73,10 +87,11 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Left: Copy + CTAs */}
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/80 border px-3 py-1 text-xs text-slate-700">
-                <span className="inline-block h-2 w-2 rounded-full bg-[#007BFF]" />
-                Sensors • IoT devices • Cloud Platform
-              </div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/80 border px-3 py-1 text-xs text-slate-700">
+  <SnowflakeDot />
+  Sensors • IoT devices • Cloud Platform
+</div>
+
 
               <h1 className="mt-3 text-2xl md:text-4xl font-semibold leading-tight text-slate-900">
                 <span className="text-[#007BFF] font-bold">CoolGuard</span><br />
@@ -101,32 +116,33 @@ export default function Home() {
               </div>
 
               {/* Quick links row to match navbar order */}
-              <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
-                <a href="#features" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-                  Why Coolguard
-                </a>
-                <a href="#process" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-                  Product Architecture
-                </a>
-                <a href="#overview" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-                  Product Ecosystem
-                </a>
-                <a href="/products/kryo-101-aa" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-                  Cloud Loggers
-                </a>
-                <a href="/products/bridgepoint-cloudconnect" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-                  Cloud Connectors
-                </a>
-                <a href="/nodes-gateways" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
-                  <span className="h-2 w-2 rounded-full bg-[#007BFF]" />
-                  Nodes & Gateways
-                </a>
-              </div>
+  <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
+  <a href="#features" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+    <SnowflakeDot />
+    Why Coolguard
+  </a>
+  <a href="#process" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+    <SnowflakeDot />
+    Product Architecture
+  </a>
+  <a href="#overview" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+    <SnowflakeDot />
+    Product Ecosystem
+  </a>
+  <a href="/products/kryo-101-aa" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+    <SnowflakeDot />
+    Cloud Loggers
+  </a>
+  <a href="/products/bridgepoint-cloudconnect" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+    <SnowflakeDot />
+    Cloud Connectors
+  </a>
+  <a href="/nodes-gateways" className="group inline-flex items-center gap-2 rounded-lg border bg-white/70 px-3 py-2 hover:bg-blue-50/50">
+    <SnowflakeDot />
+    Nodes & Gateways
+  </a>
+</div>
+
             </div>
 
             {/* Right: Visual card (auto-swaps to image if present) */}
