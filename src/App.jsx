@@ -6,6 +6,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer.jsx";
 import FloatingCTA from "@/components/FloatingCTA.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import CookieConsentManager from "@/components/CookieConsentManager";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
+
 
 // Pages
 import Home from "./pages/Home.jsx";
@@ -97,6 +100,8 @@ function AppInner() {
 
       {/* Footer on all pages */}
       <Footer />
+      <CookieConsentManager />
+      <CookieSettingsButton />
     </>
   );
 }
