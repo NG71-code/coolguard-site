@@ -27,13 +27,13 @@ export default function Frigo101BB() {
             {/* Left: text */}
             <div>
               <p className="text-xs font-semibold tracking-[0.22em] uppercase text-[#0055cc] mb-3">
-                Frigo-100 Series · Universal Cloud Loggers
+                Frigo-100 Series
               </p>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-3">
-                Frigo-101-BB
-                <span className="block text-xl md:text-2xl font-normal text-slate-700 mt-1.5">
-                  Location-Aware Cloud Logger for Display &amp; Visi Coolers
-                </span>
+                Cooler Locator
+              <p className="text-xs font-medium text-slate-500 mb-4">
+                  Frigo-101-BB: Location-Aware Cloud Logger for Display &amp; Visi Coolers
+                </p>
               </h1>
               <p className="text-sm md:text-base text-slate-600 leading-relaxed max-w-xl mb-5">
                 Frigo-101-BB is a location-first IoT device for cooler fleets.

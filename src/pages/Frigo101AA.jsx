@@ -48,11 +48,11 @@ export default function Frigo101AA() {
               </p>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-900 tracking-tight mb-2">
-                Frigo-101-AA
+                Smart Cloud Loggers
               </h1>
 
               <p className="text-xs font-medium text-slate-500 mb-4">
-                FR-101-AA — Cloud Temperature Logger for Freezers &amp; Coolers
+                Frigo-101-AA — Cloud Temperature Logger for Freezers &amp; Coolers
               </p>
 
               <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 max-w-xl">

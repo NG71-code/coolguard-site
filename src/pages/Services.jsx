@@ -281,7 +281,7 @@ export default function MappingCalibrationValidation() {
               title="Room &amp; sensor mapping sheet"
               points={[
                 "Cold room layout sketch / plan with sensor IDs",
-                "List of all sensors with physical locations &amp; node mapping",
+                "List of all sensors with physical locations &; node mapping",
               ]}
             />
             <DeliverableCard
@@ -289,7 +289,7 @@ export default function MappingCalibrationValidation() {
               title="Calibration log"
               points={[
                 "Before / after readings for each channel",
-                "Reference device details &amp; date of calibration",
+                "Reference device details &; date of calibration",
               ]}
             />
             <DeliverableCard

@@ -25,8 +25,8 @@ export default function NodesGateways() {
       tagline: "Compact LoRaWAN Gateway for single facilities",
       icon: RadioTower,
       specs: [
-        "Uplink: 4G / LAN backhaul to CoolGuard Cloud",
-        "Supports ~30–40 Enviro wireless nodes per site (typical)",
+        "Uplink: 4G backhaul to CoolGuard Cloud",
+        "Supports ~8/16/32 Enviro wireless nodes per site (typical)",
         "Single LoRa RF channel optimised for cold room layouts",
         "DIN-rail / wall-mountable industrial enclosure",
         "Onboard data buffering during network outages",
@@ -45,8 +45,8 @@ export default function NodesGateways() {
       icon: Server,
       specs: [
         "Multi-channel LoRa RF for higher node density",
-        "Supports 100+ Enviro wireless nodes across multiple zones",
-        "Dual uplink: Ethernet + 4G with automatic failover",
+        "Supports 8/16/32 Enviro wireless nodes across multiple zones",
+        "Uplink: Ethernet + 4G + Wifi",
         "Industrial metal enclosure, DIN-rail friendly",
         "Local diagnostics & heartbeat monitoring",
       ],

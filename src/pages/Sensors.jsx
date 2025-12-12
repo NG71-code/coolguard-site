@@ -22,7 +22,7 @@ export default function Sensors() {
       code: "CG-TS-101",
       tagline: "High-accuracy temperature sensing for cold rooms & freezers",
       icon: Thermometer,
-      range: "–40°C to +80°C",
+      range: "–40°C to +60°C",
       specs: [
         "Industrial-grade RTD / thermistor based sensing",
         "Fast response time for excursions",
